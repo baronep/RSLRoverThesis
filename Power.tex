@@ -1,0 +1,10 @@
+\chapter{Subsystem: Power}
+
+Our vehicle houses a great deal of equipment and payloads that run off of electrical power, and it is important that we keep all of these payloads operational and functioning in an efficient manner.
+
+We have decided to utilize three, 12V deep-cycle marine batteries. Two of these are wired in series to supply 24VDC to the actuators and LIDAR units and one to provide 12V power to the engine. These batteries have been hooked up to our lidar sensor, arduino mega controller, and wireless communications, and we will be using them to power the additional payloads our vehicle will carry. This option of car batteries provided us a space and cost efficient way to power our equipment, though different options have been considered.
+
+We have also added a 24V DC/DC regulator to filter out electrical transients. While the actuators are still powered directly from the battery bank, the LIDAR units required a source of "clean" power. The 24V regulator which we chose has can both up and down convert the voltage levels in order to provide a stable power source for the more sensitive electronics. We have successfully incorporated this change into the vehicle's power system and have power margins to support additional 5V, 12V and 24V payloads.
+
+We have considered attaching two more additional batteries in parallel to the 24 volt battery bank, but have decided to postpone adding more battery capacity due to the incremental cost, unless required by our new sensors. Finally, as a stretch goal, we would like to include a power generator on board our vehicle to continue to power our batteries and lower the risk of the batteries running out of power while on a mission.
+For more information, please reference our power budget: Appendix \ref{App:PowerBudget}.

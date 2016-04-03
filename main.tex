@@ -1,0 +1,86 @@
+	\documentclass[letterpaper,12pt,titlepage]{report}
+\usepackage[margin=1.2in]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{chngpage}
+\usepackage{multirow}
+\usepackage{indentfirst}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{hhline}% http://ctan.org/pkg/hhline
+\usepackage{enumitem}
+\setlist[enumerate]{label*=\arabic*.}
+\usepackage[titletoc,title]{appendix}% http://ctan.org/pkg/appendices
+\renewcommand{\baselinestretch}{1.5} 
+\graphicspath{{images/}}
+\usepackage{rotating}
+\usepackage[]{pdfpages}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{ulem}
+\usepackage{gensymb}
+%\makeatletter\@openrightfalse\makeatother
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+
+\titleformat{\chapter}[display]% NEW
+    {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{5pt}{\Large}
+\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+
+\title{RSL Rover: \\Disaster Response and Reconnaissance Vehicle \\ Conceptual Design Report}
+
+\author{Patrick Barone\\Giovanni Briggs\\Aaron Burns\\Hesham Naja\\Zoe Demertzis}
+
+\date{December 9, 2015}
+
+\begin{document}
+\pagenumbering{roman}
+%\listoftodos
+\maketitle
+\include{Abstract}
+\pagenumbering{roman}
+\setcounter{page}{3}
+\tableofcontents{}
+\listoffigures
+
+\include{Introduction}
+\include{Systems_Level_Design}
+\include{EnvironmentalSensing}
+\include{Sensor_Housing}
+\include{OperatorControlandUserInterface}
+\include{Communications}
+\include{Power}
+\include{Localization}
+\include{Construction_Plan}
+%\include{System_Integration_Testing_and_Results}
+\include{Costing_Analysis}
+%\include{Patent_Search}
+\include{Engineering_Standards_and_Realistic_Constraints}
+\include{Summary_and_Conclusions}
+
+\begin{appendices}
+\begingroup
+	\titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+	\include{AppendixDesignRequirementFlowdown}
+    \include{AppendixMarketSurvey}
+    \include{AppendixTradeoffAnalysis}
+    \include{AppendixBudget}
+    \include{AppendixGantt}
+    \include{AppendixPowerCalc}
+    \include{AppendixDrawings}
+\endgroup
+\end{appendices}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
+
+
+\end{document}

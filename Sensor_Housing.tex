@@ -1,0 +1,35 @@
+\chapter{Subsystem: Sensor\_Housing}
+
+\section{Need for Housing} OUr vehicle, being equipped with multiple sensors, including sensors for air partiulates, natural gas, liquified petroleum gas, carbon monoxide, carbon dioxide, and hydrogen gas, needs to have an effective way of storing sensors while also ensuring they are in conditions that will allow the sensors to be exposed to the elements they are meant to detect. We decided to house these sensors together into one housing unit. This unit can serve to shield the sensors from any physical interferences, as well as shield them from high temperatures that could fry them.
+
+\section{Materials Used} The material for the housing unit needed to be relatively sturdy to protect the sensors, cheap and easy to machine for economic efficiency, and thermally resistant to protect our sensors from high heat. After researching many materials, Acrylic was decided upon for the material to construct our housing structure.
+
+\begin{table}
+\centering
+\begin{tabular}{l|r}
+Property & Assosciated Value \\\hline
+Thermal Conductivity & 1.3 to 1.5 $\frac{Btu-in}{hr-ft^2-\deg F}$ \\
+Melting Temperature & 464 to 473 $\deg$ F \\
+Compressive Strength & 14100 to 18000 psi \\
+Tensile Strength & 5420 to 10700 psi \\
+\end{tabular}
+\caption{\label{tab:Acrylic Properties} The properties of acrylic made avaiable from the UL company \cite{UL}}
+\end{table}
+
+Acrylic has relatively low thermal conductivity, meaning it can insulate our sensors effectively, and it's melting temperature is far above the temperature maximum of 250$\deg F$ that we expect our vehicle to be present in. Though we do not expect our unit to be under a great deal of stress, as the most stress our vehicle will be in is under the stress of its own weight, the compressive and tensile strength are both well above the weight of the system. The price of acrylic is relatively cheap compared to other plastics of comprable properties, and it is very easy to machine and assemble through the use of adhesives, which would be an ideal means of assembly, as bolts would be innefective for assembling a relatively small housing unit.
+
+\section{Initial Design}
+
+The first of the questions would be how do we force the air into the housing unit? Though our housing unit is designed to protect our sensors from many of the outside elements, our sensors also must be exposed to air. We decided to use a PWM fan for its speed control and relatively small size. The model we are going to use is the Artic F8 Case fan, which reaches a maximum air flow of 31 $ft^{3}/min$.
+
+The next question facing our design concerned the means by which air could flow over and through our sensors. While our specific air sensors, which measure the concentrations of different harmful gasses in the air simply needed air to flow over them, as shown in (Figure of sensor), our air particulate sensor needed air to rise through a very specific segment, as demonstrated in (Figure of air particulate). Due to this, our housing design needed to account for these means of air flow. (Design Picture shows our design (pre-analysis) that we came up with in order to accommodate those needs. Note that there are two main inlet holes, one on the front of the unit, and one on the underside. The front inlet was designed to be the major inlet of air to fill  our housing unit. Our bottom hole was designed specifically for the air particulate sensor.
+
+The major question we were left with was, will the air flow where we want the air to flow. For this a computational fluid dynamics (CFD) test will be performed on our design.
+
+\section{CFD and Analysis}
+
+Ansys Workbench was used to perform a series of tasks designed to complete a CFD analysis. The first task was to design the internal space of the feature. This means designing a part that would represent only the area inside the housing unit. (Figure of internal Space) shows the design of said part.
+
+After this internal space was designed, a mesh was created around the part using Ansys Workbench. Once the mesh was created and reformatted to be as precise as possible, boundary conditions could be set. No-slip conditions were set on all of the walls of the part. The inlets of the part were set at ambient pressure of 1 atm. The outlet was given a constant outlet velocity, calculated from converting the 31 ft3/min of the fan into m/s by dividing by the area of the fan and converting ft to m, of 2.6058m/s. The system was evaluated as a k-epsilon system. From there, a streamline map was developed for the system in order to show how successful our design was.
+
+Our streamline map pointed out some key failings of our current design, though we were successful in driving air up the hole dedicated to feeding our air particulate sensor, we were unable to fill the area of the housing unit where most of our other sensors would be placed. Instead of the air filling up the empty space, only a few streamlines reached the center of our housing unit. Instead, many of our streamlines clung to the edge of our design. After inspection and analysis, it is planned to add another back inlet for air to enter the housing unit. This would cause the streamlines to collide and fill the space, rather than ride the side wall of the housing unit.
