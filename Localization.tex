@@ -79,11 +79,19 @@ One of the features which was most frustrating to debug with the Kalman filter w
 
 \subsection{Hector SLAM}
 
+%TODO: ADD HECTOR SLAM IMAGE
 
+In order to generate a more accurate absolute position estimate than the GPS could provide, we turned to a SLAM (Simultaneous Localization And Mapping) solution. SLAM works by analyzing LIDAR data, comparing subsequent scans to determine a position and orientation estimate for the robot. In order to decrease the implementation time, we turned to several available ROS implementations of SLAM algorithms. The most common packages for SLAM are gmapping and hector\_slam. Both packages are 2D SLAM algorithms which compare planar laser scans to determine position. We chose to use hector\_slam due to the fact that an odometry input is not necessary.  
 
-\subsection{2D Mapping}
+While we saw very good performance out of the SLAM system, there are several critical caveats which would make the currently available implementations not-ideal for our particular application. First, the SLAM algorithms have a fixed map of a fixed size. This essentially means that the area that the vehicle can navigate in is limited by the memory available on the laptop. An ideal solution and proven solution to this problem would be to have a rolling map, where only the map in the area surrounding the current rover is persisted. Secondly, through ROS we only had access to 2D SLAM implementations, which rely on the assumption that the environment is uniform in the vertical direction. While these implementations work very well in indoor environments with many vertical features, the outdoor environment, especially the natural outdoor environment has very few purely vertical features. In order to get better performance in an unstructured 3D environment, a 3D SLAM solution would be required
 
 \subsection{3D Visualization}
 
-\subsection{3D Accumulated Point Cloud}
+%TODO: Pointcloud Photo
+
+In addition to the 3D pointcloud which is visualized in the web UI, ROS's rviz utility was heavily utilized to visualize pointclouds and provide debugging information to both operators and developers. 
+
+%TODO: Octomap Photo
+
+Additionally, in post-processing we are able to feed the position estimates and LIDAR data into the Octomap ROS package. Octomap is a 3D occupancy grid implementation which allows the LIDAR not only to identify obstacles, but also clear obstacles from the map.
 
