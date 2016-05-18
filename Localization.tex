@@ -1,7 +1,6 @@
 \chapter{Subsystem: Localization/Mapping} \label{chap:Localization}
 
 % Need to talk about frames, sensors, kalman filtering scheme, hector_slam, results
-\subsection{Introduction}
 
 \begin{figure}[H]
 	\centerline{\includegraphics[angle=0,width=0.5\linewidth]{rl}}
@@ -15,7 +14,7 @@ ROS provides a framework for developing localization systems and provides severa
 
 We aim to have our system be able to determine the position of the Rover within 1 meter after traveling 100 meters and generate a map while traveling.
 
-\subsection{Sensors}
+\section{Sensors}
 
 %Tachometer,IMU,GPS,LIDAR
 
@@ -57,7 +56,7 @@ Next, the GPS unit, a Novatel Propak-LB, outputs position and velocity estimates
 
 Finally, the rover has 2 lidar sensors available. A statically mounted unit on the front grill and a tilting unit on a gimbal mounted on top of the vehicle. For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2d map of the environmet which can be saved and used for navigation at a later time.
 
-\subsection{Coordinate Frames}
+\section{Coordinate Frames}
 
 When developing a complex robotic system, keeping track reference frames for all of the different components of a robot is critical for determining the configuration of the robot in space. ROS has convenient functionality for not only defining coordinate frames, but also for calculating the transformations between them. 
 
@@ -67,7 +66,7 @@ The localization of the vehicle is performed in two stages, first taking into ac
 
 The second state takes into account discontinuous sensor data (ie. GPS, SLAM) to produce a more accurate, but sometimes 'jumpy' position estimate. The advantage of using this frame is that when planning long-term navigation, this frame is not subject to the same drift that the odom frame is subject to. The second step in the localization process defines a transformation between the \textbackslash base\_link and the \textbackslash map frames.
 
-\subsection{Kalman Filter}
+\section{Kalman Filter}
 
 We are using an implementation of an extended kalman filter for state estimation through the ROS robot\_localization package. This package takes input from an arbitarary number of sensors and produces an estimate of the robot's 15 dimensional state, [x,y,z,roll,pitch,yaw,vx,vy,vz,vroll,vpitch,vyaw,ax,ay,az]\cite{Moore2016}. 
 
@@ -77,7 +76,7 @@ However, the as time increases, small bias errors or noise will accumulate to cr
 
 One of the features which was most frustrating to debug with the Kalman filter was the effects of the covariance matrix for each sensor. The covariance matrix represents the statistical confidence in the sensor data being reported. Some nodes, such as the GPS node and the SLAM node report an actual, dynamic covariance based on the performance of their algorithms. However, other sensors such as the IMU and Tachometer don't report covariance. In order for the kalman filter to output a valid estimate, we had to estimate these values. In order to do this, we viewed the stead state noise floor for each sensor and set the covariance such that it was slightly higher than this value. While not extremely accurate, this seemed to perform well and prevented the Kalman filter from propagating this noise into the position estimate.
 
-\subsection{Hector SLAM}
+\section{Hector SLAM}
 
 %TODO: ADD HECTOR SLAM IMAGE
 
@@ -85,7 +84,7 @@ In order to generate a more accurate absolute position estimate than the GPS cou
 
 While we saw very good performance out of the SLAM system, there are several critical caveats which would make the currently available implementations not-ideal for our particular application. First, the SLAM algorithms have a fixed map of a fixed size. This essentially means that the area that the vehicle can navigate in is limited by the memory available on the laptop. An ideal solution and proven solution to this problem would be to have a rolling map, where only the map in the area surrounding the current rover is persisted. Secondly, through ROS we only had access to 2D SLAM implementations, which rely on the assumption that the environment is uniform in the vertical direction. While these implementations work very well in indoor environments with many vertical features, the outdoor environment, especially the natural outdoor environment has very few purely vertical features. In order to get better performance in an unstructured 3D environment, a 3D SLAM solution would be required
 
-\subsection{3D Visualization}
+\section{3D Visualization}
 
 %TODO: Pointcloud Photo
 
