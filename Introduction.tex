@@ -54,10 +54,10 @@ During the "Venting/air quality assessment step" in Figure ~\ref{fig:FireInvesFl
 Currently, in order to asses the types of air quality risks within a post-fire environment (and therefore the types of protective breathing needs/clothing), a responder must enter the environment equipped with some degree of protective gear and various sensors. These sensors include, but are not limited to, multi-gas detectors and air particulate detectors.\cite{evaluationofhazards} Once the environment is assessed and the proper protective gear is chosen, the post-fire procedure can commence. Therein lies the problem. In order to assess the harmful gasses and particulates in a post-fire zone, a person must enter said zone. This person could potentially be exposed to excessive: carbon monoxide, carbon dioxide, air particulates, and toxic chemicals from the fire and fire retardants. \cite{toxichazards}
 
 
-We will use the sources we have found to develop our vehicle in such a way that it can perform all of the tasks that a responder would, as well as provide additional data that can be used to further ensure that no humans will be harmed during the post-fire assessment/investigation/recovery procedure. 
-Our vehicle will be equipped with multiple useful sensors that reveal air quality conditions to operators who are controlling the vehicle from a safe distance. The operators will also receive a live video stream as the vehicle traverses the environment. 
+We have used the sources we have found to develop our vehicle in such a way that it can perform all of the tasks that a responder would, as well as provide additional data that can be used to further ensure that no humans will be harmed during the post-fire assessment/investigation/recovery procedure. 
+Our vehicle has been equipped with multiple useful sensors that reveal air quality conditions to operators who are controlling the vehicle from a safe distance. The operators also receive a live video stream as the vehicle traverses the environment. All of the relevant information can be visualized and analyzed through our web-based user interface. 
 
-In addition, our vehicle will generate a useful map of the environment, which is something a human who is traversing the scene cannot do on his own. This 3D map can serve as a resource for other people who will enter the post-fire environment. The operators will be able to tag the map with certain "hot spots" and other notable zones. When assessing post-fire environments, it is useful to keep track of particularly hot or dense, gaseous zones in order to maximize safety for the humans involved. \cite{recoveringfromwildfire}
+In addition, our vehicle will generate a useful map of the environment, which is something a human who is traversing the scene cannot do on his own. This 3D map can serve as a resource for other people who will enter the post-fire environment. The operators will be able to identify "hot spots" and other notable zones. When assessing post-fire environments, it is useful to keep track of particularly hot or dense, gaseous zones in order to maximize safety for the humans involved. \cite{recoveringfromwildfire}
 
 The sources we found have provided information on and inspiration for the exact role our vehicle can serve in aiding those who assess post-fire environment. Our vehicle will help operators determine the state of the environment and keep humans out of any particularly hazardous situations. 
 
@@ -65,22 +65,19 @@ The sources we found have provided information on and inspiration for the exact 
 
 
 
-
-
-
 \section{Problem Statement}
 
-Our goal is to design and implement an unmanned vehicle
+Our goal was to design and implement an unmanned vehicle
 that gathers and relays information on potentially 
 hazardous environmental conditions back to its operators.
 
-To do this, we will do the following:
+To do this, we planned to accomplish the following:
 \begin{itemize}
 \item equip the Polaris 6x6 Ranger with appropriate sensors and cameras to determine how safe the environment is for humans to enter
 \item use GPS and laser scans to generate a 3D map that operators can use to define certain zones as particularly dangerous.
 \item incorporate partially-autonomous sensing capabilities that help the operator successfully drive the vehicle by remote control
  \end{itemize} 
- The result will be a rugged, advanced vehicle that can be used to protect fire responders from any lingering hazards during the investigation of a post-fire environment. 
+ The result is a rugged, advanced vehicle that can be used to protect fire responders from any lingering hazards during the investigation of a post-fire environment. 
 
 
 
@@ -91,5 +88,5 @@ The vehicle is a 2004 Series 11 Polaris Ranger 6x6 \cite{rslrover2014}.  It cont
 
 Two previous Senior Design teams worked on the vehicle in 2014 and 2015.  The 2014 Senior Design team focused on creating an autonomous vehicle testbed.  They successfully developed a software control system to operate the vehicle via a remote console, redesigned the wiring of the vehicle, and implemented safety features.  They used Arduino microcontrollers to control steering, throttle, breaks, transmission and the parking break \cite{rslrover2014}.  All of these microcontrollers and emergency stop safety features are still present and in use in our current system.
 
-The 2015 Senior Design team attempted to build on the system developed by the 2014 Senior Design team and add sensors and microprocessors to  give the vehicle autonomous capabilities \cite{rslrover2015}.  At the end of their year of work, the 2015 Senior Design team successfully implemented obstacle detection using a LIDAR unit.  When the vehicle detected an object in it's path, it would make an emergency stop in order to avoid collision \cite{rslrover2015}. Currently, the vehicle stil houses the LIDAR unit but no longer performs obstacle detection, as we are developing our own software using the LIDAR. 
+The 2015 Senior Design team attempted to build on the system developed by the 2014 Senior Design team and add sensors and microprocessors to  give the vehicle autonomous capabilities \cite{rslrover2015}.  At the end of their year of work, the 2015 Senior Design team successfully implemented obstacle detection using a LIDAR unit.  When the vehicle detected an object in it's path, it would make an emergency stop in order to avoid collision \cite{rslrover2015}. Currently, the vehicle still houses the LIDAR unit but no longer performs obstacle detection, as we have developed our own software using the LIDAR. 
 
