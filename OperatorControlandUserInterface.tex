@@ -46,10 +46,10 @@ All of the charts are created using the \url{https://github.com/pablojim/highcha
 Rendering the LIDAR point cloud presented a special challenge.  The data coming off of the LIDAR is simply a line of what the LIDAR is scanning.  As the LIDAR moves up and down it publishes these lines, and it is then the responsibility of the visualizing software to aggregate these lines and display the resulting cloud.
 
 There are two potential solutions to this problem:
-\begin{enumeratelist}
+\begin{enumerate}
     \item Assign each point a timer, and when the timer expires, remove the point
     \item Only hold so many points in the scene at once
-\end
+\end{enumerate}
 
 For our implementation, we chose to only hold so many points on the screen at once.  The ros3djs library allows you to set a maximum number of points that you can display on the screen, but it assumes that you are already giving it a full point cloud.  We went add added the ability to have the scene aggregate the points during render time.  Essentially, we keep track of the last index that we wrote points to, and on the next message, we start writing at that location.  When we reach the end of the array, we start back the beginning and overwrite old points with new information.  We currently have the scene set to hold 75,000 points at once, which seems to hold about three to five seconds worth of point cloud data, which is plenty of time to visualize the surrounding environment as the vehicle moves through it.
 
