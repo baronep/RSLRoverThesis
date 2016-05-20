@@ -24,6 +24,20 @@ The first of the questions would be how do we force the air into the housing uni
 
 The next question facing our design concerned the means by which air could flow over and through our sensors. While our specific air sensors, which measure the concentrations of different harmful gasses in the air simply needed air to flow over them, as shown in (Figure of sensor), our air particulate sensor needed air to rise through a very specific segment, as demonstrated in (Figure of air particulate). Due to this, our housing design needed to account for these means of air flow. (Design Picture shows our design (pre-analysis) that we came up with in order to accommodate those needs. Note that there are two main inlet holes, one on the front of the unit, and one on the underside. The front inlet was designed to be the major inlet of air to fill  our housing unit. Our bottom hole was designed specifically to intake air, pushing air directly through the air particulate sensor.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{Gas Sensor Airflow.jpg}
+	\caption{For the gas sensors to work, air must flow over the sensor}
+	\label{fig:airflow1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{Air Particulate Airflow.jpg}
+	\caption{For the air particulate sensor to work, air must flow through the sensor}
+	\label{fig:airflow2}
+\end{figure}
+
 The major question we were left with was, will the air flow where we want the air to flow. For this a computational fluid dynamics (CFD) test will be performed on our design.
 
 \section{CFD Analysis and Iterative Work}
@@ -34,9 +48,30 @@ After this internal space was designed, a mesh was created around the part using
 
 Our streamline map pointed out some key failings of our current design, though we were successful in driving air up the hole dedicated to feeding our air particulate sensor, we were unable to fill the area of the housing unit where most of our other sensors would be placed. Instead of the air filling up the empty space, only a few streamlines reached the center of our housing unit. Instead, many of our streamlines clung to the edge of our design.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{CFDhalf.jpg}
+	\caption{CFD streamline analysis for our first design}
+	\label{fig:CFD1}
+\end{figure}
+
 In our second iteration, we attempted the same tests while adding a second inlet hole on the opposite side of the housing unit to our primary inlet. This was added to push air streams into the streams currently clinging to the wall of our unit in order to send air through the central area of our housing unit, where the gas sensors would most likely be. While this did move air more successfully through our system than the prior design, there were still inconsistencies in the streamlines as vorticies were created as the streams collided.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{CFD1.jpg}
+	\caption{CFD streamline analysis for our second design}
+	\label{fig:CFD2}
+\end{figure}
+
 In our final iteration, we attempted to use the PWM fan as an air inlet instead, and received positive results from our CFD analysis. The use of the fan as an inlet caused the streamlines to be smooth throughout most of the system until exiting through the three outlet holes, the two primary outlets and the secondary outlet dedicated to the air particulate sensor. The streamlines showed the air exiting directly through the air particulate sensor still, while also driving air smoothly over the area where our gas sensors would be located. From this design, we built our acrylic prototypes. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.15]{CFD2.jpg}
+	\caption{CFD streamline analysis for our final design}
+	\label{fig:CFD}
+\end{figure}
 
 \section{Final Design}
 Three housing units were made and nicknamed Larry, Curly and Moe. Each were fitted with our dedicated PCBs, which had been fitted with our gas sensors, the air particulate sensor, an Arduino unit to process the data, and the PWM fan. These fully equipped sensor units were then fitted to the roll cage of the vehicle, two, Larry and Moe, on the front cage to pull air in on both sides of the vehicle, while one, Curly, was placed at the center-front of the overhead roll cage to draw air in from the front of the vehicle. Three sensor packages were equipped onto the vehicle in such a fashion as to: protect from the case of one sensor package failing, draw air in from the three directions of concern around the vehicle, and has an aesthetically pleasing look.
