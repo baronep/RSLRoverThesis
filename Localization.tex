@@ -18,7 +18,11 @@ We aim to have our system be able to determine the position of the Rover within 
 
 %Tachometer,IMU,GPS,LIDAR
 
-%TODO: Picture of tachometer
+\begin{figure}[H]
+	\centerline{\includegraphics[angle=0,width=0.5\linewidth,angle=90]{tach}}
+	\caption[]{Hall Effect Tachometer}
+	\label{fig:tach}
+\end{figure}
 
 The first sensor that incorporate into our localization scheme is the vehicle tachometer. The tachometer is an aftermarket sensor addition which senses the vehicle speed, which we consider to be a "body-frame forward" speed. The tachometer is actually two adjacent hall-effect sensors which sense the movement of the teeth on a gear fixed to the rear drive shaft. Through the use of dual hall-effect sensors, the sensor is able to output a quadrature signal from which both speed and direction can be extrapolated. The output of this sensor is fed to the 'Tachometer Arduino', which interprets the quadrature signal and feeds the resulting position and speed to the Vehicle Mega.
 
@@ -30,8 +34,6 @@ The first sensor that incorporate into our localization scheme is the vehicle ta
 
 The second source of data comes the Inertial Measurement Unit (IMU), which includes 3 sensors; a 3-axis accelerometer, a 3-axis gyro and a 3 axis-magnetometer. We chose the CH Robotics UM7 IMU to use on the vehicle because of it's relatively low price point, existing integration with ROS and it's active user base. Most modern IMU's have filtering on the device and in the case of the UM7, it outputs an orientation estimate (yaw,pitch,roll) as well as the raw sensor data. 
 
-%TODO: Picture of GPS Antenna
-
 \begin{figure}[H]
 \centering
 \begin{subfigure}{.5\textwidth}
@@ -42,7 +44,7 @@ The second source of data comes the Inertial Measurement Unit (IMU), which inclu
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
 	\centering
-	\includegraphics[width=.8\linewidth]{propak}
+	\includegraphics[width=.8\linewidth,angle=180]{GPSAntenna}
 	\caption{GPS Antenna}
 	\label{fig:sub2}
 \end{subfigure}
@@ -52,9 +54,25 @@ The second source of data comes the Inertial Measurement Unit (IMU), which inclu
 
 Next, the GPS unit, a Novatel Propak-LB, outputs position and velocity estimates in the form of standard NMEA strings. Preexisting ROS nodes (nmea\_serial\_driver) enable us to read in these NMEA strings over a usb-to-serial adapter and incorporate the GPS data into our state estimate. The GPS has the added benefit of performing it's own estimate of the covariance (a statistical measure of the estimate's certainty). The Kalman Filter utilizes the covariance to weigh the GPS more heavily when the GPS has more satellite's in view. Additionally, the GPS unit is capable of taking WAAS (Wide Area Augmentation System) GPS corrections into account. The WAAS system calculates and transmits corrections to increase the prevision of GPS receivers.
 
-%TODO: Pictures of the LIDAR units
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.5\linewidth,angle=270]{LMS111_front}
+		\caption{Front Mounted Static LIDAR}
+		\label{fig:sub1}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{LMS221}
+		\caption{Roll Cage Mounted Sweeping LIDAR}
+		\label{fig:sub2}
+	\end{subfigure}
+	\caption{RSL Rover LIDAR Sensors}
+	\label{fig:lidar}
+\end{figure}
 
-Finally, the rover has 2 lidar sensors available. A statically mounted unit on the front grill and a tilting unit on a gimbal mounted on top of the vehicle. For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2d map of the environmet which can be saved and used for navigation at a later time.
+Finally, the rover has 2 lidar sensors available. A statically mounted unit on the front grill and a tilting unit on a gimbal mounted on top of the vehicle. For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2d map of the environment which can be saved and used for navigation at a later time.
 
 \section{Coordinate Frames}
 
