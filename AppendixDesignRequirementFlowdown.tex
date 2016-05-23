@@ -1,60 +1,72 @@
 \chapter{Design Requirement Flowdown} \label{App:DesignRequirements}
-Mission Statement: To create a teleoperable all terrain vehicle capable of transmitting air quality, temperature, and LIDAR data to a remote operator to monitor enironmental conditions after a wildland fire.
-    \begin{enumerate}
-    	\item Hazardous Environment Detection
-        \begin{enumerate}
-        	\item Multi-gas Detectors
-           	\begin{enumerate}
-            	\item CO
-                \item $CO_2$
-                \item $H_2$
-                \item Methane
-                \item LPG
-            \end{enumerate}
-            \item Temperature Sensor
-            \begin{enumerate}
-				\item Operating range $>$200\degree F
-            \end{enumerate}
-            \item Humidity Sensor
-			\item Air Particulate Detectors
-            \item Redundant Sensing capabilities
-            \begin{enumerate}
-        		\item Three redudant sensor packages on vehicle
-        	\end{enumerate}
-        \end{enumerate}
-        \item Hot Spot Detection
-        \begin{enumerate}
-        	\item FLIR sensor
-        \end{enumerate}
-        \item Dual Purpose Vehicle
-        \begin{enumerate}
-        	\item Carry 2+ passengers and 200+ lb gear load
-            \item Local and Remote Operation
-            \item Redundant/Analog Operation
-            \item Safely operable (Emergency Stop Systems)
-            \item Intelligent Vehicle Functionality
-        \end{enumerate}
-        \item Mapping Capabilities
-        \begin{enumerate}
-        	\item Lidar Scanning
-            \item GPS Tagging
-            \item Camera Feed
-        \end{enumerate}
-        \item Data Collection
-        \begin{enumerate}
-        	\item Save Sensor Streams
-            \begin{enumerate}
-        		\item Lidar
-            	\item Camera feed
-            	\item GPS
-            	\item Environment
-           		\item Etc.
-       		\end{enumerate}
-        \end{enumerate}
-        \item Information Dissemination
-        \begin{enumerate}
-        	\item Relay information to mobile operation command center
-            \item Satellite Link
-            \item Wifi P2P
-        \end{enumerate}
-	\end{enumerate}
+%Mission Statement: To create a teleoperable all terrain vehicle capable of transmitting air quality, temperature, and LIDAR data to a remote operator to monitor enironmental conditions after a wildland fire.
+%    \begin{enumerate}
+%    	\item Hazardous Environment Detection
+%        \begin{enumerate}
+%        	\item Multi-gas Detectors
+%           	\begin{enumerate}
+%            	\item CO
+%                \item $CO_2$
+%                \item $H_2$
+%                \item Methane
+%                \item LPG
+%            \end{enumerate}
+%            \item Temperature Sensor
+%            \begin{enumerate}
+%				\item Operating range $>$200\degree F
+%            \end{enumerate}
+%            \item Humidity Sensor
+%			\item Air Particulate Detectors
+%            \item Redundant Sensing capabilities
+%            \begin{enumerate}
+%        		\item Three redudant sensor packages on vehicle
+%        	\end{enumerate}
+%        \end{enumerate}
+%        \item Hot Spot Detection
+%        \begin{enumerate}
+%        	\item FLIR sensor
+%        \end{enumerate}
+%        \item Dual Purpose Vehicle
+%        \begin{enumerate}
+%        	\item Carry 2+ passengers and 200+ lb gear load
+%            \item Local and Remote Operation
+%            \item Redundant/Analog Operation
+%            \item Safely operable (Emergency Stop Systems)
+%            \item Intelligent Vehicle Functionality
+%        \end{enumerate}
+%        \item Mapping Capabilities
+%        \begin{enumerate}
+%        	\item Lidar Scanning
+%            \item GPS Tagging
+%            \item Camera Feed
+%        \end{enumerate}
+%        \item Data Collection
+%        \begin{enumerate}
+%        	\item Save Sensor Streams
+%            \begin{enumerate}
+%        		\item Lidar
+%            	\item Camera feed
+%            	\item GPS
+%            	\item Environment
+%           		\item Etc.
+%       		\end{enumerate}
+%        \end{enumerate}
+%        \item Information Dissemination
+%        \begin{enumerate}
+%        	\item Relay information to mobile operation command center
+%            \item Satellite Link
+%            \item Wifi P2P
+%        \end{enumerate}
+%	\end{enumerate}
+
+
+\begin{figure}[H]
+	\centerline{\includegraphics[height=1.0\linewidth,angle=90]{ReqFlow.pdf}}
+	\caption{Requirements Flowdown}
+\end{figure}
+
+\begin{figure}[H]
+	\centerline{\includegraphics[width=1.0\linewidth,angle=90]{TestPlan.pdf}}
+	\caption{Test Plan}
+\end{figure}
+
