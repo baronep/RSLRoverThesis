@@ -4,8 +4,51 @@
 %Pat
 
 \section{Range Requirement Verification}
+Being able to operate the vehicle at a distance was a very important requirement.  We wanted to verify that the remote operator console could maintain good contact with the vehicle at range and also that the router on the back of the rover gave us enough range to be able to operate the User Interface at a range as well.
+
+We knew that the router on the back of the vehicle that powers our WiFi network that allows us to run the User Interface was going to have a shorter range than the system powering the communication with the remote operator console.  We set our requirement threshold to a range that we considered feasible based on the specifications of the router.  Our requirement was that the WiFi network and remote operator console have a range of 150 meters.
+
+To test this, we left the vehicle and one member of our team in a stationary location and loaded the remote operator console and a laptop into another vehicle and drove as far away as possible before we lost connection.  We would stop along the way, while remaining in line of sight with the vehicle, and would send commands to the vehicle via the remote operator console.  If our team member with the vehicle saw the event happen, we knew the remote operator console still had contact.  For the WiFi network, the web-based user interface will display a message when it loses connection, so we monitored the user interface and marked when that message appeared.  
+
+For the WiFi network, we lost connection at about 250 meters away from the vehicle.  The remote operator console still had good connection, so we kept driving.  We reached the edge of the property we were testing at about one kilometer away from the vehicle and were still able to send commands.  We know that the remote operator console as a range in excess of one kilometer, which greatly surpases our 150 meter requirement.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ l | c | r }
+      Verification & Requirement (meters) & Result (meters) \\ \hline
+      Remote Operator Console & 150 & 1000 \\
+      WiFi Network & 150 & 250 \\
+    \end{tabular}
+    \caption{Range requirements and verification results}
+    \label{table:range_verification}
+\end{table}
 
 \section{Latency Requirement Verification}
+Latency is important to be able to operate the vehicle effectively.  We do not want operators to be making decisions based on stale data, and if the video feeds are not coming through fast enough, it will make it very hard to drive the vehicle.
+
+\begin{figure}[H]
+\centerline{\includegraphics[angle=0,width=1\linewidth]{front_camera_latency}}
+\caption[]{Screenshot from the front facing camera on the vehicle taken during our testing}
+\label{fig:front_camera_latency}
+\end{figure}
+
+There were several areas of latency that we wanted to test.  First, we wanted to test the latency from the cameras to the onboard laptop.  Second, we wanted to test the latency from the cameras to the web-based user interface and see what the difference is between the two.  Finally, we wanted to check what the latency was for vehicle state data, such as wheel speed and the readings from environmental sensing packages, from the vehicle to the user interface.  In all of these cases, we set the requirement that this latency be less than one second.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{ l | c | r }
+      Verification & Requirement (seconds) & Result (seconds) \\ \hline
+      Cameras to onboard laptop & 1 & .75 \\
+      Cameras to user interface & 1 & .8 \\
+      Vehicle state data to user interface & 1 & 2 \\
+    \end{tabular}
+    \caption{Latency requirements and verification results}
+    \label{table:latency_verification}
+\end{table}
+
+As shown in table \ref{table:latency_verification}, the camera feeds in both cases had a latency under our one second requirement.  The vehicle state data however, had a latency of two seconds.  We later discovered that this was due to lack of optimization.  There were points in the data pipeline that were causing data to take longer to send and be processed than we originally thought.  Displaying the data in graph form, such as the gauges for the different gas readings, added extra time to processing the data.
+
+Future optimizations could be done to increase the speed of this processing.
 
 \section{GPS Requirement Verification}
 %Pat
