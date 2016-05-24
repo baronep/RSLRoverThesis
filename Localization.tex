@@ -10,9 +10,9 @@
 
 Localization is an important step for any autonomous or partially autonomous system hoping to navigate in the physical world. While autonomous driving does not fall within the scope of our project, localization is a necessary step for creating an accurate map of the environment. 
 
-ROS provides a framework for developing localization systems and provides several cutting-edge algorithms for fusing sensor data into an accurate position estimate. For our vehicle we are combining the LIDAR, accelerometer, gyroscope, GPS, ans wheel sensor data using an Extended Kalman filter to generate an accurate position estimate. Using this position estimate, we will then build both 2D and 3D maps of the environment. 
+ROS provides a framework for developing localization systems and provides several cutting-edge algorithms for fusing sensor data into an accurate position estimate. For our vehicle we are combining the LIDAR, accelerometer, gyroscope, GPS, and wheel sensor data using an Extended Kalman filter to generate an accurate position estimate. Using this estimate, we then build both 2D and 3D maps of the environment using our LIDAR sensor data. 
 
-We aim to have our system be able to determine the position of the Rover within 1 meter after traveling 100 meters and generate a map while traveling.
+We aim to have our system be able to determine the position of the rover within 1 meter after traveling 100 meters and generate a map while traveling.
 
 \section{Sensors}
 
@@ -72,7 +72,7 @@ Next, the GPS unit, a Novatel Propak-LB, outputs position and velocity estimates
 	\label{fig:lidar}
 \end{figure}
 
-Finally, the rover has 2 lidar sensors available. A statically mounted unit on the front grill and a tilting unit on a gimbal mounted on top of the vehicle. For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2d map of the environment which can be saved and used for navigation at a later time.
+Finally, the rover has 2 lidar sensors available; a statically mounted unit on the front grill and a tilting unit on a gimbal mounted on top of the vehicle. For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2D map of the environment which can be saved and used for navigation at a later time.
 
 \section{Coordinate Frames}
 
