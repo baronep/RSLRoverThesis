@@ -27,7 +27,7 @@ For the WiFi network, we lost connection at about 250 meters away from the vehic
 Latency is important to be able to operate the vehicle effectively.  We do not want operators to be making decisions based on stale data, and if the video feeds are not coming through fast enough, it will make it very hard to drive the vehicle.
 
 \begin{figure}[H]
-\centerline{\includegraphics[angle=0,width=1\linewidth]{front_camera_latency}}
+\centerline{\includegraphics[angle=0]{front_camera_latency}}
 \caption[]{Screenshot from the front facing camera on the vehicle taken during our testing}
 \label{fig:front_camera_latency}
 \end{figure}
@@ -54,6 +54,25 @@ Future optimizations could be done to increase the speed of this processing.
 %Pat
 \section{Mapping and Localization Requirement Verification}
 %Pat
+
 \section{Environmental Sensing Requirement Verification}
+%WILL DO AFTER WE HAVE MORE CHARTS AND SHIT
 
 \section{Blindspot Requirement Verification}
+To test the blindspots on the vehicle, we attached string to the cameras and placed posts in the gound when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line.  We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blindspots of the vehicle.
+
+\begin{figure}[H]
+\centerline{\includegraphics[angle=0]{blindspot_verification}}
+\caption[]{The resulting web from attaching string to each camera and then tying those strings to posts and placing them in the ground when the post left the field of view of the respective camera.}
+\label{fig:blindspot_verification}
+\end{figure}
+
+Our requirement was that the cameras would offer 360 degrees of view.  In other words, our requirement was to have no blindspots.  Unfortunately, based on the resulting calculations from the measurements we took, each camera only provided 65 degrees of coverage, resulting in a total 260 degrees of view.  Each blindspot between the cameras was only 25 degrees, but this still fell short of our requirement.
+
+\begin{figure}[H]
+\centerline{\includegraphics[angle=0]{Blindspots_measurement}}
+\caption[]{The distance between the posts and the angles we derived between them.}
+\label{fig:blindspot_measurement}
+\end{figure}
+
+We could further increase our field of view though by adding two more cameras to the vehicle.  and placing them on the side of the roll cage angled backwards.  We would then take the two cameras already on the roll cage and angle them more forwards.  These four cameras together would then cover the current blindspots on the vehicle.
