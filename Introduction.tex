@@ -65,19 +65,7 @@ The sources we found have provided information on and inspiration for the exact 
 
 
 
-\section{Problem Statement}
 
-Our goal was to design and implement an unmanned vehicle
-that gathers and relays information on potentially 
-hazardous environmental conditions back to its operators.
-
-To do this, we planned to accomplish the following:
-\begin{itemize}
-\item equip the Polaris 6x6 Ranger with appropriate sensors and cameras to determine how safe the environment is for humans to enter
-\item use GPS and laser scans to generate a 3D map that operators can use to define certain zones as particularly dangerous.
-\item incorporate partially-autonomous sensing capabilities that help the operator successfully drive the vehicle by remote control
- \end{itemize} 
- The result is a rugged, advanced vehicle that can be used to protect fire responders from any lingering hazards during the investigation of a post-fire environment. 
 
 
 
@@ -89,4 +77,18 @@ The vehicle is a 2004 Series 11 Polaris Ranger 6x6 \cite{rslrover2014}.  It cont
 Two previous Senior Design teams worked on the vehicle in 2014 and 2015.  The 2014 Senior Design team focused on creating an autonomous vehicle testbed.  They successfully developed a software control system to operate the vehicle via a remote console, redesigned the wiring of the vehicle, and implemented safety features.  They used Arduino microcontrollers to control steering, throttle, breaks, transmission and the parking break \cite{rslrover2014}.  All of these microcontrollers and emergency stop safety features are still present and in use in our current system.
 
 The 2015 Senior Design team attempted to build on the system developed by the 2014 Senior Design team and add sensors and microprocessors to  give the vehicle autonomous capabilities \cite{rslrover2015}.  At the end of their year of work, the 2015 Senior Design team successfully implemented obstacle detection using a LIDAR unit.  When the vehicle detected an object in it's path, it would make an emergency stop in order to avoid collision \cite{rslrover2015}. Currently, the vehicle still houses the LIDAR unit but no longer performs obstacle detection, as we have developed our own software using the LIDAR. 
+
+\section{Problem Statement}
+
+Our goal was to design and implement an unmanned vehicle
+that gathers and relays information on potentially 
+hazardous environmental conditions back to its operators.
+
+To do this, we planned to accomplish the following:
+\begin{itemize}
+	\item equip the Polaris 6x6 Ranger with appropriate sensors and cameras to determine how safe the environment is for humans to enter
+	\item use GPS and laser scans to generate a 3D map that operators can use to define certain zones as particularly dangerous.
+	\item incorporate partially-autonomous sensing capabilities that help the operator successfully drive the vehicle by remote control
+\end{itemize} 
+The result is a rugged, advanced vehicle that can be used to protect fire responders from any lingering hazards during the investigation of a post-fire environment. 
 

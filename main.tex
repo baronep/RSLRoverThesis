@@ -1,5 +1,5 @@
 \documentclass[letterpaper,12pt,titlepage]{report}
-\usepackage[margin=1.2in]{geometry}
+\usepackage[margin=1.25in]{geometry}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -27,27 +27,47 @@
 \usepackage{xcolor}
 \usepackage{ulem}
 \usepackage{gensymb}
+%\usepackage[final]{pdfpages}
 %\makeatletter\@openrightfalse\makeatother
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\AtBeginDocument{\renewcommand{\bibname}{References}}
+
+%%%%%%%%%%%%%%%%%%%% Custom Formatting %%%%%%%%%%%%%
+\titleformat{\chapter}
+{\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{-10.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
+
+\newcommand{\appendixpagenumbering}{
+	\break
+	\pagenumbering{arabic}
+	\renewcommand{\thepage}{\thechapter-\arabic{page}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
+%\titleformat{\chapter}[display]% NEW
+%    {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{5pt}{\Large}
+%\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
+%
+%\title{RSL Rover: \\Disaster Response and Reconnaissance Vehicle \\ Conceptual Design Report}
+%
+%\author{Patrick Barone\\Giovanni Briggs\\Aaron Burns\\Hesham Naja\\Zoe Demertzis}
+%
+%\date{December 9, 2015}
 
 
-\titleformat{\chapter}[display]% NEW
-    {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{5pt}{\Large}
-\titlespacing*{\chapter}{0pt}{-50pt}{40pt}
 
-\title{RSL Rover: \\Disaster Response and Reconnaissance Vehicle \\ Conceptual Design Report}
-
-\author{Patrick Barone\\Giovanni Briggs\\Aaron Burns\\Hesham Naja\\Zoe Demertzis}
-
-\date{December 9, 2015}
 
 \begin{document}
 \pagenumbering{roman}
 %\listoftodos
-\maketitle
+%\maketitle
+\includepdf[pages=-]{sig_title.pdf}
 \include{Abstract}
-\pagenumbering{roman}
-\setcounter{page}{3}
+
 \tableofcontents{}
 \listoffigures
 
@@ -68,9 +88,18 @@
 
 \include{Summary_and_Conclusions}
 
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
 \begin{appendices}
 \begingroup
-	\titlespacing*{\chapter}{0pt}{-50pt}{10pt}
+%	\titlespacing*{\chapter}{0pt}{-1in}{0pt}
+	\titleformat{\chapter}
+	{\normalfont\LARGE\bfseries}{Appendix \thechapter}{1em}{}
+	\titlespacing*{\chapter}{0pt}{-10.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+	
 	\include{AppendixDesignRequirementFlowdown}
     \include{AppendixMarketSurvey}
     \include{AppendixTradeoffAnalysis}
@@ -81,10 +110,6 @@
     \include{SafetyProtocol}
 \endgroup
 \end{appendices}
-
-\newpage
-\bibliographystyle{plain}
-\bibliography{bibliography}
 
 
 \end{document}
