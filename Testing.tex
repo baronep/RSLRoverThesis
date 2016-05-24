@@ -27,7 +27,7 @@ For the WiFi network, we lost connection at about 250 meters away from the vehic
 Latency is important to be able to operate the vehicle effectively.  We do not want operators to be making decisions based on stale data, and if the video feeds are not coming through fast enough, it will make it very hard to drive the vehicle.
 
 \begin{figure}[H]
-\centerline{\includegraphics[angle=0]{front_camera_latency}}
+\centerline{\includegraphics[angle=0, width=.5\linewidth]{front_camera_latency}}
 \caption[]{Screenshot from the front facing camera on the vehicle taken during our testing}
 \label{fig:front_camera_latency}
 \end{figure}
@@ -58,7 +58,7 @@ Future optimizations could be done to increase the speed of this processing.
 \section{Environmental Sensing Requirement Verification}
 Our environmental sensing packages are a critical component of our vehicle.  To test the effectiveness of these packages, we set a small, controlled burn and circled the fire with our vehicle.  With each pass around the fire we increased the radius of our lap.  The point of this was to test our ability to pinpoint the location of a fire using a the mapping and localization system in conjunction with the environmental sensing packages.
 
-\begin{figure}
+\begin{figure}[H]
 \centerline{\includegraphics[angle=0, width=1\linewidth]{air_particulare_versus_position_graph.png}}
 \caption[]{The results of our controlled burn test.}
 \label{fig:air_particulate_versus_position_graph}
@@ -70,7 +70,7 @@ We can also see how the different sensor packages detect the gases differently. 
 
 
 \begin{figure}[H]
-\centerline{\includegraphics[angle=0]{allSensor_lpg_versus_time_graph}}
+\centerline{\includegraphics[angle=0, width=1\linewidth]{allSensor_lpg_versus_time_graph}}
 \caption[]{The resulting web from attaching string to each camera and then tying those strings to posts and placing them in the ground when the post left the field of view of the respective camera.}
 \label{fig:allSensor_lpg_versus_time_graph}
 \end{figure}
@@ -81,7 +81,7 @@ Figure \ref{fig:allSensor_lpg_versus_time_graph} shows the measurement of LPG ve
 To test the blind-spots on the vehicle, we attached string to the cameras and placed posts in the ground when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line.  We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blind-spots of the vehicle.
 
 \begin{figure}[H]
-\centerline{\includegraphics[angle=0]{blindspot_verification}}
+\centerline{\includegraphics[angle=0, width=.5\linewidth]{blindspot_verification}}
 \caption[]{The resulting web from attaching string to each camera and then tying those strings to posts and placing them in the ground when the post left the field of view of the respective camera.}
 \label{fig:blindspot_verification}
 \end{figure}
@@ -89,7 +89,7 @@ To test the blind-spots on the vehicle, we attached string to the cameras and pl
 Our requirement was that the cameras would offer 360 degrees of view.  In other words, our requirement was to have no blind-spots.  Unfortunately, based on the resulting calculations from the measurements we took, each camera only provided 65 degrees of coverage, resulting in a total 260 degrees of view.  Each blind-spot between the cameras was only 25 degrees, but this still fell short of our requirement.
 
 \begin{figure}[H]
-\centerline{\includegraphics[angle=0]{Blindspots_measurement}}
+\centerline{\includegraphics[angle=0, width=.5\linewidth]{Blindspots_measurement}}
 \caption[]{The distance between the posts and the angles we derived between them.}
 \label{fig:blindspot_measurement}
 \end{figure}
