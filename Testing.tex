@@ -1,9 +1,8 @@
 \chapter{System Integration Testing and Results}
 
-\section{Requirement Verification Overview}
-In order to verify that we met all of our hard engineering requirements (listed comprehensively in Appendix \ref{App:DesignRequirements}), we designed a series of experiments to judge the vehicle's performance.
+In order to validate our final product, we designed a series of tests to determine to what extent we met the hard engineering requirements outlined in our engineering requirement flowdown (Appendix \ref{App:DesignRequirements}). 
 
-\section{Range Requirement Verification}
+\section{Range Requirement Testing}
 Being able to operate the vehicle at a distance was a very important requirement.  We wanted to verify that the remote operator console could maintain good contact with the vehicle at range and also that the router on the back of the rover gave us enough range to be able to operate the User Interface at a range as well.
 
 We knew that the router on the back of the vehicle that powers our WiFi network that allows us to run the User Interface was going to have a shorter range than the system powering the communication with the remote operator console.  We set our requirement threshold to a range that we considered feasible based on the specifications of the router.  Our requirement was that the WiFi network and remote operator console have a range of 150 meters.
@@ -50,12 +49,37 @@ As shown in table \ref{table:latency_verification}, the camera feeds in both cas
 
 Future optimizations could be done to increase the speed of this processing.
 
-\section{GPS Requirement Verification}
+\section{GPS Testing}
 %Pat
-\section{Mapping and Localization Requirement Verification}
+\begin{figure}[H]
+	\centerline{\includegraphics[angle=0, width=.8\linewidth]{GPS_MAP}}
+	\caption[]{Logged GPS tracks of various field testing activities}
+	\label{fig:GPSMAP}
+\end{figure}
+
+\section{Localization and Mapping Testing}
 %Pat
 
-\section{Environmental Sensing Requirement Verification}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{3dviz1}
+%		\caption{Front Mounted Static LIDAR}
+		\label{fig:3dviz1}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=.8\linewidth]{3dviz2}
+%		\caption{Roll Cage Mounted Sweeping LIDAR}
+		\label{fig:3dviz2}
+	\end{subfigure}
+	\caption{3D visualization of vehicle during mapping activity}
+	\label{fig:3dviz}
+\end{figure}
+
+
+\section{Environmental Sensor Package Testing}
 Our environmental sensing packages are a critical component of our vehicle.  To test the effectiveness of these packages, we set a small, controlled burn and circled the fire with our vehicle.  With each pass around the fire we increased the radius of our lap.  The point of this was to test our ability to pinpoint the location of a fire using a the mapping and localization system in conjunction with the environmental sensing packages.
 
 \begin{figure}[H]
@@ -77,7 +101,7 @@ We can also see how the different sensor packages detect the gases differently. 
 
 Figure \ref{fig:allSensor_lpg_versus_time_graph} shows the measurement of LPG versus time for each of the environmental sensing units.  While all of the sensing units follow a similar trend, each one displays different levels of LPG.  When the test started, we were closest to the fire, which is why the LPG concentration is the higher at the beginning of the plot.  Each sensor is also positioned in different places on the vehicle which explains some of the differences.  However, all of the sensors show an increase in LPG closest to the fire, and less LPG as the vehicle moved away from it, which was what we expected.
 
-\section{Blind-spot Requirement Verification}
+\section{Blind-spot Testing}
 To test the blind-spots on the vehicle, we attached string to the cameras and placed posts in the ground when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line.  We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blind-spots of the vehicle.
 
 \begin{figure}[H]
