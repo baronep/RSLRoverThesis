@@ -31,7 +31,7 @@ The primary use case for the vehicle will be during the mop-up phase of forest f
 \caption{Use Case Scenario Illustration}
 \label{fig:usecase}
 \end{figure}
-For example, while conducting fire fighting operations, the fire fighters make the decision to send the rover into an area which has been flagged as potentially hazardous. The operators manually operate the vehicle to position themselves and their gear near the danger zone. The operators can then quickly dismount and setup the teleoperation command center. The vehicle then proceeds into the potentially toxic environment, measuring the concentrations of potentially toxic, airborne substances and relaying that information back to the operators. While one operator focuses on driving the vehicle, an analyst focuses on the sensor streams, including the environmental sensors, monitoring harmful gas concentrations, the FLIR (Forward Looking InfraRed) sensor, identifying and GPS tagging various hot spots, and the LIDAR data, identifying physical obstacles which may be difficult to see in a visually impaired environment. Both operators will also relay, via a satellite communications link, images, videos and data to the forest fire fighting mobile operations center where strategists can best decide how to proceed with fire fighting operations.
+For example, while conducting fire fighting operations, the fire fighters make the decision to send the rover into an area which has been flagged as potentially hazardous. The operators manually operate the vehicle to position themselves and their gear near the danger zone. The operators can then quickly dismount and setup the teleoperation command center. The vehicle then proceeds into the potentially toxic environment, measuring the concentrations of potentially toxic, airborne substances and relaying that information back to the operators. While one operator focuses on driving the vehicle, an analyst focuses on the sensor streams, including the environmental sensors, monitoring harmful gas concentrations, and the LIDAR data, identifying physical obstacles which may be difficult to see in a visually impaired environment. Both operators will also relay, via a satellite communications link, images, videos and data to the forest fire fighting mobile operations center where strategists can best decide how to proceed with fire fighting operations.
 %--------------------------------------------------------------------------------
 %
 %--------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ For example, while conducting fire fighting operations, the fire fighters make t
 
 
 %Subsystems
-The vehicle is categorized into five subsystems: environment sensing, operator control and user interface, communications, power, and localization. The breakdown of the two primary systems, hardware and software, can be seen in figures \ref{fig:mechelencomponentdiagram} and \ref{fig:softwarecomponentdiagram} and show how these subsystems fit together. The environment sensing subsystem includes the sensor packages, FLIR sensor, and LIDAR units. The operator control and user interface subsystems are the systems that control the vehicle remotely as well as the data presentation components. The vehicle must communicate back and forth with the operator, receiving driving commands and sending data readouts. This is categorized under the communications subsystem. All powering is classified by the power subsystem. The final subsystem is labeled localization and it includes the ROS architecture involved with determining vehicle position for accurate mapping. \\
+The vehicle is categorized into five subsystems: environment sensing, operator control and user interface, communications, power, and localization. The breakdown of the two primary systems, hardware and software, can be seen in figures \ref{fig:mechelencomponentdiagram} and \ref{fig:softwarecomponentdiagram} and show how these subsystems fit together. The environment sensing subsystem includes the sensor packages, cameras, and LIDAR units. The operator control and user interface subsystems are the systems that control the vehicle remotely as well as the data presentation components. The vehicle must communicate back and forth with the operator, receiving driving commands and sending data readouts. This is categorized under the communications subsystem. All powering is classified by the power subsystem. The final subsystem is labeled localization and it includes the ROS architecture involved with determining vehicle position for accurate mapping. \\
 %--------------------------------------------------------------------------------
 %
 %--------------------------------------------------------------------------------
@@ -120,7 +120,7 @@ Other Aerial Drones are also in the market for unmanned vehicles capable of rela
 %
 %--------------------------------------------------------------------------------
 \section{System Level Issues, Trade-off Analysis}
-The design process for this vehicle required that we opt for certain configurations and components over alternatives. The biggest design decisions we had to make were on the LIDAR layout, environmental sensing system, and FLIR hotspot detection system.\\
+The design process for this vehicle required that we opt for certain configurations and components over alternatives. The biggest design decisions we had to make were on the LIDAR layout and environmental sensing systems.\\
 
 \subsection{LIDAR Physical Configuration}
 
@@ -184,7 +184,7 @@ A final configuration was chosen where the cameras are mounted on all 4 sides of
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\linewidth]{SensorLayout}
+\includegraphics[width=.7\linewidth]{SensorLayout}
 \caption{System Layout Architecture}
 \label{fig:systemlayout}
 \end{figure}
