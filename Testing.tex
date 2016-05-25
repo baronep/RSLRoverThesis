@@ -57,6 +57,8 @@ Future optimizations could be done to increase the speed of this processing.
 	\label{fig:GPSMAP}
 \end{figure}
 
+In order for our vehicle to be effective in it's goal of providing meaningful information to fire responders, the vehicle needs to know it's geographic location, not only for driving purposes, but also to correlate the payload (environmental sensor) data as well. In order to do this we used a high end Novatel GPS receiver and with the incorporation of WAAS (Wide Area Augmentation System) corrections we were able to get a reliable GPS fix higher than 2 meter accuracy. We attained this number by looking at the GPS receiver's self-reported HDOP (Horizontal Dilution of Precision). For determining long term trends in environmental data, we consider this accuracy to be more than sufficient for our application.
+
 \section{Localization and Mapping Testing}
 %Pat
 
@@ -78,6 +80,9 @@ Future optimizations could be done to increase the speed of this processing.
 	\label{fig:3dviz}
 \end{figure}
 
+As part of our testing process, we ran our localization and 3d visualization nodes while driving in order to confirm the functionality of our system. As shown in Figure \ref{fig:3dviz}, the resolution and accuracy of our 3d visualizations is more than sufficient for detecting driving obstacles and offers a viable alternative to visual driving (via cameras) in situations where smoke occludes the camera view.
+
+While there were no quantitative requirements associated with the 3d visualization, we can definitively say that the 3D views, exemplified in Figure \ref{fig:3dviz}, allow fire responders not only to avoid obstacles but to inspect objects of interest in their environment, therefore validating our results as providing a solution to the fire responder's practical needs.
 
 \section{Environmental Sensor Package Testing}
 Our environmental sensing packages are a critical component of our vehicle.  To test the effectiveness of these packages, we set a small, controlled burn and circled the fire with our vehicle.  With each pass around the fire we increased the radius of our lap.  The point of this was to test our ability to pinpoint the location of a fire using a the mapping and localization system in conjunction with the environmental sensing packages.
