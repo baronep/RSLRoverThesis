@@ -31,7 +31,7 @@ Latency is important to be able to operate the vehicle effectively.  We do not w
 \label{fig:front_camera_latency}
 \end{figure}
 
-There were several areas of latency that we wanted to test.  First, we wanted to test the latency from the cameras to the onboard laptop.  Second, we wanted to test the latency from the cameras to the web-based user interface and see what the difference is between the two.  Finally, we wanted to check what the latency was for vehicle state data, such as wheel speed and the readings from environmental sensing packages, from the vehicle to the user interface.  In all of these cases, we set the requirement that this latency be less than one second.
+There were several areas of latency that we wanted to test.  First, we wanted to test the latency from the cameras to the onboard laptop.  Second, we wanted to test the latency from the cameras to the web-based user interface and see what the difference is between the two.  Finally, we wanted to check what the latency was for vehicle state data, such as wheel speed and the readings from environmental sensing packages, from the vehicle to the user interface.  In all of these cases, we set the requirement that this latency be less than one second. Due to practical constraints, we conducted our latency tests near (<10m away) the vehicle, but did not experience any significant increase in latency during our range testing.
 
 \begin{table}[ht]
     \centering
@@ -93,7 +93,7 @@ Our environmental sensing packages are a critical component of our vehicle.  To 
 \label{fig:air_particulate_versus_position_graph}
 \end{figure}
 
-As shown in figure \ref{fig:air_particulate_versus_position_graph} our environmental sensing units are able to detect the presence of environmental hazards.  The x and y-axes are position, and the z-axis is the concentration of air particulates, which in this case is the presence of smoke.  The concentration peaks at the center of the graph and decreases as position away from the center increases.  These are the expected results, since the concentration of smoke should decrease as we move away from the fire.
+As shown in figure \ref{fig:air_particulate_versus_position_graph} our environmental sensing units are able to detect the presence of environmental hazards.  The x and y-axes are position, and the z-axis is the concentration of air particulates, which in this case is the presence of smoke.  The concentration peaks at the center of the graph and decreases as position away from the center increases.  These are the expected results, since the concentration of smoke should decrease as we move away from the fire. Additionally, we measured higher concentrations of smoke downwind of the fire which was expected due to the visibly higher concentration of smoke in that direction.
 
 We can also see how the different sensor packages detect the gases differently.  While not an actual requirement, we were curious to see how the different sensor packages functioned.  The point to having redundant sensors was to be able to continue detecting environmental hazards even if one package dies.  We wanted to know if the packages behave comparably to each other.
 
@@ -110,7 +110,7 @@ Figure \ref{fig:allSensor_lpg_versus_time_graph} shows the measurement of LPG ve
 To test the blind-spots on the vehicle, we attached string to the cameras and placed posts in the ground when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line.  We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blind-spots of the vehicle.
 
 \begin{figure}[H]
-\centerline{\includegraphics[angle=0, width=.5\linewidth]{blindspot_verification}}
+\centerline{\includegraphics[angle=0, width=.5\linewidth]{camera_angle}}
 \caption[]{The resulting web from attaching string to each camera and then tying those strings to posts and placing them in the ground when the post left the field of view of the respective camera.}
 \label{fig:blindspot_verification}
 \end{figure}

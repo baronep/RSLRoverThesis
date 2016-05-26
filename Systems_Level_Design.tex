@@ -31,7 +31,7 @@ The primary use case for the vehicle will be during the mop-up phase of forest f
 \caption{Use Case Scenario Illustration}
 \label{fig:usecase}
 \end{figure}
-For example, while conducting fire fighting operations, the fire fighters make the decision to send the rover into an area which has been flagged as potentially hazardous. The operators manually operate the vehicle to position themselves and their gear near the danger zone. The operators can then quickly dismount and setup the teleoperation command center. The vehicle then proceeds into the potentially toxic environment, measuring the concentrations of potentially toxic, airborne substances and relaying that information back to the operators. While one operator focuses on driving the vehicle, an analyst focuses on the sensor streams, including the environmental sensors, monitoring harmful gas concentrations, and the LIDAR data, identifying physical obstacles which may be difficult to see in a visually impaired environment. Both operators will also relay, via a satellite communications link, images, videos and data to the forest fire fighting mobile operations center where strategists can best decide how to proceed with fire fighting operations.
+For example, while conducting fire fighting operations, the fire fighters make the decision to send the rover into an area which has been flagged as potentially hazardous. The operators manually operate the vehicle to position themselves and their gear near the danger zone. The operators can then quickly dismount and setup the teleoperation command center. The vehicle then proceeds into the potentially toxic environment, measuring the concentrations of potentially toxic, airborne substances and relaying that information back to the operators. While one operator focuses on driving the vehicle, an analyst focuses on the sensor streams, including the environmental sensors, monitoring harmful gas concentrations, and the LIDAR data, identifying physical obstacles which may be difficult to see in a visually impaired environment. Both operators will also relay, via a satellite communications link, images, videos and data to the forest fire fighting mobile operations center where strategists can best decide how to proceed with fire fighting operations. (See Fig \ref{fig:usecase})
 %--------------------------------------------------------------------------------
 %
 %--------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ The vehicle is categorized into five subsystems: environment sensing, operator c
 %--------------------------------------------------------------------------------
 \section{Benchmarking Results}
 % Whats out there that's similar
-Many all-terrain, unmanned vehicles on the market are for military contracts exclusively. However, Northrop Grumman and Argo Robotics both have products that fit the category of an unmanned, all-terrain vehicle that can be equipped with sensor packages for non-military purposes. Some of the specs for these products can be found in Table 2.1. These are the Argo J5 Mobility Platform at thirty-nine-thousand dollars, the Northrop Grumman Andros F6, and the Northrop Grumman Wheelbarrow Mk9. Prices for the two later vehicles are not available without a direct quote. 
+Many all-terrain, unmanned vehicles on the market are for military contracts exclusively. However, Northrop Grumman and Argo Robotics both have products that fit the category of an unmanned, all-terrain vehicle that can be equipped with sensor packages for non-military purposes. Some of the specs for these products can be found in Table 2.1. These are the Argo J5 Mobility Platform (Fig \ref{fig:ArgoPlatform1}) at thirty-nine-thousand dollars, the Northrop Grumman Andros F6 (Fig \ref{fig:NorthropAndros1}), and the Northrop Grumman Wheelbarrow Mk9 (Fig \ref{fig:NorthropWheelbarrow1}). Prices for the two later vehicles are not available without a direct quote. 
 
 \begin{table}[H]
 \begin{adjustwidth}{-.5in}{-.5in}
@@ -81,7 +81,7 @@ Wheelbarrow Mk9 & 1.24 & 0.63 & 1.24 & Up to 10 Cameras & Extendable Arm\\
 \centering
 \includegraphics[width=0.5\textwidth]{argo-j5-mobility-platform-2-small-1.jpg}
 \caption{Argo J5 Mobility Platform}
-\label{fig:ArgoPlatform}
+\label{fig:ArgoPlatform1}
 \end{figure}
 
 
@@ -89,32 +89,32 @@ Wheelbarrow Mk9 & 1.24 & 0.63 & 1.24 & Up to 10 Cameras & Extendable Arm\\
 \centering
 \includegraphics[width=0.5\textwidth]{NG1.jpg}
 \caption{Northrop Grumman's Andros F6}
-\label{fig:NorthropAndros}
+\label{fig:NorthropAndros1}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{wheelbarrow.jpg}
 \caption{Northrop Grumman's Remotec Wheelbarrow Mk9}
-\label{fig:NorthropWheelbarrow}
+\label{fig:NorthropWheelbarrow1}
 \end{figure}
 
 While these products that are on the market are the most similar to the product we wish to produce, the issues we wish to address are not solved by these rovers. Both of Northrop Grumman's rovers do not have the housing needed for sensor packages necessary to respond to forest fires. The Argo rover also does not house the necessary data packages, and while it is amphibious, it has been decided that sensor housing is more important.
 
-Other Aerial Drones are also in the market for unmanned vehicles capable of relaying data such as thermal imaging and video back to the user. Two such products are the Elimco UAV-E300 and the Sensefly's EBee. Both of these products have the capabilities necessary to map and relay usable data, and are marketed as disaster response vehicles. However, there are some inherent weaknesses to their aerial nature. Mr. Untamed has pointed out that images provided by Aerial vehicles can oftentimes be unusable as smoke can sit on top of the canopy of a forest, especially in the mornings. They also can only provide overhead data, and may not be able to map certain elements disaster responders could need, such as air quality at ground level or mapping paths that are safe. Our vehicle seeks to get under this layer of smoke to provide data from the ground level.
+Other Aerial Drones are also in the market for unmanned vehicles capable of relaying data such as thermal imaging and video back to the user. Two such products are the Elimco UAV-E300 (Fig \ref{fig:ElimcoUAVE3001}) and the Sensefly's EBee (Fig \ref{fig:SenseflyEBee1}). Both of these products have the capabilities necessary to map and relay usable data, and are marketed as disaster response vehicles. However, there are some inherent weaknesses to their aerial nature. Mr. Untamed has pointed out that images provided by Aerial vehicles can oftentimes be unusable as smoke can sit on top of the canopy of a forest, especially in the mornings. They also can only provide overhead data, and may not be able to map certain elements disaster responders could need, such as air quality at ground level or mapping paths that are safe. Our vehicle seeks to get under this layer of smoke to provide data from the ground level.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{UAV-E300.jpg}
 \caption{Elimco UAV-E300}
-\label{fig:ElimcoUAVE300}
+\label{fig:ElimcoUAVE3001}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.5\textwidth]{e-bee.jpg}
 \caption{Sensefly's UAV EBee}
-\label{fig:SenseflyEBee}
+\label{fig:SenseflyEBee1}
 \end{figure}
 %--------------------------------------------------------------------------------
 %
@@ -124,7 +124,7 @@ The design process for this vehicle required that we opt for certain configurati
 
 \subsection{LIDAR Physical Configuration}
 
-Two LIDAR units, a SICK LMS221 on a pivoting mount capable of generating a 3D point cloud and SICK LMS111 2D linescan LIDAR capable of producing 2D obstacle maps, were made available to our team through Santa Clara's  Robotic Systems Lab. One design challenge was to determine the optimal location for these two sensors on the vehicle. The total combined field of view, blind-spots, total weight, material cost, view height and vehicle vertical clearance were all taken into account when deciding on the configuration. 
+Two LIDAR units, a SICK LMS221 on a pivoting mount (Fig \ref{fig:lms221A}) capable of generating a 3D point cloud and SICK LMS111 2D linescan LIDAR (Fig \ref{fig:lms111A}) capable of producing 2D obstacle maps, were made available to our team through Santa Clara's  Robotic Systems Lab. One design challenge was to determine the optimal location for these two sensors on the vehicle. The total combined field of view, blind-spots, total weight, material cost, view height and vehicle vertical clearance were all taken into account when deciding on the configuration. 
 
 \begin{figure}[H]
 \centering
@@ -132,19 +132,19 @@ Two LIDAR units, a SICK LMS221 on a pivoting mount capable of generating a 3D po
   \centering
   \includegraphics[height=.5\linewidth]{LMS111}
   \caption{LMS 111: 2D LIDAR}
-  %\label{fig:sub1}
+  \label{fig:lms111A}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[height=.5\linewidth]{LMS221}
   \caption{LMS 221: 3D LIDAR}
-  %\label{fig:sub2}
+  \label{fig:lms221A}
 \end{subfigure}
 \caption{LIDAR Types}
-\label{fig:lidartest}
+%\label{fig:ddd}
 \end{figure}
 
-A final configuration was chosen based on the Concept Scoring Tradeoff Analysis in Appendix \ref{App:tradeoff}. The final configuration has the 3d, articulated LIDAR (LMS221) mounted on the top of the roll cage where it has a full forward and rear field of view. The 2d LIDAR (LMS 111) has been mounted on the front grill of the vehicle where it can mitigate a blind spot immediately in front of the vehicle. 
+A final configuration was chosen based on the Concept Scoring Tradeoff Analysis in Appendix \ref{App:tradeoff}. The final configuration has the 3D, articulated LIDAR (LMS221) mounted on the top of the roll cage where it has a full forward and rear field of view. The 2D LIDAR (LMS 111) has been mounted on the front grill of the vehicle where it can mitigate a blind spot immediately in front of the vehicle. 
 
 %TODO: PICTURE OF FINAL CONFIGURATION SKETCH
 
