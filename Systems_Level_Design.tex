@@ -173,7 +173,7 @@ A final configuration was chosen based on the Concept Scoring Tradeoff Analysis 
 %Add/change what sensors we will have in paragraph below
 The hazardous environment sensing requirement has been filled by three redundant sensor packages placed on the hood and each side of the roll cage (See Figure \ref{fig:systemlayout}). The sensor packages  are enclosed in a box with a forced air inlet to continually monitor the air for changes in composition while also protecting the components. The enclosed array of sensors are able to detect temperature and concentrations of: carbon monoxide, methane, carbon dioxide, hydrogen, air particulate, and liquefied petroleum gas. The cost of an oxygen sensor is prohibitive, so oxygen concentrations must be extrapolated from alternative sensors. These sensors could be expanded as needs arise. The vehicle is equipped with redundant packages for a multitude of reasons. If a sensor fails, there are two other identical sensors to fill that role. Additionally, having the sensors spread out on the vehicle, it can be determined if concentration readings are representative of the greater area, certain elevations, or a single point. The data from the redundant sensors could be analyzed in three ways; the greatest reading could be displayed, the reading most common among sensors, or all three could be displayed. The first option, outputting the highest value, is the most conservative option while also being concise, but it makes it possible that false data could be transmitted. The most thorough method would be to transmit all three data streams and allow the operator to decide which to trust. 
 
-The location of the air quality sensors and cameras was the next critical design decision. For the cameras, the field of view, mounting costs, implementation time and robustness, among other factors, were considered when deciding on a final design. Additionally, for the environmental sensors, the cost, implementation time, robustness and proximity to the vehicle's exhaust systems were considered when deciding on a sensor configuration. Appendix \ref{App:tradeoff} features a complete tradeoff analysis for the sensor configurations. 
+The location of the air quality sensors and cameras was the next critical design decision. See Figure \ref{fig:sensortest} for examples of air quality sensors and cameras. For the cameras, the field of view, mounting costs, implementation time and robustness, among other factors, were considered when deciding on a final design. Additionally, for the environmental sensors, the cost, implementation time, robustness and proximity to the vehicle's exhaust systems were considered when deciding on a sensor configuration. Appendix \ref{App:tradeoff} features a complete tradeoff analysis for the sensor configurations. 
 
 \begin{figure}[H]
 \centering
@@ -208,6 +208,8 @@ A final configuration was chosen where the cameras are mounted on all 4 sides of
 \caption{System Layout Architecture}
 \label{fig:systemlayout}
 \end{figure}
+
+Figure \ref{fig:systemlayout} shows the physical layout of the subsystems of our design.
 %--------------------------------------------------------------------------------
 %
 %--------------------------------------------------------------------------------
