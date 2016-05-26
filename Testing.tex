@@ -3,13 +3,13 @@
 In order to validate our final product, we designed a series of tests to determine to what extent we met the hard engineering requirements outlined in our engineering requirement flowdown (Appendix \ref{App:DesignRequirements}). 
 
 \section{Range Requirement Testing}
-Being able to operate the vehicle at a distance was a very important requirement.  We wanted to verify that the remote operator console could maintain good contact with the vehicle at range and also that the router on the back of the rover gave us enough range to be able to operate the User Interface at a range as well.
+Being able to operate the vehicle at a safe distance was a very important requirement for our customers.  We wanted to verify that the remote operator console could maintain good contact with the vehicle at range and also that the router on the back of the rover gave us enough range to be able to operate the User Interface at a range as well.
 
-We knew that the router on the back of the vehicle that powers our WiFi network that allows us to run the User Interface was going to have a shorter range than the system powering the communication with the remote operator console.  We set our requirement threshold to a range that we considered feasible based on the specifications of the router.  Our requirement was that the WiFi network and remote operator console have a range of 150 meters.
+We knew that the router on the back of the vehicle that powers our WiFi network that allows us to run the User Interface was going to have a shorter range than the system powering the communication with the remote operator console.  We set our requirement threshold to a range that we considered feasible based on the specifications of the router.  Our requirement was that the WiFi network and remote operator console have a range of at least 150 meters.
 
 To test this, we left the vehicle and one member of our team in a stationary location and loaded the remote operator console and a laptop into another vehicle and drove as far away as possible before we lost connection.  We would stop along the way, while remaining in line of sight with the vehicle, and would send commands to the vehicle via the remote operator console.  If our team member with the vehicle saw the event happen, we knew the remote operator console still had contact.  For the WiFi network, the web-based user interface will display a message when it loses connection, so we monitored the user interface and marked when that message appeared.  
 
-For the WiFi network, we lost connection at about 250 meters away from the vehicle.  The remote operator console still had good connection, so we kept driving.  We reached the edge of the property we were testing at about one kilometer away from the vehicle and were still able to send commands.  We know that the remote operator console as a range in excess of one kilometer, which greatly surpasses our 150 meter requirement.
+For the WiFi network, we lost connection at about 250 meters away from the vehicle.  The remote operator console still had good connection, so we kept driving.  We reached the edge of the property we were testing at about one kilometer away from the vehicle and were still able to send commands.  We know that the remote operator console has a range in excess of one kilometer, which greatly surpasses our 150 meter requirement.
 
 \begin{table}[ht]
     \centering
@@ -85,7 +85,7 @@ As part of our testing process, we ran our localization and 3D visualization nod
 While there were no quantitative requirements associated with the 3d visualization, we can definitively say that the 3D views, exemplified in Figure \ref{fig:3dviz}, allow fire responders not only to avoid obstacles but to inspect objects of interest in their environment, therefore validating our results as providing a solution to the fire responder's practical needs.
 
 \section{Environmental Sensor Package Testing}
-Our environmental sensing packages are a critical component of our vehicle.  To test the effectiveness of these packages, we set a small, controlled burn and circled the fire with our vehicle.  With each pass around the fire we increased the radius of our lap.  The point of this was to test our ability to pinpoint the location of a fire using a the mapping and localization system in conjunction with the environmental sensing packages.
+Our environmental sensing packages are a critical component of our vehicle.  To test the effectiveness of these packages, we set a small, controlled burn and circled the fire with our vehicle.  With each pass around the fire we increased the radius of our lap.  The point of this was to test our ability to pinpoint the location of a fire using the mapping and localization system in conjunction with the environmental sensing packages.
 
 \begin{figure}[H]
 \centerline{\includegraphics[angle=0, width=1\linewidth]{air_particulare_versus_position_graph.png}}
@@ -104,7 +104,7 @@ We can also see how the different sensor packages detect the gases differently. 
 \label{fig:allSensor_lpg_versus_time_graph}
 \end{figure}
 
-Figure \ref{fig:allSensor_lpg_versus_time_graph} shows the measurement of LPG versus time for each of the environmental sensing units.  While all of the sensing units follow a similar trend, each one displays different levels of LPG.  When the test started, we were closest to the fire, which is why the LPG concentration is the higher at the beginning of the plot.  Each sensor is also positioned in different places on the vehicle which explains some of the differences.  However, all of the sensors show an increase in LPG closest to the fire, and less LPG as the vehicle moved away from it, which was what we expected.
+Figure \ref{fig:allSensor_lpg_versus_time_graph} shows the measurement of LPG versus time for each of the environmental sensing units.  While all of the sensing units follow a similar trend, each one displays different levels of LPG.  When the test started, we were closest to the fire, which is why the LPG concentration is the higher at the beginning of the plot.  Each sensor is also positioned in a different place on the vehicle, which explains some of the differences.  However, all of the sensors show an increase in LPG closest to the fire, and less LPG as the vehicle moved away from it, which was what we expected.
 
 \section{Blind-spot Testing}
 To test the blind-spots on the vehicle, we attached string to the cameras and placed posts in the ground when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line.  We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blind-spots of the vehicle.
@@ -123,4 +123,4 @@ Our requirement was that the cameras would offer 360 degrees of view.  In other 
 \label{fig:blindspot_measurement}
 \end{figure}
 
-We could further increase our field of view though by adding two more cameras to the vehicle.  and placing them on the side of the roll cage angled backwards.  We would then take the two cameras already on the roll cage and angle them more forwards.  These four cameras together would then cover the current blind-spots on the vehicle.
+We could further increase our field of view by adding two more cameras to the vehicle, placing them on the side of the roll cage angled backwards.  We would then take the two cameras already on the roll cage and angle them more forwards.  These six cameras together would then cover the current blind-spots on the vehicle.
