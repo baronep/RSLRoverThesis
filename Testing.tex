@@ -22,8 +22,10 @@ For the WiFi network, we lost connection at about 250 meters away from the vehic
     \label{table:range_verification}
 \end{table}
 
+Table \ref{table:range_verification} shows the requirements we set for our the range of our operator console and WiFi network.
+
 \section{Latency Requirement Verification}
-Latency is important to be able to operate the vehicle effectively.  We do not want operators to be making decisions based on stale data, and if the video feeds are not coming through fast enough, it will make it very hard to drive the vehicle.
+Latency is important to be able to operate the vehicle effectively.  We do not want operators to be making decisions based on stale data, and if the video feeds are not coming through fast enough, it will make it very hard to drive the vehicle. Figure \ref{fig:front_camera_latency} shows an example of the view from the front of the vehicle, provided by our front facing camera. 
 
 \begin{figure}[H]
 \centerline{\includegraphics[angle=0, width=.5\linewidth]{front_camera_latency}}
@@ -31,7 +33,7 @@ Latency is important to be able to operate the vehicle effectively.  We do not w
 \label{fig:front_camera_latency}
 \end{figure}
 
-There were several areas of latency that we wanted to test.  First, we wanted to test the latency from the cameras to the onboard laptop.  Second, we wanted to test the latency from the cameras to the web-based user interface and see what the difference is between the two.  Finally, we wanted to check what the latency was for vehicle state data, such as wheel speed and the readings from environmental sensing packages, from the vehicle to the user interface.  In all of these cases, we set the requirement that this latency be less than one second. Due to practical constraints, we conducted our latency tests near (<10m away) the vehicle, but did not experience any significant increase in latency during our range testing.
+There were several areas of latency that we wanted to test.  First, we wanted to test the latency from the cameras to the onboard laptop.  Second, we wanted to test the latency from the cameras to the web-based user interface and see what the difference is between the two.  Finally, we wanted to check what the latency was for vehicle state data, such as wheel speed and the readings from environmental sensing packages, from the vehicle to the user interface.  In all of these cases, we set the requirement that this latency be less than one second. Due to practical constraints, we conducted our latency tests near (<10m away) the vehicle, but did not experience any significant increase in latency during our range testing.  Table \ref{table:latency_verification} shows the specific requirements we set for the latency of our cameras and vehicle state data. 
 
 \begin{table}[ht]
     \centering
@@ -57,7 +59,7 @@ Future optimizations could be done to increase the speed of this processing.
 	\label{fig:GPSMAP}
 \end{figure}
 
-In order for our vehicle to be effective in it's goal of providing meaningful information to fire responders, the vehicle needs to know it's geographic location, not only for driving purposes, but also to correlate the payload (environmental sensor) data as well. In order to do this we used a high end Novatel GPS receiver and with the incorporation of WAAS (Wide Area Augmentation System) corrections we were able to get a reliable GPS fix higher than 2 meter accuracy. We attained this number by looking at the GPS receiver's self-reported HDOP (Horizontal Dilution of Precision). For determining long term trends in environmental data, we consider this accuracy to be more than sufficient for our application.
+In order for our vehicle to be effective in it's goal of providing meaningful information to fire responders, the vehicle needs to know it's geographic location, not only for driving purposes, but also to correlate the payload (environmental sensor) data as well. In order to do this we used a high end Novatel GPS receiver and with the incorporation of WAAS (Wide Area Augmentation System) corrections we were able to get a reliable GPS fix higher than 2 meter accuracy. We attained this number by looking at the GPS receiver's self-reported HDOP (Horizontal Dilution of Precision). For determining long term trends in environmental data, we consider this accuracy to be more than sufficient for our application. Figure \ref{fig:GPSMAP} shows GPS driving data we collected during our testing. 
 
 \section{Localization and Mapping Testing}
 %Pat
@@ -107,7 +109,7 @@ We can also see how the different sensor packages detect the gases differently. 
 Figure \ref{fig:allSensor_lpg_versus_time_graph} shows the measurement of LPG versus time for each of the environmental sensing units.  While all of the sensing units follow a similar trend, each one displays different levels of LPG.  When the test started, we were closest to the fire, which is why the LPG concentration is the higher at the beginning of the plot.  Each sensor is also positioned in a different place on the vehicle, which explains some of the differences.  However, all of the sensors show an increase in LPG closest to the fire, and less LPG as the vehicle moved away from it, which was what we expected.
 
 \section{Blind-spot Testing}
-To test the blind-spots on the vehicle, we attached string to the cameras and placed posts in the ground when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line.  We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blind-spots of the vehicle.
+To test the blind-spots on the vehicle, we attached string to the cameras and placed posts in the ground when they had just left the field of view of the cameras.  The strings were all of close to equal length such that we could measure the distance between the posts in a straight line. You can see how we performed this test in Figure \ref{fig:blindspot_verification}. We can then convert those distances into angles that define the field of view of the vehicle, and the size of the blind-spots of the vehicle. 
 
 \begin{figure}[H]
 \centerline{\includegraphics[angle=0, width=.5\linewidth]{camera_angle}}
@@ -123,4 +125,4 @@ Our requirement was that the cameras would offer 360 degrees of view.  In other 
 \label{fig:blindspot_measurement}
 \end{figure}
 
-We could further increase our field of view by adding two more cameras to the vehicle, placing them on the side of the roll cage angled backwards.  We would then take the two cameras already on the roll cage and angle them more forwards.  These six cameras together would then cover the current blind-spots on the vehicle.
+A diagram of the field of view is shown in Figure \ref{fig:blindspot_measurement}. We could further increase our field of view by adding two more cameras to the vehicle, placing them on the side of the roll cage angled backwards.  We would then take the two cameras already on the roll cage and angle them more forwards.  These six cameras together would then cover the current blind-spots on the vehicle.
