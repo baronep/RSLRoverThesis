@@ -10,7 +10,7 @@
 
 Localization is an important step for any autonomous or partially autonomous system hoping to navigate in the physical world. While autonomous driving does not fall within the scope of our project, localization is a necessary step for creating an accurate map of the environment. 
 
-ROS provides a framework for developing localization systems and provides several cutting-edge algorithms for fusing sensor data into an accurate position estimate. For our vehicle we are combining the LIDAR, accelerometer, gyroscope, GPS, and wheel sensor data using an Extended Kalman filter to generate an accurate position estimate. Using this estimate, we then build both 2D and 3D maps of the environment using our LIDAR sensor data. 
+ROS provides a framework for developing localization systems and provides several cutting-edge algorithms for fusing sensor data into an accurate position estimate. For our vehicle we are combining the LIDAR, accelerometer, gyroscope, GPS, and wheel sensor data using an Extended Kalman filter, using ROS's robot\_localiation package (Fig \ref{fig:robotlocalization}), to generate an accurate position estimate. Using this estimate, we then build both 2D and 3D maps of the environment using our LIDAR sensor data. 
 
 We aim to have our system be able to determine the position of the rover within 1 meter after traveling 100 meters and generate a map while traveling.
 
@@ -24,7 +24,7 @@ We aim to have our system be able to determine the position of the rover within 
 	\label{fig:tach}
 \end{figure}
 
-The first sensor that incorporate into our localization scheme is the vehicle tachometer. The tachometer is an aftermarket sensor addition which senses the vehicle speed, which we consider to be a "body-frame forward" speed. The tachometer is actually two adjacent hall-effect sensors which sense the movement of the teeth on a gear fixed to the rear drive shaft. Through the use of dual hall-effect sensors, the sensor is able to output a quadrature signal from which both speed and direction can be extrapolated. The output of this sensor is fed to the 'Tachometer Arduino', which interprets the quadrature signal and feeds the resulting position and speed to the Vehicle Mega.
+The first sensor that incorporate into our localization scheme is the vehicle tachometer (Fig \ref{fig:tach}). The tachometer is an aftermarket sensor addition which senses the vehicle speed, which we consider to be a "body-frame forward" speed. The tachometer is actually two adjacent hall-effect sensors which sense the movement of the teeth on a gear fixed to the rear drive shaft. Through the use of dual hall-effect sensors, the sensor is able to output a quadrature signal from which both speed and direction can be extrapolated. The output of this sensor is fed to the 'Tachometer Arduino', which interprets the quadrature signal and feeds the resulting position and speed to the Vehicle Mega.
 
 \begin{figure}[H]
 	\centerline{\includegraphics[angle=0,width=0.4\linewidth]{um7.jpg}}
@@ -32,7 +32,7 @@ The first sensor that incorporate into our localization scheme is the vehicle ta
 	\label{fig:imu}
 \end{figure}
 
-The second source of data comes the Inertial Measurement Unit (IMU), which includes 3 sensors; a 3-axis accelerometer, a 3-axis gyro and a 3 axis-magnetometer. We chose the CH Robotics UM7 IMU to use on the vehicle because of it's relatively low price point, existing integration with ROS and it's active user base. Most modern IMU's have filtering on the device and in the case of the UM7, it outputs an orientation estimate (yaw,pitch,roll) as well as the raw sensor data. 
+The second source of data comes the Inertial Measurement Unit (IMU), which includes 3 sensors; a 3-axis accelerometer, a 3-axis gyro and a 3 axis-magnetometer. We chose the CH Robotics UM7 IMU (shown in Fig \ref{fig:imu}) to use on the vehicle because of it's relatively low price point, existing integration with ROS and it's active user base. Most modern IMU's have filtering on the device and in the case of the UM7, it outputs an orientation estimate (yaw,pitch,roll) as well as the raw sensor data. 
 
 \begin{figure}[H]
 \centering
@@ -40,19 +40,19 @@ The second source of data comes the Inertial Measurement Unit (IMU), which inclu
 	\centering
 	\includegraphics[width=.8\linewidth]{propak}
 	\caption{GPS Receiver}
-	\label{fig:sub1}
+	\label{fig:gpsrec}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
 	\centering
 	\includegraphics[width=.8\linewidth,angle=180]{GPSAntenna}
 	\caption{GPS Antenna}
-	\label{fig:sub2}
+	\label{fig:gpsant}
 \end{subfigure}
 \caption{Novatel ProPak-LB GPS System}
-\label{fig:test}
+\label{fig:gps}
 \end{figure}
 
-Next, the GPS unit, a Novatel Propak-LB, outputs position and velocity estimates in the form of standard NMEA strings. Preexisting ROS nodes (nmea\_serial\_driver) enable us to read in these NMEA strings over a usb-to-serial adapter and incorporate the GPS data into our state estimate. The GPS has the added benefit of performing it's own estimate of the covariance (a statistical measure of the estimate's certainty). The Kalman Filter utilizes the covariance to weigh the GPS more heavily when the GPS has more satellite's in view. Additionally, the GPS unit is capable of taking WAAS (Wide Area Augmentation System) GPS corrections into account. The WAAS system calculates and transmits corrections to increase the prevision of GPS receivers.
+Next, the GPS unit, a Novatel Propak-LB, consists of a GPS antenna (Fig \ref{fig:gpsant}) and a separate GPS receiver (Fig \ref{fig:gpsrec}). The system outputs position and velocity estimates in the form of standard NMEA strings. Preexisting ROS nodes (nmea\_serial\_driver) enable us to read in these NMEA strings over a usb-to-serial adapter and incorporate the GPS data into our state estimate. The GPS has the added benefit of performing it's own estimate of the covariance (a statistical measure of the estimate's certainty). The Kalman Filter utilizes the covariance to weigh the GPS more heavily when the GPS has more satellite's in view. Additionally, the GPS unit is capable of taking WAAS (Wide Area Augmentation System) GPS corrections into account. The WAAS system calculates and transmits corrections to increase the prevision of GPS receivers.
 
 \begin{figure}[H]
 	\centering
@@ -60,29 +60,31 @@ Next, the GPS unit, a Novatel Propak-LB, outputs position and velocity estimates
 		\centering
 		\includegraphics[width=.5\linewidth,angle=270]{LMS111_front}
 		\caption{Front Mounted Static LIDAR}
-		\label{fig:sub1}
+		\label{fig:lidar_front}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[width=.8\linewidth]{LMS221}
 		\caption{Roll Cage Mounted Sweeping LIDAR}
-		\label{fig:sub2}
+		\label{fig:lidar_scanning}
 	\end{subfigure}
 	\caption{RSL Rover LIDAR Sensors}
 	\label{fig:lidar}
 \end{figure}
 
-Finally, the rover has 2 lidar sensors available; a statically mounted unit on the front grill and a tilting unit on a gimbal mounted on top of the vehicle. For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2D map of the environment which can be saved and used for navigation at a later time.
+Finally, the rover incorporates 2 LIDAR sensors; a statically mounted unit on the front grill (Fig \ref{fig:lidar_front}) and a tilting unit on a gimbal mounted on top of the vehicle (Fig \ref{fig:lidar_scanning}) . For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2D map of the environment which can be saved and used for navigation at a later time.
 
 \section{Coordinate Frames}
 
 When developing a complex robotic system, keeping track reference frames for all of the different components of a robot is critical for determining the configuration of the robot in space. ROS has convenient functionality for not only defining coordinate frames, but also for calculating the transformations between them. 
 
-Our first frame is the base\_link frame. By convention this is the highest level frame on the robot. For our purposes we chose to define the base\_link frame to be located at the centroid of the four rear tires with the X axis forward, Y axis left and Z axis up. The direction conventions are ROS standards, but the location of this was left to us. We chose this particular location, but based on the kinematics of the vehicle, the center of rotation of the vehicle should be around the centroid of the four rear wheels. 
+Our first frame of interest is the base\_link frame. By convention this is the highest level frame on the robot. For our purposes we chose to define the base\_link frame to be located at the centroid of the four rear tires with the X axis forward, Y axis left and Z axis up. The direction conventions are ROS standards, but the translational location of this frame was left to us. We chose this particular location based on the kinematics of the vehicle as the center of rotation of the vehicle should be around the centroid of the four rear wheels. 
+
+When considering the location of the rover in it's environment or the "world frame" as it is often called in ROS documentation, we consider two types of estimates and therefore two frames. The first frame is the odometry frame (\textbackslash odom) and the second is the map frame (\textbackslash map). The odometry frame serves as an intermediate step in the estimation process for determining where the rover is located in the map frame.
 
 The localization of the vehicle is performed in two stages, first taking into account only sensors which produce a continuous estimate of the robot state (ie. Tachometer, IMU) for use in the future autonomous driving and local path planning. The output of the localization defines a coordinate transform between \textbackslash base\_link and the \textbackslash odom frame.
 
-The second state takes into account discontinuous sensor data (ie. GPS, SLAM) to produce a more accurate, but sometimes 'jumpy' position estimate. The advantage of using this frame is that when planning long-term navigation, this frame is not subject to the same drift that the odom frame is subject to. The second step in the localization process defines a transformation between the \textbackslash base\_link and the \textbackslash map frames.
+The second step takes into account discontinuous sensor data (ie. GPS, SLAM) to produce a more accurate, but sometimes 'jumpy' position estimate. The advantage of using this frame is that when planning long-term navigation, this frame is not subject to the same drift that the odom frame is subject to. The second step in the localization process defines a transformation between the \textbackslash base\_link and the \textbackslash map frames, often using the \textbackslash odom frame as a starting point.
 
 \section{Kalman Filter}
 
@@ -96,19 +98,25 @@ One of the features which was most frustrating to debug with the Kalman filter w
 
 \section{Hector SLAM}
 
-%TODO: ADD HECTOR SLAM IMAGE
-
 In order to generate a more accurate absolute position estimate than the GPS could provide, we turned to a SLAM (Simultaneous Localization And Mapping) solution. SLAM works by analyzing LIDAR data, comparing subsequent scans to determine a position and orientation estimate for the robot. In order to decrease the implementation time, we turned to several available ROS implementations of SLAM algorithms. The most common packages for SLAM are gmapping and hector\_slam. Both packages are 2D SLAM algorithms which compare planar laser scans to determine position. We chose to use hector\_slam due to the fact that an odometry input is not necessary.  
 
-While we saw very good performance out of the SLAM system, there are several critical caveats which would make the currently available implementations not-ideal for our particular application. First, the SLAM algorithms have a fixed map of a fixed size. This essentially means that the area that the vehicle can navigate in is limited by the memory available on the laptop. An ideal solution and proven solution to this problem would be to have a rolling map, where only the map in the area surrounding the current rover is persisted. Secondly, through ROS we only had access to 2D SLAM implementations, which rely on the assumption that the environment is uniform in the vertical direction. While these implementations work very well in indoor environments with many vertical features, the outdoor environment, especially the natural outdoor environment has very few purely vertical features. In order to get better performance in an unstructured 3D environment, a 3D SLAM solution would be required
+While we saw very good performance out of the SLAM system, there are several critical caveats which would make the currently available implementations not-ideal for our particular application. First, the SLAM algorithms have a fixed map of a fixed size. This essentially means that the area that the vehicle can navigate in is limited by the memory available on the laptop. An ideal solution and proven solution to this problem would be to have a rolling map, where only the map in the area surrounding the current rover is persisted. Secondly, through ROS we only had access to 2D SLAM implementations, which rely on the assumption that the environment is uniform in the vertical direction. While these implementations work very well in indoor environments with many vertical features, the outdoor environment, especially the natural outdoor environment has very few purely vertical features. In order to get better performance in an unstructured 3D environment, a 3D SLAM solution would be required. While the algorithms currently available in ROS do not address these 3-dimensional problems well, future teams or researchers may choose to implement more advanced algorithms which can perform 3D slam.
 
 \section{3D Visualization}
 
-%TODO: Pointcloud Photo
+\begin{figure}[H]
+	\centerline{\includegraphics[angle=0,width=1.0\linewidth]{rviz}}
+	\caption[]{RVIZ LIDAR Pointcloud}
+	\label{fig:rviz}
+\end{figure}
 
-In addition to the 3D pointcloud which is visualized in the web UI, ROS's rviz utility was heavily utilized to visualize pointclouds and provide debugging information to both operators and developers. 
+In addition to the 3D pointcloud which is visualized in the web UI (Ch.\ref{ch:ui}), ROS's rviz utility was heavily utilized to visualize pointclouds and provide debugging information to both operators and developers. Figure \ref{fig:rviz} shows a typical view that an operator or developer might see when using rviz to visualize pointcloud data. We chose to use the RVIZ utility over other visualization tools because of it's existing integration with ROS and the ability to view all of our data, including camera streams, transformation information and raw sensor data all in one convenient location. Additionally, rviz handled the projections of the various sensor messages into the appropriate coordinate frames so that we did not have to program that from scratch. Finally, it allowed us to dynamically change what we are visualizing depending on the task at hand. Displaying all of the information being generated by the rover simultaneously would be impracticable so this functionality proved to be critical in our development. 
 
-%TODO: Octomap Photo
+\begin{figure}[H]
+	\centerline{\includegraphics[angle=0,width=0.7\linewidth]{octomap}}
+	\caption[]{Assembled Pointcloud of Santa Clara Service Street}
+	\label{fig:octomap}
+\end{figure}
 
-Additionally, in post-processing we are able to feed the position estimates and LIDAR data into the Octomap ROS package. Octomap is a 3D occupancy grid implementation which allows the LIDAR not only to identify obstacles, but also clear obstacles from the map.
+In post-processing we are able to feed the position estimates and LIDAR data into the Octomap ROS package. Figure \ref{fig:octomap} shows an example of an accumulated octomap of the service road behind Santa Clara's School of Engineering. Octomap is a 3D occupancy grid implementation which allows the LIDAR not only to identify obstacles, but also clear obstacles from the map. Octomap uses a probabilistic algorithim which means that it is able to correct mistakes or outliers when additional, contradictory sensor data is received. For example, for a case where the rover is scanning a moving obstacle, such as a person, it is able to clear the space where that the person previously occupied while simultaneously marking the place where the person currently is as 'occupied'. The dynamic abilities of this algorithm is critical for any application where a robot will be operating in a real-world environment.
 
