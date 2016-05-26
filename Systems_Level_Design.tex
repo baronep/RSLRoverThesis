@@ -19,7 +19,25 @@ Mr. Perez talked to us about his experience as a fireman, and even though his wo
 To fill those needs, the prototype vehicle has been outfitted with an array of environmental sensors to monitor air quality, LIDAR units, marine batteries, and a forward looking infrared camera. Although multiple passenger capabilities is a requirement, the prototype vehicle is unable to provide space for multiple passengers.
 
 \section{Key Requirements}
-In order to ensure that we met all of our customer's needs, we identified and sought to meet a series of requirements. The full list of requirements is included in Appendix \ref{App:DesignRequirements}. The most critical requirements 
+In order to ensure that we met all of our customer's needs, we identified and sought to meet a series of requirements. The full list of requirements is included in Appendix \ref{App:DesignRequirements}. The most critical requirements are outlined in \ref{table:key_reqs}.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{ l | c | r }
+		Description & Requirement  \\ \hline
+		Range- Remote Operator Console & 150 meters  \\
+		Range- WiFi Network & 150 meters \\
+		Latency - Cameras to Onboard Laptop & 1 second \\
+		Latency - Cameras to User Interface & 1 second \\
+		Latency - Vehicle State Data to User Interface & 1 second \\
+		Mapping - GPS Accuracy & < 2 meters \\
+		Visuals - Cameras Blind-Spot Testing & 360 degrees \\
+	\end{tabular}
+	\caption{Key Requirements}
+	\label{table:key_reqs}
+\end{table}
+
+We chose these specific Key Requirements because they specifically address the needs of the customers we interviewed. We sought to design an intuitive,  long-range vehicle that disseminated critical data in close to real-time and provided accurate mapping and localization information. These Key Requirements heavily influenced our decisions during the design and development of our vehicle. These requirements were verified through a series of tests we designed, which is discussed in detail in Chapter 10. 
 %--------------------------------------------------------------------------------
 %
 %--------------------------------------------------------------------------------
