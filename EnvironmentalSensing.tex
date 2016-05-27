@@ -1,17 +1,40 @@
 \chapter{Subsystem: Environmental Sensing}
 %TODO Finish section on environmental sensing
 
-The environmental sensing subsystem includes the air quality sensors and video imaging array. The environmental sensing is an integral function within this vehicle. It is the system that allows operators to gather visual and atmospheric information, an essential component for assessing scene safety. In addition the air quality sensors must display accurate information because they determine what gear is required to enter the area. The video imaging array is critical as it allows the operator to successfully see where the vehicle is within the environment, thus making it easy for the operator to drive through and visually inspect the environment. 
+The environmental sensing subsystem includes the air quality sensors and video imaging array. The environmental sensing in an integral component of the fire monitoring functionality of the RSL Rover. It is the system that allows operators to gather visual and atmospheric information; an essential component for assessing fire-scene safety. The air quality sensors must display accurate information because they determine what gear is required to enter the area. The video imaging array is critical as it allows the operator to successfully see where the vehicle is within the environment, thus making it easy for the operator to drive through and visually inspect the environment. 
 
 \section{Air Quality Assessment}
 
-The air quality sensing subsystem consists of three redundant packages distributed across the vehicle. Using three independent but redundant packages will improve accuracy of results since operators then have multiple values to compare against if there is a spike. It will also allow a safety buffer if one or more sensors were to fail. Within each package there will be five or more sensors. The base list of gas sensors includes: Carbon Monoxide, Carbon Dioxide, Liquid Petroleum Gas, Methane, and air particulate. Additionally, there will be atemperature sensor that can read temperatures in excess of 200\degree F and a humidity sensor. 
+The air quality sensing subsystem consists of three redundant packages distributed on the front and top of the vehicle. Using three independent but redundant packages improves the accuracy of results since operators then have multiple values to compare against if there is a spike or other anomaly. It also allows a safety buffer if one or more sensors were to fail. Within each package there is an array of eight gas sensors, two temperature sensors with different temperature range sensitivities, an air particulate sensor, and a humidity sensor. The eight gas sensor array detects atmospheric concentration of: liquefied petroleum gas, carbon monoxide, carbon dioxide, natural gas, and hydrogen gas.
 
 \subsection{Payload Requirements}
 %High level requirements that led to design
 
+The list of important gases to detect was derived from the National Fire Protection Association handbook as they are the gases produced by a fire most hazardous to human life. Carbon dioxide is used as an indicator for fire because it is a primary product of complete combustion while carbon monoxide is a product of incomplete combustion. There are numerous components to smoke, most of which are hazardous, so the air particulate sensor is responsible for the detection of the smoke hazard indicator. In addition to the hazards produced from combustion, forest fires also increase the risk of residential gas leaks and explosions. Some jurisdictions use liquefied petroleum gas for residential heating and cooking while some use natural gas. Thus, liquefied petroleum gas and natural gas must both be detected to limit risks from gas fires. Atmospheric air temperatures can increase dramatically from large forest fires so it is important that the sensor package be able to detect fine changes at lower temperatures while still being able to detect high temperatures that are dangerous for firefighters. 
+
 \subsection{Component Selection}
-%Why we chose the various sensors
+%Why we chose the various sensors and arduino
+Gas sensors on the market are incredibly expensive, detect only a limited range of gases, and require complex, expensive calibration equipment. Instead of trying to implement this into the RSL Rover, we started from scratch and utilized the MQ-series sensors pictured in figure \ref{fig:MQSensor}.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=.1]{MQSensor.jpg}
+	\caption{MQ-Series gas sensor}
+	\label{fig:MQSensor}
+\end{figure}
+
+These sensors use a reactive filament that change resistance according to the concentration of gases it is sensitive to. This makes for a robust, low cost solution that can easily be calibrated to show presence of a wide variety of gases. These sensors are sensitive to humidity, so a humidity sensor is also incorporated into the sensor package to allow for humidity corrections in the field. In addition, two temperature sensors are included to provide accurate temperature readings up to 250$^{\circ}$ Fahrenheit, which is beyond the safe limit for firefighters. The final sensing component was the air particulate sensor. For this, we utilized a Sharp GP2Y1010AU0F smoke and dust sensor picture in figure \ref{fig:SmokeDetector}. 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=.6]{AirParticulateAirflow.jpg}
+	\caption{Sharp air particulate sensor with air flow}
+	\label{fig:SmokeDetector}
+\end{figure}
+
+The device works by pushing air through the center hole where it reflects infrared light off the smoke or dust. The more light that is reflected into the infrared receiver, the higher the smoke concentration is. The small voltage from the receiver is then amplified to a range of 0 to 3.3 Volts where 3.3 Volts is the maximum detectable concentration.
+
+
 
 \subsection{PCB Design}
 %Mounted everything on custom PCB
@@ -34,19 +57,18 @@ The camera system is a four camera array that provides a front facing view for t
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{c615.png}
+	\includegraphics[scale=.7]{c615.png}
 	\caption{Logitech c615 camera}
 	\label{fig:logitechcam}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{pepoledetection.jpg}
+	\includegraphics[scale=.7]{peopledetection.jpg}
 	\caption{Example of OpenCV People Detection Application}
 	\label{fig:peopledetect}
 	\end{figure}
 
 \section{Sensor and Camera Layout}
-%TODO Include picture of layout
 
 The location of the air quality sensors and cameras was a design decision. For the cameras, the field of view, mounting costs, implementation time and robustness, among other factors, were considered when deciding on a final design. Additionally, for the environmental sensors, the cost, implementation time, robustness and proximity to the vehicle's exhaust systems were considered when deciding on a sensor configuration. Appendix \ref{App:tradeoff} features a complete tradeoff analysis for the sensor configurations. A final configuration was chosen where the cameras are mounted on all 4 corners of the roll cage, allowing for a 360 degree view of the surroundings while also allowing the operator to see over obstacles. The redundant sensor packages will be located on either side of the roll cage and on the front of the vehicle. 
 
