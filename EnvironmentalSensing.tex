@@ -1,5 +1,6 @@
 \chapter{Subsystem: Environmental Sensing}
-
+%TODO Finish section on environmental sensing
+%Add cameras also help with driving
 The environmental sensing subsystem includes the air quality sensors and video imaging array. The environmental sensing is an integral function within this vehicle. It is the system that allows operators to gather visual and atmospheric information, an essential component for assessing scene safety. In addition The air quality sensors must display accurate information because they determine what gear is required to enter the area.
 
 \section{Air Quality Assessment}
@@ -24,15 +25,16 @@ The air quality sensing subsystem consists of three redundant packages distribut
 
 \subsection{Data Processing}
 %Potential subsection if turns out to be long
+%Flowdown of arduino code
 %Communication to ROS
 
 \section{Cameras}
-%Include picture of camera
+%TODOInclude picture of camera and elaborate of camera subsystem design
 
 The camera system is a four camera array that provides a front facing view for the operator as well as a roughly 260\degree  view for observation of the surroundings. Four Logitech c615 usb cameras are connected to a Raspberry Pi 2 Model B. This Raspberry Pi runs an image of Ubuntu with ROS. The usb camera images are captured through ROS and sent through an OpenCV "person detection" application that recognizes bodies within the camera stream and outlines them in a green box so that they are visible to the operator. 
 
 \section{Sensor and Camera Layout}
-%Include picture of layout
+%TODOInclude picture of layout
 
 The location of the air quality sensors and cameras was a design decision. For the cameras, the field of view, mounting costs, implementation time and robustness, among other factors, were considered when deciding on a final design. Additionally, for the environmental sensors, the cost, implementation time, robustness and proximity to the vehicle's exhaust systems were considered when deciding on a sensor configuration. Appendix \ref{App:tradeoff} features a complete tradeoff analysis for the sensor configurations. A final configuration was chosen where the cameras are mounted on all 4 corners of the roll cage, allowing for a 360 degree view of the surroundings while also allowing the operator to see over obstacles. The redundant sensor packages will be located on either side of the roll cage and on the front of the vehicle. 
 
