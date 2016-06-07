@@ -4,8 +4,8 @@
 \begingroup
 \tiny
 \renewcommand{\baselinestretch}{1} 
-\section{Vehicle Visualization URDF Model}
-\begin{verbatim}
+\section*{Vehicle Visualization URDF Model}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 
 <robot name="rsl_roverzoe">
 <link name="base_link">
@@ -183,10 +183,10 @@
 	<link name="front_camera">
 </link>
 </robot>
-\end{verbatim}
+\end{lstlisting}
 
-\section{Cameras Launch File}
-\begin{verbatim}
+\section*{Cameras Launch File}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<arg name="fps" default="10" />	
 	<arg name="width" default="432" />	
@@ -240,10 +240,10 @@
 <!--	<node name="people_detect" pkg="opencv_apps" type="people_detect" args="image:=/cameraright_raw"/>  -->
 
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
-\section{Camera Calibration: Front}
-\begin{verbatim}
+\section*{Camera Calibration: Front}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 image_width: 640
 image_height: 480
 camera_name: camera
@@ -264,11 +264,11 @@ projection_matrix:
   rows: 3
   cols: 4
   data: [640.549927, 0.000000, 321.096783, 0.000000, 0.000000, 644.552368, 246.303601, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Camera Calibration: Left}
-\begin{verbatim}
+\section*{Camera Calibration: Left}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 image_width: 640
 image_height: 480
 camera_name: camera
@@ -289,11 +289,11 @@ projection_matrix:
   rows: 3
   cols: 4
   data: [677.564697, 0.000000, 305.707383, 0.000000, 0.000000, 674.015991, 271.888351, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Camera Calibration: Rear}
-\begin{verbatim}
+\section*{Camera Calibration: Rear}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 image_width: 640
 image_height: 480
 camera_name: camera
@@ -314,11 +314,11 @@ projection_matrix:
   rows: 3
   cols: 4
   data: [642.366028, 0.000000, 293.619005, 0.000000, 0.000000, 648.596558, 239.218096, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Camera Calibration: Right}
-\begin{verbatim}
+\section*{Camera Calibration: Right}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 image_width: 640
 image_height: 480
 camera_name: camera
@@ -339,11 +339,11 @@ projection_matrix:
   rows: 3
   cols: 4
   data: [642.887573, 0.000000, 309.222547, 0.000000, 0.000000, 647.120850, 248.549064, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{LIDAR Scan to Point Cloud}
-\begin{verbatim}
+\section*{LIDAR Scan to Point Cloud}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 #include "ros/ros.h"
 #include "ros/message.h"
 
@@ -429,11 +429,11 @@ int main(int argc, char** argv)
   return 0;
 }
 
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Vehicle State Information}
-\begin{verbatim}
+\section*{Vehicle State Information}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 #!/usr/bin/env python
 import rospy
 import numpy
@@ -592,11 +592,11 @@ if __name__ == '__main__':
             rospy.logwarn(err)
 
         rate.sleep()
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{GPS Configuration}
-\begin{verbatim}
+\section*{GPS Configuration}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 #!/usr/bin/python
 import serial
 import time
@@ -640,21 +640,21 @@ while 1:
 #        print output.encode('hex')
 
 ser.close()
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{GPS Driver Launch}
-\begin{verbatim}
+\section*{GPS Driver Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="gps_driver">
     <param name="port" value="/dev/novatel" />
     <param name="baud" value="115200" />
   </node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
-\section{Gimbal Driver}
-\begin{verbatim}
+\section*{Gimbal Driver}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 #!/usr/bin/env python
 import sys
 import socket
@@ -802,11 +802,11 @@ if __name__ == '__main__':
         pass
 
     sendCommandWOResp(s,'GOAL=0')
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Environmental Sensor State Information}
-\begin{verbatim}
+\section*{Environmental Sensor State Information}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 #!/usr/bin/env python
 import re
 import traceback
@@ -977,11 +977,11 @@ if __name__ == '__main__':
                 rospy.logwarn(err)
 
         rate.sleep()
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Sensor Calibration}
-\begin{verbatim}
+\section*{Sensor Calibration}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 import sqlite3 as lite
 import math
 import sys
@@ -1044,11 +1044,11 @@ if __name__ == '__main__':
     MQ1 = MQ('mqdb.sqlite','MQ-4')
     MQ1.initialCalibration(128)
     print MQ1.processValue(255)
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Laser Startup}
-\begin{verbatim}
+\section*{Laser Startup}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<!-- Start the robot model which includes visual geometery and
 	     static transformations which define the robot's
@@ -1082,11 +1082,11 @@ if __name__ == '__main__':
 	<!-- Startup Web Services -->
 	<!--	<include file="$(find rsl_rover)/launch/serv.launch" /> -->
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{LIDAR LMS111 Launch}
-\begin{verbatim}
+\section*{LIDAR LMS111 Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <arg name="host" default="10.0.0.140" />
   <node pkg="lms1xx" name="lms1xx" type="LMS1xx_node" output="screen">
@@ -1095,11 +1095,11 @@ if __name__ == '__main__':
   </node>
   <include file="$(find rsl_rover)/launch/scan_filter.launch" />
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{LIDAR LMS221 Launch}
-\begin{verbatim}
+\section*{LIDAR LMS221 Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<node pkg="rsl_rover" name="gimbal_driver" type="gimbal_driver.py" output="screen">
   </node>
@@ -1110,10 +1110,10 @@ if __name__ == '__main__':
 	<remap from="scan" to="scanlms221" /> 
   </node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
-\section{LIDAR LMS221 Filter Launch}
-\begin{verbatim}
+\section*{LIDAR LMS221 Filter Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<node pkg="rsl_rover" type="periodic_snapshotter2" name="rover_periodic_snapshotter2" />
 
@@ -1126,11 +1126,11 @@ if __name__ == '__main__':
 		<rosparam command="load" file="$(find rsl_rover)/filter_config/voxel_config.yaml" />
 	  </node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{All Laser Launch}
-\begin{verbatim}
+\section*{All Laser Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<include file="RSL_LMS221.launch" />
 	<include file="RSL_LMS111.launch" />
@@ -1139,10 +1139,10 @@ if __name__ == '__main__':
 		<param name="fixed_frame" type="string" value="base_link" />
 	</node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
-\section{Hector Mapping Launch}
-\begin{verbatim}
+\section*{Hector Mapping Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
   <arg name="base_frame" default="base_link"/>
@@ -1200,11 +1200,11 @@ if __name__ == '__main__':
     
 </launch>
   
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Localization Launch}
-\begin{verbatim}
+\section*{Localization Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 
 <!-- Launch file for ekf_localization_node -->
 
@@ -1500,11 +1500,11 @@ if __name__ == '__main__':
     
 </launch>
 
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Map Testing Launch}
-\begin{verbatim}
+\section*{Map Testing Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch> 
 	<!-- Plays back data from bagfile and uses simualtion clock -->
 	<arg name="bagfile" default="$(find rsl_rover)/bag/jan25-rover-maneuvering.bag" />
@@ -1557,12 +1557,12 @@ if __name__ == '__main__':
 	<include file="$(find rsl_rover)/launch/robot_state.launch" />
 	<include file="$(find rsl_rover)/launch/rover_rviz.launch" />
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
 
-\section{Navigation Stack Move Base Launch}
-\begin{verbatim}
+\section*{Navigation Stack Move Base Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<!-- Optionally run something like AMCL -->
 
@@ -1589,13 +1589,13 @@ if __name__ == '__main__':
 	</node>
 </launch>
 
-\end{verbatim}
+\end{lstlisting}
 
 
 
 
-\section{OctoMap Launch}
-\begin{verbatim}
+\section*{OctoMap Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch> 
 	<!-- Assemble the laser scans into a point cloud, published periodically -->
 	<!-- <node pkg="laser_assembler" type="laser_scan_assembler" name="rover_laser_assembler" >
@@ -1643,37 +1643,37 @@ if __name__ == '__main__':
 
 
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Vehicle State in Map Launch}
-\begin{verbatim}
+\section*{Vehicle State in Map Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<param name="robot_description" command="cat $(find rsl_rover)/urdf/rsl_roverzoe.urdf" />
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Vehicle Interface Launch}
-\begin{verbatim}
+\section*{Vehicle Interface Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<node pkg="rsl_rover" name="rover_interface" type="rover_decode.py" required="true" output="screen">
   </node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Vehicle RVIZ Launch}
-\begin{verbatim}
+\section*{Vehicle RVIZ Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
 	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find rsl_rover)/rviz_cfg/rover_driving.rviz" required="true"/>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Vehicle Startup Launch}
-\begin{verbatim}
+\section*{Vehicle Startup Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <node pkg="myahrs_driver" type="myahrs_driver" name="myahrs_driver">
     <param name="port" value="/dev/ttyACM0" />
@@ -1686,22 +1686,22 @@ if __name__ == '__main__':
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myahrs_driver)/rviz_cfg/imu_test.rviz" />
 </launch>
 
-\end{verbatim}
+\end{lstlisting}
 
 
 
-\section{Laser Scan Filter Launch}
-\begin{verbatim}
+\section*{Laser Scan Filter Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <node pkg="laser_filters" type="scan_to_scan_filter_chain"  name="laser_filter">
     <rosparam command="load" file="$(find rsl_rover)/cfg/my_laser_config.yaml" />
     <remap from="scan" to="scan" />
   </node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
-\section{UM7 Orientation Sensor Launch}
-\begin{verbatim}
+\section*{UM7 Orientation Sensor Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <node pkg="um7" type="um7_driver" name="um7_driver">
     <param name="port" value="/dev/um7" />
@@ -1709,12 +1709,12 @@ if __name__ == '__main__':
     <param name="zero_gyros" value="true" />
   </node>
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
 
-\section{Laser Configuration}
-\begin{verbatim}
+\section*{Laser Configuration}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 
 scan_filter_chain:
 - name: shadows
@@ -1731,11 +1731,11 @@ scan_filter_chain:
     upper_threshold: 10000
     disp_histogram: 0
 
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{Web Server Launch}
-\begin{verbatim}
+\section*{Web Server Launch}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <launch>
   <!--<param name="use_sim_time" value="false" />-->
   <!--
@@ -1774,13 +1774,13 @@ scan_filter_chain:
   <node name="rosapi" pkg="rosapi" type="rosapi_node" />
 
 </launch>
-\end{verbatim}
+\end{lstlisting}
 
 
 
 
-\section{User Interface Control Center Main}
-\begin{verbatim}
+\section*{User Interface Control Center Main}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 'use strict';
 
 function ROSCCConfig($routeProvider, localStorageServiceProvider) {
@@ -2709,12 +2709,12 @@ function angularLidarViz(){
   }
 }
 angular.module('roscc').directive('lidarViz', angularLidarViz);
-\end{verbatim}
+\end{lstlisting}
 
 
 
-\section{User Interface Speed Chart}
-\begin{verbatim}
+\section*{User Interface Speed Chart}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 'use strict';
 angular.module("").requires.push('highcharts-ng');
 
@@ -2876,11 +2876,11 @@ var ctrl = angular.module('roscc').controller("speedChartController", function (
     })*/
 });
 
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{User Interface Gas Sensor Charts}
-\begin{verbatim}
+\section*{User Interface Gas Sensor Charts}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 'use strict';
 angular.module("roscc").requires.push('highcharts-ng');
 
@@ -3037,11 +3037,11 @@ var ctrl = angular.module('roscc').controller("gasChart", function ($scope, $tim
     }, false);
 });
 console.log("Loaded controller: ", ctrl);
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{User Interface HTML Dashboard}
-\begin{verbatim}
+\section*{User Interface HTML Dashboard}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <div class="panel panel-default" ng-class="{'panel-success': vm.toggle}" id="dashboard_panel">
     <div class="panel-heading clearfix">
     </div>
@@ -3101,11 +3101,11 @@ console.log("Loaded controller: ", ctrl);
         </div>
     </div>
 </div>
-\end{verbatim}
+\end{lstlisting}
 
 
-\section{User Interface HTML Vehicle State}
-\begin{verbatim}
+\section*{User Interface HTML Vehicle State}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
 <div class="panel panel-default" ng-class="{'panel-success': vm.toggle}">
     <div class="panel-heading clearfix">
         <button id="vehicle_state_sub" class="btn btn-default btn-sm pull-right" 
@@ -3212,7 +3212,1648 @@ console.log("Loaded controller: ", ctrl);
         </div>
     </div>
 </div>
-\end{verbatim}
+\end{lstlisting}
+
+\section*{Tachometer Arduino: tach\_arduino.ino}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+
+
+
+#include <Wire.h>
+#include <Encoder.h>
+
+#define SLAVE_ADDRESS 0x60
+#define FLOATS_SENT 1
+#define DELAY_TIME 50
+
+long positionA;
+long positionB;
+unsigned long timeA;
+unsigned long timeB;
+byte data[8];
+double rpm=0;
+double wheel_speed=0;
+
+Encoder myEnc(2, 3);
+
+void setup() {
+pinMode(2,INPUT_PULLUP);
+pinMode(3,INPUT_PULLUP);
+pinMode(9, OUTPUT); //PWM Output b/c legacy compatability
+//    pinMode(13, OUTPUT);
+
+Serial.begin(9600);
+
+// initialize i2c as slave
+Wire.begin(SLAVE_ADDRESS);
+
+// define callbacks for i2c communication  
+Wire.onRequest(sendData);
+Serial.println("SETUP COMPLETE");
+}
+
+void loop() {
+timeA = millis();
+positionA = myEnc.read();
+delay(DELAY_TIME);
+timeB = millis();
+positionB = myEnc.read();
+
+//Calculates the wheel speed averaged over roughly 1/5 second
+float enc_spd = float(positionB - positionA)/float(timeB-timeA)*1000.0;
+//    Serial.println(String(positionA) + "," + String(positionB) + "," + String(int(enc_spd)));
+//    enc_spd = enc_spd*0.5*0.07735;
+
+//    rpm=enc_spd; 
+wheel_speed = .07735*rpm;
+
+byte* byte_spd = (byte *) &enc_spd;
+byte* byte_pos = (byte *) &positionB;
+
+//A bit hackish but should work
+data[0] = byte_spd[0];
+data[1] = byte_spd[1];
+data[2] = byte_spd[2];
+data[3] = byte_spd[3];
+data[4] = byte_pos[0];
+data[5] = byte_pos[1];
+data[6] = byte_pos[2];
+data[7] = byte_pos[3];
+Serial.println(rpm);
+
+//    wheel_speed = (wheel_speed + 40)*(3.1875);
+}
+
+void sendData(){
+Wire.write((byte *) &data, 8);
+}
+
+\end{lstlisting}
+
+\section*{Console Arduino: Console\_Code\_v2.ino}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+//RSL Rover 2014
+//Console Code
+// Serial 1: To Vehicle (drive by wire) 
+// Serial 22: To Vehicle (XBee)
+
+#include <LiquidCrystal.h>                               //Library for LCD screen
+#include <EasyTransfer.h>                                //Library for serial communication
+#include "comm_definitions.h"
+#include "pin_definitions.h"
+#include "config.h"
+#include "fscale.h"
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);                   //LCD Screen initialization
+
+//Serial communication objects to facilitate comms between console & rover
+CONSOLE_TO_ROVER txdata;
+ROVER_TO_CONSOLE rxdata;
+EasyTransfer ETin, ETout;
+//EasyTransfer ETdebug;
+int packet_id=0;
+
+//Strings (for more\ info see string initializations in setup)
+//String command_type;   
+//String command_mode;
+//String throttle_or_steer;
+//String steering_string_to_send;
+//String speed_string_to_send;
+//String gear_string_to_send;
+char desired_gear; // Stores the gear selected by the button on the console
+char previous_desired_gear; // Stores the last "desired_gear" to detect a change
+//String comma;
+//String aux_string;
+//String aux_string_previous;
+//String A_status;
+//String B_status;
+//String C_status;
+//String D_status;
+//String E_status;
+//String horn_status;
+//String F_status;
+//String return_string;
+//String string_from_usb;
+//String string_from_usb_steering;
+//String string_from_usb_speed;
+//String string_from_usb_gear;
+String act_speed; //Stores a string of the current speed as reported by the rover to display on the LCD
+String act_steer; //Same as above but for steering
+char act_gear; //The current rover gear as reported by the rover
+bool armed_status; //Is the rover armed?
+bool temp;         //Temperature warning flag
+bool voltage;      //Voltage warning flag
+long int mark;
+
+//int counter = 0;                                          //used to control the intermittent sending of data
+//int comma_index_1 = 0;                                    //Index of first comma in a string (for parsing)
+//int comma_index_2 = 0;                                    //Index of second comma in a string (for parsing)
+//int comma_index_3 = 0;                                    //Index of third comma in a string (for parsing)
+//int comma_index_4 = 0;                                    //Index of fourth comma in a string (for parsing)
+
+int desired_steering = 0;                                 //Desired steering position (int from -1000(left) to 1000(right) with center at 0)
+int steer_pos = 0;                                        //Used to turn string act_steer into an int to display actual steering position in real time 
+int desired_speed;                                        //The variable desired_speed holds the input for the speed potentiometer on the joystick, then is mapped from -1000 to 1000 and sent in a string to the Vehicle Mega
+int governor;                                             //Reading frmo governor potentiometer used to saturate throttle commands
+
+int start_time=0;                                         //Used to store starting time to meter the flash rate
+int stop_time=0;                                          //Used to store ending time to meter the flash rate
+int elapsed_time=0;                                       //Used to calculate elapsed time to meter the flash rate
+int LED_state=LOW;                                        //Used to set the state of an LED (HIGH for on, LOW for off)
+
+int voltage_input = 0;                                    //Used to store the initial analog input reading for console battery voltage
+float Batt_Voltage = 0;                                   //Used to store the value of the calculated battery voltage from the voltage_input
+
+bool serial_sw_last = false;                              //Stores last switch state
+
+void setup()                                              //Runs before the main loop to initialize everything
+{
+Serial.begin(115200);                                     //Serial to/from USB or serial monitor (sets baud rate and opens serial port)
+Serial.setTimeout(Serial_timout);                       //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+Serial1.begin(9600);                                    //Serial to/from the Vehicle via drive by wire (sets baud rate and opens serial port)
+Serial1.setTimeout(Serial_timout);                      //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+Serial2.begin(115200);                                    //Serial to/from the Vehicle via x-bee radio (sets baud rate and opens serial port)
+Serial2.setTimeout(Serial_timout);                      //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+
+ETin.begin(details(rxdata), &Serial2);
+ETout.begin(details(txdata), &Serial2);
+//ETdebug.begin(details(txdata), &Serial);
+
+lcd.begin(20, 4);                                       //Sets up and opens port to LCD screen
+
+pinMode(ind_H, OUTPUT);                                 //Sets up digital pin ind_H as a digital output
+pinMode(ind_L, OUTPUT);                                 //Sets up digital pin ind_L as a digital output
+pinMode(ind_N, OUTPUT);                                 //Sets up digital pin ind_N as a digital output
+pinMode(ind_R, OUTPUT);                                 //Sets up digital pin ind_R as a digital output
+pinMode(ind_P, OUTPUT);                                 //Sets up digital pin ind_P as a digital output
+pinMode(ind_1, OUTPUT);                                 //Sets up digital pin ind_1 as a digital output
+pinMode(ind_2, OUTPUT);                                 //Sets up digital pin ind_2 as a digital output
+pinMode(ind_3, OUTPUT);                                 //Sets up digital pin ind_3 as a digital output
+pinMode(ind_4, OUTPUT);                                 //Sets up digital pin ind_4 as a digital output
+pinMode(ind_5, OUTPUT);                                 //Sets up digital pin ind_5 as a digital output
+pinMode(ind_6, OUTPUT);                                 //Sets up digital pin ind_6 as a digital output
+
+lcd.setCursor(0, 0); lcd.print("HERE"); delay(80);     //Startup procedure for LCD screen on console 
+lcd.setCursor(0, 1); lcd.print("WE"); delay(80);
+lcd.setCursor(0, 2); lcd.print("GO"); delay(150);
+lcd.setCursor(0, 0); lcd.print("     ");
+lcd.setCursor(0, 1); lcd.print("     ");
+lcd.setCursor(0, 2); lcd.print("     ");
+
+for (int flash=37; flash<=47; flash++)                  //Startup procedure for LED flash cycle on console
+{
+digitalWrite(flash, HIGH);
+delay(LED_delay);
+digitalWrite(flash, LOW);
+}
+digitalWrite(ind_1, HIGH);
+
+//   command_type = String("C");                            //Sent at the beginning of a string sent to the vehicle: C for command, ? for querries (not yet involved), etc
+//   command_mode = String("");                             //Sent in string to vehicle to indicate mode: A for actuator, S for speed control modes
+//   throttle_or_steer = String("");                        //Sent in command string to vehicle to indicate whether the command is a steering or speed related command:  V for speed related commands, W for steering related commands
+//   steering_string_to_send= String("C,A,W,0");            //Steering command string sent to vehicle (initialized to center command)
+//   speed_string_to_send = String("C,A,V,0");              //Speed related command sent ot vehicle (initialized to zero meaning no brake and no throttle)
+//   gear_string_to_send = String("C,G,P");                 //Gear change command sent to vehicle (initialized to park)
+desired_gear = 'P';                            //Sent in the gear_string_to_send to indicate the desired gear (initialized ot park)
+previous_desired_gear = 'P';                   //Stores the previously desired gear to insure that the gear change string only gets sent if a different desired gear is input
+//   comma = String(",");                                   //Used to separate different parts of a command string sent to vehicle so the string can be parsed
+//   aux_string = String("XXXXXXX");                        //String to send to vehicle to indicate the position of the auxiliary pushbuttons or rockers
+//   aux_string_previous = String("XXXXXXX");               //String to store aux_string to determine if the status of any buttons has changed
+//   A_status = String("");                                 //String sent in aux_string to indicate that auxiliary button A is in the on position ("A" if read HIGH, "X" if read LOW)
+//   B_status = String("");                                 //String sent in aux_string to indicate that auxiliary button B is in the on position ("B" if read HIGH, "X" if read LOW)
+//   C_status = String("");                                 //String sent in aux_string to indicate that auxiliary button C is in the on position ("C" if read HIGH, "X" if read LOW)
+//   D_status = String("");                                 //String sent in aux_string to indicate that auxiliary button D is in the on position ("D" if read HIGH, "X" if read LOW)
+//   E_status = String("");                                 //String sent in aux_string to indicate that auxiliary button E is in the on position ("E" if read HIGH, "X" if read LOW)
+//   F_status = String("");                                 //String sent in aux_string to indicate that auxiliary button F is in the on position ("F" if read HIGH, "X" if read LOW)
+//   horn_status = String("");                              //String sent in aux_string to indicate that auxiliary button H (Horn) is in the on position ('H' if read HIGH, "X" if read LOW)
+//   return_string = String("");                            //Stores string sent back to console from vehicle either as feedback or a fault code
+//   string_from_usb = String("");                          //Stores string sent to console from the USB input 
+act_speed = String("x");                               //Stores the wheel speed value from the vehicle feedback to display on LCD screen
+act_steer = String("x");                               //Stores the steering position value from the vehicle feedback to display on LCD screen
+act_gear = 'x';                                //Stores the current gear that the vehicle is in from the vehicle feedback to display on the console LEDs
+armed_status = false;                            //Sent from vehicle to console to alert console that the vehicle is armed and ready to take commands ("A" for armed, "X" for not armed)
+temp = false;                                    //Sent from vehicle to console to alert console that the vehicle's temperature warning light is on ("T" for temperature light on, "X" for temperature light off)
+voltage = false;                                 //Sent from vehicle to console to alert console that one of the vehicle's systems is at a low voltage ("V" for under voltage, "X" for healthy voltage levels)
+
+pinMode(high_gear, INPUT);                             //Sets up digital pin high_gear as a digital input 
+pinMode(low_gear, INPUT);                              //Sets up digital pin low_gear as a digital input 
+pinMode(neutral_gear, INPUT);                          //Sets up digital pin neutral_gear as a digital input 
+pinMode(reverse_gear, INPUT);                          //Sets up digital pin reverse_gear as a digital input 
+pinMode(park_brake, INPUT);                            //Sets up digital pin park_brake as a digital input 
+pinMode(speed_vs_actuator, INPUT);                     //Sets up digital pin speed_vs_actuator as a digital input 
+pinMode(serial_dbw_rc, INPUT);                         //Sets up digital pin serial_dbw_rc as a digital input 
+pinMode(aux_A, INPUT);                                 //Sets up digital pin aux_A as a digital input 
+pinMode(aux_B, INPUT);                                 //Sets up digital pin aux_B as a digital input 
+pinMode(aux_C, INPUT);                                 //Sets up digital pin aux_C as a digital input 
+pinMode(aux_D, INPUT);                                 //Sets up digital pin aux_D as a digital input 
+pinMode(aux_E, INPUT);                                 //Sets up digital pin aux_E as a digital input 
+pinMode(horn, INPUT);                                  //Sets up digital pin horn as a digital input 
+pinMode(aux_F, INPUT);                                 //Sets up digital pin aux_F as a digital input 
+
+mark = millis();
+}
+
+int map_joystick(int minimum, int min_dead, int max_dead, int maximum, int pos)      //Maps joystick input from minimum to maximum value (-1000 to 1000) for speed and steering inputs while taking into account deadband 
+{
+if(pos>max_dead)                                                                   
+{
+pos=map(pos, max_dead, maximum, 0, 1000);
+//pos = (int) round( fscale( (float) max_dead, (float) maximum, 0.0, 1000.0, (float) pos, 0.0) );
+}
+else if(pos<min_dead)
+{
+pos=map(pos, min_dead, minimum, 0, -1000);
+//pos = (int) round( fscale( (float) min_dead, (float) maximum, 0.0, -1000.0, (float) pos, 0.0) );
+}
+else 
+{
+pos=0;
+}
+return -1*pos;
+
+}
+
+void aux_switch_read()                                                              //Function to read the auxilliary switch digital inputs and send a string to Vehicle Mega indicating their status
+{
+//  if(digitalRead(aux_A)==HIGH)                                                      //Checks to see if aux_A pin is HIGH
+//  {A_status= String("A");}                                                          //If the button is on, assign the "A" character to its place in aux_string
+//  else{A_status= String("X");}                                                      //If the button is off, assign the "X" character to its place in aux_string
+//  if(digitalRead(aux_B)==HIGH)                                                      //Checks to see if aux_B pin is HIGH                                                 
+//  {B_status= String("B");}                                                          //If the button is on, assign the "B" character to its place in aux_string
+//  else{B_status= String("X");}                                                      //If the button is off, assign the "X" character to its place in aux_string
+//  if(digitalRead(aux_C)==HIGH)                                                      //Checks to see if aux_C pin is HIGH                                                 
+//  {C_status= String("C");}                                                          //If the button is on, assign the "C" character to its place in aux_string
+//  else{C_status= String("X");}                                                      //If the button is off, assign the "X" character to its place in aux_string
+//  if(digitalRead(aux_D)==HIGH)                                                      //Checks to see if aux_D pin is HIGH                                                 
+//  {D_status= String("D");}                                                          //If the button is on, assign the "D" character to its place in aux_string
+//  else{D_status= String("X");}                                                      //If the button is off, assign the "X" character to its place in aux_string
+//  if(digitalRead(aux_E)==HIGH)                                                      //Checks to see if aux_E pin is HIGH                                                 
+//  {E_status= String("E");}                                                          //If the button is on, assign the "E" character to its place in aux_string
+//  else{E_status= String("X");}                                                      //If the button is off, assign the "X" character to its place in aux_string
+//  if(digitalRead(aux_F)==HIGH)                                                      //Checks to see if aux_F pin is HIGH                                                 
+//  {F_status= String("F");}                                                          //If the button is on, assign the "F" character to its place in aux_string
+//  else{F_status= String("X");}                                                      //If the button is off, assign the "X" character to its place in aux_string
+//  if(digitalRead(horn)==HIGH)                                                       //Checks to see if horn pin is HIGH                                                 
+//  {horn_status= String('H');}                                                       //If the button is on, assign the 'H' character to its place in aux_string
+//  else{horn_status= String("X");}                                                   //If the button is off, assign the "X" character to its place in aux_string
+
+txdata.aux[0] = digitalRead(aux_A);
+txdata.aux[1] = digitalRead(aux_B);
+txdata.aux[2] = digitalRead(aux_C);
+txdata.aux[3] = digitalRead(aux_D);
+txdata.aux[4] = digitalRead(aux_E);
+txdata.aux[5] = digitalRead(aux_F);
+txdata.aux[6] = digitalRead(horn);
+
+//  aux_string = String("A") + A_status + B_status + C_status + D_status + E_status + F_status + horn_status;  //Formulate auxilliary switch string
+//  
+//  if(aux_string != aux_string_previous)                                             //So the string is only sent when the status of a button or rocker changes
+//  { 
+//     Serial.println(aux_string);
+//     Serial1.println(aux_string);                                                   //Send auxilliary switch string over drive by wire
+//     Serial2.println(aux_string);                                                   //Send auxilliary switch string over x-bees
+//  }
+
+//  aux_string_previous = aux_string;
+}
+
+
+void return_command()//String return_string)                                            //Function to parse string coming from vehicle and assign variables based on string
+{
+//  if(return_string.startsWith("F"))                                                //If the string starts with "F" it is a feedback string not an error string
+//  {
+//  comma_index_1 = return_string.indexOf(',');                                        //Records indesx value of first comma in string for parsing
+//  comma_index_2 = return_string.indexOf(',', comma_index_1 + 1);                     //Records indesx value of second comma in string for parsing
+//  comma_index_3 = return_string.indexOf(',', comma_index_2 + 1);                     //Records indesx value of third comma in string for parsing
+//  
+//  act_steer = return_string.substring(comma_index_1 + 1, comma_index_2);             //Parses and records value of the current steering position
+//  act_speed = return_string.substring(comma_index_2 + 1, comma_index_3);             //Parses and records value of the current wheel speed
+//  act_gear = return_string.substring(comma_index_3 + 1);                             //Parses and records value of the current gear
+//  }
+
+if(ETin.receiveData()){
+act_steer = String(rxdata.rover_steering);
+act_speed = String(rxdata.rover_speed);
+act_gear = rxdata.rover_gear;
+
+//  else if(return_string.startsWith("E"))                                             //If the vehicle is sending the console an error code
+//  {
+//  armed_status = return_string.substring(1, 2);                                      //Parse armed_status out of error code
+//  voltage = return_string.substring(2, 3);                                           //Parse voltage out of error code
+//  temp = return_string.substring(3, 4);                                              //Parse temp out of error code
+//  }
+
+armed_status = rxdata.armed_status;
+voltage = rxdata.voltage_error;
+temp = rxdata.temp_error;
+
+
+
+//  else if(return_string.charAt(1)=='E')                                              //Same as previous else if statement.  This should not be necessary but every once in a while the previous statement lets an error code go and this catches it and keeps it from going undetected
+//  {
+//  armed_status = return_string.substring(2, 3);
+//  voltage = return_string.substring(3, 4);
+//  temp = return_string.substring(4, 5);
+//  }
+
+if(armed_status){digitalWrite(ind_2, HIGH);}                                //Check if the vehicle is armed.  Illuminate ARMED LED if it is
+else {digitalWrite(ind_2, LOW);}
+
+if(temp){digitalWrite(ind_4, HIGH);}                                        //Check if the vehicle's temperature warning light is on.  Illuminate ERROR LED if it is
+else {digitalWrite(ind_4, LOW);}
+
+if(voltage){digitalWrite(ind_3, HIGH);}                                     //Check if the vehicle is under voltage.  Illuminate LOW BATT LED if it is
+else {digitalWrite(ind_3, LOW);}
+}
+}
+
+
+//void serial_interface_function()                                                     //If the serial versus remote control or drive by wire rocker is in the serial position, this function is called to take read the input string from the USB port and deal with it
+//{
+//  if(Serial.available())
+//  {
+//    string_from_usb = Serial.readStringUntil('\r');                                  //Read string from USB port until return character
+//  }
+//  
+//  if (string_from_usb.substring(2,3) == "G")                                         //Checks to see if it is a gear change command
+//  {
+//    gear_string_to_send = string_from_usb;                                           //If the input string is a gear change string, set it equal to gear_string_to_send
+//    if(gear_string_to_send != "Clear")                                               //Checks to make sure that the gear change string only gets sent once (sets equal to "Clear" later in the code after it has been sent)
+//    {
+//    Serial1.println(gear_string_to_send);                                            //Send gear_string_to_send to vehicle via drive by wire
+//    Serial2.println(gear_string_to_send);                                           //Send gear_string_to_send to vehicle via x-bees
+//    delay(20);
+//    
+//    digitalWrite(ind_H, LOW);                                                        //turns off all gear indicator LEDs that may have been on
+//    digitalWrite(ind_L, LOW);
+//    digitalWrite(ind_N, LOW);
+//    digitalWrite(ind_R, LOW);
+//    digitalWrite(ind_P, LOW);
+//    }
+//  }
+//  
+//   else if (string_from_usb.substring(4,5) == "W")                                   //If the USB input string is not a gear change command this checks to see if it is a steering command 
+//  {
+//    steering_string_to_send = string_from_usb;                                       //If the input string is a steering string, set it equal to steering_string_to_send
+//  }
+//  
+//   else if (string_from_usb.substring(4,5) == "V")                                   //If the USB input string is not a gear change or steering command this checks to see if it is a speed related command 
+//  {
+//    speed_string_to_send = string_from_usb;                                          //If the input string is a speed related command, set it equal to speed_string_to_send
+//  }
+//  
+//  if(act_gear == desired_gear)                                                       //Once the vehicle has shifted gears, stop sending gear change string and get back to sending steering and speed commands
+//  {
+//    gear_string_to_send = String("Clear");                                           //Clears gear_string_to_send so that the previous part of the code knows the vehicle is done changing gears and stops sending the gear change command
+//    
+//    if (counter == 1)                                                                //Used to alternate between sending steering and speed commands (sends the steering command on the first iteration and speed related command on the second)
+//    {
+//      Serial.println(steering_string_to_send);
+//      Serial1.println(steering_string_to_send);                                      //Send steering command over drive by wire
+//      Serial2.println(steering_string_to_send);                                      //Send steering command over x-bees
+//      delay(20);
+//    }
+//    
+//    else if (counter >= 2)                                                           //Used to alternate between sending steering and speed commands (sends the steering command on the first iteration and speed related command on the second)
+//    {
+//      Serial.println(speed_string_to_send);
+//      Serial1.println(speed_string_to_send);                                         //Send speed related command over drive by wire
+//      Serial2.println(speed_string_to_send);                                         //Send speed related command over x-bees
+//      delay(20);
+//      counter = 0;                                                                   //Reset counter
+//    }
+//      
+//  counter = counter +1;                                                              //Count iterations
+//  }
+//
+// 
+//  if(act_gear == 'H') {digitalWrite(ind_H, HIGH);digitalWrite(ind_L, LOW);digitalWrite(ind_N, LOW);digitalWrite(ind_R, LOW);digitalWrite(ind_P, LOW);}        //Illuminates LED corresponding to the current gear of the vehicle and writes all other LEDs LOW
+//  else if (act_gear == 'L') {digitalWrite(ind_L, HIGH);digitalWrite(ind_H, LOW);digitalWrite(ind_N, LOW);digitalWrite(ind_R, LOW);digitalWrite(ind_P, LOW);}
+//  else if (act_gear == 'N') {digitalWrite(ind_N, HIGH);digitalWrite(ind_L, LOW);digitalWrite(ind_H, LOW);digitalWrite(ind_R, LOW);digitalWrite(ind_P, LOW);}
+//  else if (act_gear == 'R') {digitalWrite(ind_R, HIGH);digitalWrite(ind_N, LOW);digitalWrite(ind_L, LOW);digitalWrite(ind_H, LOW);digitalWrite(ind_P, LOW);}
+//  else {digitalWrite(ind_P, HIGH);digitalWrite(ind_R, LOW);digitalWrite(ind_N, LOW);digitalWrite(ind_L, LOW);digitalWrite(ind_H, LOW);} 
+//
+//}
+
+void rc_dbw_function()                                                               //Separate function for when the vehicle is operating in drive by wire or remote control mode as opposed to serial mode
+{
+//  string_from_usb = String("C");                                                     //Clears string_from_usb 
+
+if(digitalRead(high_gear))                                                   //Reads digital inputs from gear pushbuttons and assigns the desired_gear to a string indicating the gear if one of the pushbuttons is pressed
+{desired_gear = 'H';}
+else if(digitalRead(low_gear))
+{desired_gear = 'L';}
+else if(digitalRead(neutral_gear))
+{desired_gear = 'N';}
+else if(digitalRead(reverse_gear))
+{desired_gear = 'R';}
+else if(digitalRead(park_brake))
+{desired_gear = 'P';}
+else
+{desired_gear=previous_desired_gear;}                                               //If no gear pushbuttons are pressed, this sets the desired_gear=previous_desired_gear
+
+if(desired_gear != previous_desired_gear)                                         //Checks to make sure the new desired gear is not equal to the previously desired gear
+{
+for (int flash=ind_H; flash<=ind_P; flash++)                                    //Flash sequence during gear change
+{digitalWrite(flash, LOW);}
+}
+previous_desired_gear=desired_gear;                                               //Sets previous_desired_gear=desired_gear
+
+if(act_gear != desired_gear)                                                      //Checks to make sure the desired gear is differnet from the actual gear and does not do anythign further if the vehicle is currently in the gear desired
+{
+//command_mode = "G";                                                               //Sets the command mode to "G" for gear (This will tell the Vehicle Mega that the command is a gear change)
+//gear_string_to_send = command_type + comma + command_mode + comma + desired_gear; //Formulates the gear change command to send to the vehicle
+//Serial.println(gear_string_to_send);
+//Serial1.println(gear_string_to_send);                                             //Sends the gear change command to the vehicle via drive by wire
+//Serial2.println(gear_string_to_send);                                             //Sends the gear change command to the vehicle via x-bee
+//    delay(20);
+
+txdata.gear = desired_gear;                                             //Send a packet with 0 speed and brake on
+txdata.throttle_pos = -500;
+
+stop_time=millis();                                                               //Assigns the stop time used to calculate the elapsed time which enforces the flash rate
+elapsed_time=stop_time-start_time;                                                //Calcualtes the elapsed time used to enforces the flash rate
+if (elapsed_time > flash_rate)                                                    //Checks to see if the elapsed time is greater than the flash rate
+{
+start_time=millis();                                                            //Assigns the start time used to calculate the elapsed time which enforces the flash rate
+LED_state = (!LED_state);                                                       //If the elapsed time is greater than the flash rate, the LED switches states
+
+if(desired_gear == 'H') {digitalWrite(ind_H, LED_state);}                       //Writes LED_state (HIGH or LOW) to digital pin corresponding to the gear that is changing
+else if (desired_gear == 'L') {digitalWrite(ind_L, LED_state);}
+else if (desired_gear == 'N') {digitalWrite(ind_N, LED_state);}
+else if (desired_gear == 'R') {digitalWrite(ind_R, LED_state);}
+else {digitalWrite(ind_P, LED_state);}
+}
+}
+
+//If not changing gears, set the corresponding gear LED
+else if(act_gear == 'H') {digitalWrite(ind_H, HIGH);digitalWrite(ind_L, LOW);digitalWrite(ind_N, LOW);digitalWrite(ind_R, LOW);digitalWrite(ind_P, LOW);}  //If the vehicle is in the gear that is desired, illuminate the corresponding LED
+else if (act_gear == 'L') {digitalWrite(ind_L, HIGH);digitalWrite(ind_H, LOW);digitalWrite(ind_N, LOW);digitalWrite(ind_R, LOW);digitalWrite(ind_P, LOW);}
+else if (act_gear == 'N') {digitalWrite(ind_N, HIGH);digitalWrite(ind_L, LOW);digitalWrite(ind_H, LOW);digitalWrite(ind_R, LOW);digitalWrite(ind_P, LOW);}
+else if (act_gear == 'R') {digitalWrite(ind_R, HIGH);digitalWrite(ind_N, LOW);digitalWrite(ind_L, LOW);digitalWrite(ind_H, LOW);digitalWrite(ind_P, LOW);}
+else {digitalWrite(ind_P, HIGH);digitalWrite(ind_R, LOW);digitalWrite(ind_N, LOW);digitalWrite(ind_L, LOW);digitalWrite(ind_H, LOW);} 
+
+//  governor = analogRead(gov_pin);                                                      //Read governor analog input
+governor = map(analogRead(gov_pin), 1023, 0, 0, 1000);                               //Map or scale the governor's input from 0 to 1000
+
+if(act_gear == desired_gear)                                                         //Checks to ensure that the vehicle is in the gear that is desired
+{
+//    if(counter==1)                                                                    //If on the first iteration, formulate and send speed related commands (counter used to alternate between speed related commands and steering related commands)
+//    {  
+if(digitalRead(speed_vs_actuator))                                         //Checks whether the console indicates speed or actuator mode and assigns the command mode to the desired mode
+{
+//        command_mode = String("S");
+txdata.speedmode = 'S';
+}
+else
+{
+//        command_mode = String("A");
+txdata.speedmode = 'A';
+}
+
+
+desired_speed = analogRead(speed_pot_pin);                                        //Reads speed analog input from joystick
+desired_speed= map_joystick(joy_min_speed, joy_min_speed_deadband, joy_max_speed_deadband, joy_max_speed, analogRead(speed_pot_pin));                     //Maps speed analog input from joystick with speed potentiometer deadband
+
+
+//      if(act_gear == 'R')                                                              //If the vehicle is currently in reverse, the desired speed commands should be reversed so it intuitively makes sense to drive (in reverse if you push the joystick back, you will recieve throttle input and if you push it forward the brakes will be activated)
+//      {
+//        desired_speed = -1*desired_speed;
+//      }
+//GOVERNOR: (Sanity Check?)
+if(governor<desired_speed)                                                        //If the desired speed is greater than the governor input, govern the speed or throttle input from the joystick 
+{
+desired_speed = governor;
+}
+
+
+//     throttle_or_steer = String("V");                                                  //Set throttle_or_steer equal to "V" to indicate that this is a speed related command
+//     speed_string_to_send= command_type + comma + command_mode + comma + throttle_or_steer + comma + desired_speed; //Formulate speed related command
+//     Serial.println(speed_string_to_send);
+//     Serial1.println(speed_string_to_send);                                            //Send speed related command to vehicle via drive by wire
+//Serial2.println(speed_string_to_send);                                            //Send speed related command to vehicle via x-bee
+//delay(20);
+
+//    }
+
+//     if(counter>=2)                                                                    //If on the second iteration, formulate and send steering commands (counter used to alternate between speed related commands and steering related commands)
+//     {
+desired_steering = analogRead(steering_pot_pin);                                  //Reads analog input from steering potentiometer on joystick
+desired_steering= map_joystick(joy_min_steer, joy_min_steer_deadband, joy_max_steer_deadband, joy_max_steer, desired_steering);               //Maps or scales the analog steering input from joystick
+//    throttle_or_steer = String("W");                                                  //Set throttle_or_steer equal to "W" to indicate that this is a steering command
+
+//     steering_string_to_send= command_type + comma + command_mode + comma + throttle_or_steer + comma + desired_steering; //Formulate steering command
+//     Serial.println(steering_string_to_send);
+//     Serial1.println(steering_string_to_send);                                         //Send steering command to vehicle via drive by wire
+//Serial2.println(steering_string_to_send);                                         //Send steering command to vehicle via x-bee
+//     delay(20);
+//     counter = 0;                                                                      //Reset counter
+//     }
+
+//     counter = counter +1;                                                             //Keep count of iteration
+txdata.throttle_pos = desired_speed;
+txdata.gear = desired_gear;
+
+} // end of if(act_ger == desired_gear)
+
+txdata.steering_pos = desired_steering;
+txdata.packet_id=packet_id;
+packet_id++;
+ETout.sendData();
+//  ETdebug.sendData();
+}
+
+void batt_check()                                                                      //Function to check battery voltage in console
+{
+voltage_input = analogRead(Batt_Voltage_pin);                                        //Reads analog input of console battery voltage if in remote control mode or 12 volt voltage from vehicle if in drive by wire mode
+Batt_Voltage = voltage_input * .01468;                                               //Scales battery voltage input to display numerical value in volts
+lcd.setCursor(0, 3); lcd.print(Batt_Voltage);                                        //Prints battery voltage or 12 volt input to LCD screen
+}
+
+
+void loop()                                                                            //Main loop (iterates over and over)
+{
+mark = millis();
+//  if(digitalRead(serial_dbw_rc)==HIGH)                                                 //If the vehicle is in serial mode, call the serial_interface_fiunction
+//  {
+//   if(!serial_sw_last) //If the last state was LOW (manual), then clear the buffer
+//   {
+//      while(Serial.available()) {Serial.read();}
+//      serial_sw_last = true; 
+//   }
+//   serial_interface_function();
+//  }
+//  
+//  else                                                                                 //If the vehicle is in drive by wire or remote control mode, call the rc_dbw_function
+//  {
+rc_dbw_function();
+//    serial_sw_last = false;
+//  }
+aux_switch_read();                                                                  //Reads status of auxiliary rocker switches and pushbuttons and sends string to vehicle 
+
+//there's a loop here so that we run the recieve function more often then the 
+//transmit function. This is important due to the slight differences in 
+//the clock speed of different Arduinos. If we didn't do this, messages 
+//would build up in the buffer and appear to cause a delay.
+
+for(int i=0; i<2; i++){
+return_command(); 
+}
+
+//  if(Serial1.available())                                                              //If the Vehicle Mega is sending serial data back to the consol via wired serial link, read it and store it as return_string
+//  {return_string = Serial1.readStringUntil('\r');
+//  return_command(return_string);}                                                      //Call function return_command and pass the string return_string to it
+//  
+//  if(Serial2.available())                                                              //If the Vehicle Mega is sending serial data back to the consol via x-bee, read it and store it as return_string
+//  {return_string = Serial2.readStringUntil('\r');
+//  return_command(return_string);                                                        //Call function return_command and pass the string return_string to it
+//  Serial.println(return_string);}                                                      //Forward debug strings to usb port for debugging
+
+
+
+lcd.setCursor(0, 0); lcd.print("Speed =");                                                                      //write "Speed =" to LCD screen
+lcd.setCursor(8, 0); lcd.print("      ");                                                                       //write space to LCD screen
+lcd.setCursor(8, 0); lcd.print(act_speed);                                                                      //write current wheel speed to LCD screen
+
+steer_pos=act_steer.toInt();                                                                                    //Transform steering feedback from a string to an integer
+steer_pos=steer_pos / 10;                                                                                       //Transofrm steering feedback from -1000 to 1000 value from -100 to 100 so it can be displayed as a percentage
+lcd.setCursor(0, 1); lcd.print("Steering =");                                                                   //write "Steering =" to LCD screen
+lcd.setCursor(11, 1); lcd.print("         ");                                                                   //write space to LCD screen
+if (steer_pos<0) {lcd.setCursor(11, 1); lcd.print('L'); steer_pos=-steer_pos;                                 //If steering is negative, make positive percentage and put a L before it to indicate left
+lcd.setCursor(12,1); lcd.print(steer_pos); lcd.print("%");}                                                   //write "%" to LCD screen
+else if (steer_pos>0) {lcd.setCursor(11, 1); lcd.print('R');                                                  //If steering is negative, put a R before it to indicate right
+lcd.setCursor(12,1); lcd.print(steer_pos); lcd.print("%");}                                                   //write "%" to LCD screen
+else {lcd.setCursor(11, 1); lcd.print("Center");}                                                             //If steering feedback is zero, write center
+lcd.setCursor(0,2); lcd.print("Governor =");                                                                    //write "Governor =" to LCD screen
+lcd.setCursor(11, 2); lcd.print("         ");                                                                   //write space to LCD screen
+lcd.setCursor(11, 2);
+if(digitalRead(speed_vs_actuator)==HIGH)                                                                        //If in speed mode, map governor from 0 to maximum vehicle speed and display this in miles per hour
+{
+governor = map(governor, 0, 1000, 0, max_speed);
+lcd.print(governor); lcd.print(" MPH");
+}
+else                                                                                                            //If in actuator mode, map governor from 0 to 100 indicating a percentage of throttle input
+{
+governor = map(governor, 0, 1000, 0, 100);
+lcd.print(governor); lcd.print("%");
+}      
+lcd.setCursor(17, 3); lcd.print("RSL");                                                                          //Write RSL to the LCD screen to indicate ownership
+
+//Serial.println(LOOP_TIME - (millis()-mark));
+delay(LOOP_TIME - (millis()-mark));
+
+}
+
+\end{lstlisting}
+
+
+\section*{Console Arduino: comm\_definitions.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+//Includes comm definitions for binary serial packets
+
+struct CONSOLE_TO_ROVER{
+int packet_id;
+int steering_pos;
+int throttle_pos;
+char gear;
+char speedmode;
+bool aux[7];
+};
+
+struct ROVER_TO_CONSOLE{
+int rover_speed;
+int rover_steering;
+char rover_gear;
+bool voltage_error;
+bool temp_error; 
+bool armed_status;
+};
+
+
+\end{lstlisting}
+
+\section*{Console Arduino: config.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+int flash_rate = 300;                                     //Rate in milliseconds for LED flashing to indicate that the vehicle is in the process of shifting into a perspective gear
+int LED_delay=40;                                        //Time in milliseconds for initial LED flash to indicate that the vehicle is about to begin the process of shifting gears
+int max_speed = 40;                                       //Maximum speed of vehicle (gives the governor something to map to in speed mode)
+int Serial_timout = 25;                                   //Set the serial timeout for hardware serial ports
+
+// Joystick calibration values
+int joy_min_speed = 3;
+int joy_max_speed = 813;
+int joy_min_steer = 1;
+int joy_max_steer = 939;
+
+// Joystick deadband values -- in analog counts 
+int joy_min_speed_deadband = 311;
+int joy_max_speed_deadband = 379;
+int joy_min_steer_deadband = 316;
+int joy_max_steer_deadband = 395;
+
+const int LOOP_TIME = 80; // in milliseconds
+
+\end{lstlisting}
+
+\section*{Console Arduino: pin\_definitions.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+int steering_pot_pin = 0;                                 //Analog input pin associated with the steering potentiometer on the joystick
+int speed_pot_pin = 1;                                    //Analog input pin associated with the steering potentiometer on the joystick
+int gov_pin = 2;                                          //Analog input pin associated with the governor potentiometer
+
+int high_gear = 26;                                       //Digital input pin number that reads position of high gear pushbutton
+int low_gear = 25;                                        //Digital input pin number that reads position of high gear pushbutton
+int neutral_gear = 23;                                    //Digital input pin number that reads position of high gear pushbutton
+int reverse_gear = 22;                                    //Digital input pin number that reads position of high gear pushbutton
+int park_brake = 24;                                      //Digital input pin number that reads position of high gear pushbutton
+
+int speed_vs_actuator=27;                                 //Digital input pin number that reads position of speed versus actuator mode rocker switch
+int serial_dbw_rc=29;                                     //Digital input pin number that reads position of serial versus drive by wire or remote control mode rocker switch
+
+int aux_A=30;                                             //Digital input pin number for auxilliary rocker switch A 
+int aux_B=31;                                             //Digital input pin number for auxilliary rocker switch B
+int aux_C=32;                                             //Digital input pin number for auxilliary rocker switch C
+int aux_D=33;                                             //Digital input pin number for auxilliary rocker switch D 
+int aux_E=34;                                             //Digital input pin number for auxilliary rocker switch E
+
+int horn=35;                                              //Digital input pin number for auxilliary pushbutton H which is currently the horn 
+int aux_F=36;                                             //Digital input pin number for auxilliary pushbutton E
+
+int ind_H=37;                                             //LED pin associated with High Gear
+int ind_L=38;                                             //LED pin associated with Low Gear
+int ind_N=39;                                             //LED pin associated with Neutral Gear
+int ind_R=40;                                             //LED pin associated with Reverse Gear
+int ind_P=41;                                             //LED pin associated with Park Gear
+int ind_1=42;                                             //LED pin to indicate that the console is on
+int ind_2=43;                                             //LED pin to indicate that the vehicle is armed and ready to accept commands
+int ind_3=44;                                             //LED pin to indicate low battery on vehicle (This LED will illuminate if the 24 volt system falls below 21 volts or if the 12 volt system falls below 10 volts
+int ind_4=45;                                             //LED pin to indicate that the vehicle's temperature light is on (if this light stays on for more than 20 seconds, the emergency stop will be activated)
+int ind_5=46;                                             //Auxiliary LED pin number
+int ind_6=47;                                             //Auxiliary LED pin number
+int Batt_Voltage_pin = 3;                                 //Digital pin number to read battery voltage from f
+
+\end{lstlisting}
+
+\section*{Vehicle Mega Arduino: Vehicle\_Mega\_2016\_v2.ino}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+//RSL Rover 2016
+//Vehicle Mega code
+
+#include <Wire.h>
+#include <EasyTransfer.h>                                //Library for serial communication
+//#include <EasyTransferI2C_NL.h>
+#include "comm_definitions.h"
+#include "pin_definitions.h"
+#include "config.h"
+
+//Serial: USB: From ROS Computer
+//Serial1: From Consol
+//Serial2: To Steering and Transmission Motor Controller
+//Serial3: To Speed Controller
+
+//Setting up the serial communication buffers and processing objects
+ROVER_TO_CONSOLE console_txdata;
+CONSOLE_TO_ROVER console_rxdata;
+ROVER_TO_SPEED_ARDUINO spd_txdata;
+//SPEED_ARDUINO_TO_ROVER spd_rxdata;
+ROVER_TO_ROS ros_txdata;
+//TACH_TO_ROVER tach_rxdata;
+//Etin processes packets from the console to the VehicleMega
+//ETout processes packets from the VehicleMega to the console
+//ETspd_out processes packts from the VehicleMega to the speed arduino
+EasyTransfer ETin, ETout, ETspd_out, ETros; //ETspd_in,
+//EasyTransferI2C_NL ETtach;
+
+String command_type;   
+String command_mode;
+String throttle_or_steer;
+String steering_command;
+String speed_string_to_send;
+String steering_string_to_send;
+String gear_string_to_send;
+char desired_gear;
+char current_gear;
+String string_from_motor_controller;
+String mc_state;
+String steering_query;
+String feedback_to_consol;
+String feedback_to_consol_prefix;
+String feedback_to_ROS;
+String position_prefix;
+String suffix;
+String space;
+String comma;
+
+bool A_status;
+bool B_status;
+bool C_status;
+bool D_status;
+bool E_status;
+bool horn_status;
+bool F_status;
+
+String error_string;
+String error_string_previous;
+String temp;
+String voltage;
+
+int voltage_input = 0;                                            //Integer placeholder for analogRead of voltage divider circuits
+float Twenty_Four_V_Voltage = 0;                                  //24 Volt system voltage
+float Twelve_V_Voltage = 0;                                       //12 Volt system voltage
+
+int temp_count = 0;                                               //Counter used to ensure temp_start_time begins timing when the temperature light first comes on
+unsigned long temp_start_time = 0;                                //Absolute time recorded when the temperature light first turns on
+unsigned long temp_end_time = 0;                                  //Absolute time recorded every time an iteration occurs with the temperature light on
+unsigned long temp_time = 0;                                      //Time that the temperature light has been on (temp_end_time - temp_start_time)
+
+int e_stop_state = LOW;                                           //if high, e-stop will be activated (acts as a toggle and if statements can be added anywhere in the code to toggle emergency stop mode on)
+int e_brake_state = HIGH;                                         //Emergency brake state:  HIGH is on, LOW is off
+int contact_with_consol = LOW;                                    //Once the Vehicle Mega makes initial contact with the console, this state turns HIGH 
+
+int counter = 0;                                                  //used to control the intermittent sending of data
+int estoppin = 0;
+
+int desired_speed = 0;                                            //Used to send a desired speed to the speed controller when changing gears                          
+float wheel_speed = 0;                                              //Current wheel speed
+
+int desired_throttle = 0;
+
+int gear_position = 0;                                            //Desired position to send to gear actuator
+int channel=1;                                                    //Channel used to formulate strings to send to motor controllers (either 1 for steering or 2 for transmission command)
+int steering_position=0;                                          //Desired steering position parsed from console
+int act_steering_position = 0;                                    //Current steering position as querried from the steering motor controller (to be sent as feedback to the console)                                      
+int comma_index_1;                                                //Index of first comma in a string (for parsing)
+int comma_index_2;                                                //Index of second comma in a string (for parsing)
+int comma_index_3;                                                //Index of third comma in a string (for parsing)
+unsigned long e_stop_time_1 = 0;                                  //Records the start time when the last console contact occurred
+unsigned long e_stop_time_2 = 0;                                  //Records the end time when the next console contact occurred
+unsigned long e_stop_time = 0;                                    //Difference between e_stop_time_2 and e_stop_time_1 (compared to dead_man_timout)
+int estop_code = 0;
+
+unsigned long tic = 0;                                                //Used for evaluating how long it takes to run the main loop
+unsigned long toc = 0;
+
+float tach_spd_i2c = 0.0;                                         //Variable for storing the speed reported by the tach arduino
+long tach_pos_i2c = 0.0;                                          //Variable for storing the position as reported by the tach arduino
+byte i2c_in[32];                                                  //Buffer for i2c 
+float engine_rpm = 0.0;
+
+union float_tag {                                                  //Unions used for storing the i2c data as a byte but getting it as a float or long
+byte b[4];
+float fval;
+} u_f;
+union long_tag {
+byte b[4];
+long lval;
+} u_l;
+
+long int last_steering_sent;
+long lastSendTime;
+
+void setup()                                                      //Runs before the main loop to initialize everything
+{
+pinMode(ebrake_relay_pin, OUTPUT);                              //Sets the emergency brake relay pin to output (same as parking brake)
+digitalWrite(ebrake_relay_pin, e_brake_state);                  //Writes the startup emergency brake state to emergency brake pin
+
+pinMode(e_stop_relay_pin, OUTPUT);                              //Sets the emergency stop relay pin to output
+digitalWrite(e_stop_relay_pin, e_stop_state);                   //Writes the startup emergency stop state to emergency stop pin
+
+pinMode(horn_relay_pin, OUTPUT);                                //Sets the horn relay pin to output
+digitalWrite(horn_relay_pin, LOW);                              //Writes the startup horn state to horn pin (LOW is off)
+
+pinMode(beacon_relay_pin, OUTPUT);                              //Sets the beacon relay pin to output 
+digitalWrite(beacon_relay_pin, LOW);                            //Writes the startup emergency stop state to emergency stop pin
+
+// Open serial communications and wait for port to open:
+Serial.begin(115200);                                             //Serial to/from USB or serial monitor (sets baud rate and opens serial port)
+Serial.setTimeout(Serial_timout);                               //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+Serial1.begin(115200);                                            //Serial to/from the Console (sets baud rate and opens serial port)
+Serial1.setTimeout(Serial_timout);                              //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+Serial2.begin(115200);                                          //Serial to/from steering and transmission motor controller (sets baud rate and opens serial port)
+Serial2.setTimeout(Serial_timout);                              //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+Serial3.begin(115200);                                            //Serial to/from Speed Controller (sets baud rate and opens serial port)
+Serial3.setTimeout(Serial_timout);                              //If the serial buffer misses the '\r' character, it will read a really long string.  Setting the timeout ensures that if the controller recieves a long garbage string, it will not waste time reading it
+
+pinMode(20,INPUT_PULLUP);
+pinMode(21,INPUT_PULLUP);
+Wire.begin();                                                  //Setup I2C Bus as Master to communicate with the tach arduino
+
+ETin.begin(details(console_rxdata), &Serial1);
+ETout.begin(details(console_txdata), &Serial1);
+ETspd_out.begin(details(spd_txdata), &Serial3);
+//ETspd_in.begin(details(spd_rxdata), &Serial3);
+ETros.begin(details(ros_txdata), &Serial);
+
+pinMode(temp_warning, INPUT);                                   //Sets the temp_warning pin as an input (HIGH or LOW)
+pinMode(reverse, INPUT);                                        //Sets the reverse gear pin as an input (HIGH or LOW)
+pinMode(neutral, INPUT);                                        //Sets the neutral gear pin as an input (HIGH or LOW)
+pinMode(low, INPUT);                                            //Sets the low gear pin as an input (HIGH or LOW)
+pinMode(high, INPUT);                                           //Sets the high gear pin as an input (HIGH or LOW)
+pinMode(wheel_speed_pin, INPUT);                                //Sets the wheel speed pin as an input (PWM)
+pinMode(47,INPUT);
+
+//  consol_input_string = String("");                               //String from console
+//  ros_input_string = String("");                                  //Command string from ROS
+command_type = String("");                                      //Parsed from consol_input_string: C for command, ? for querries (not yet involved), etc
+command_mode = String("");                                      //Parsed from consol_input_string: A for actuator, S for speed control modes
+throttle_or_steer = String("");                                 //Parsed from consol_input_string: W for steering command, V for speed related commands
+steering_command = String("");                                  //Parsed from consol_input_string: Value from -1000 to 1000 
+steering_string_to_send = String("");                           //Formulated string to send as a steering motor command to steering and transmission motor controller
+speed_string_to_send = String("");                              //Formulated string to send as a command to speed controller
+gear_string_to_send = String("");                               //Formulated string to send as a transmission motor command to steering and transmission motor controller
+desired_gear = ' ';                                      //Parsed from consol_input_string: H for high, L for low, N for neutral, R for reverse, P for park
+current_gear = 'N';                                     //Current gear that the vehicle is in: H for high, L for low, N for neutral, R for reverse, P for park
+
+steering_query = String("?TR 1");                               //Query to be sent to steering and transmission motor controller (Asks motor controller what the current steering position is as a value from -1000 to 1000)
+string_from_motor_controller = String("");                      //String sent from steering and transmission motor controller
+mc_state = String("");                                     //State of the steering and transmission motor controller: "Ready" when ready to take commands "Starting" when performing startup procedure
+feedback_to_consol = String("");                                //Feedback string to console includes wheel speed, current gear, and current steering position
+feedback_to_consol_prefix = String("F");                        //Prefix for feedback_to_consol so console recognizes this as feedback and not an error string
+feedback_to_ROS = String("");                                   //Feedback to send over USB Serial
+
+suffix = String ("\r");                                         //Return character to send at the end of command or query to motor controller (denotes the end of a string of data)
+space= String(" ");                                             //Space needed in motor controller commands
+comma = String(",");                                            //Comma used mainly to separate variables for data logging
+position_prefix = String("!g");                                 //"!g" is how absolute position commands to motor controllers begin
+
+//  A_status = String("");                                 //String parsed from aux_string to indicate that auxiliary button A is in the on position ("A" if read HIGH, "X" if read LOW)
+//  B_status = String("");                                 //String parsed from aux_string to indicate that auxiliary button B is in the on position ("B" if read HIGH, "X" if read LOW)
+//  C_status = String("");                                 //String parsed from aux_string to indicate that auxiliary button C is in the on position ("C" if read HIGH, "X" if read LOW)   
+//  D_status = String("");                                 //String parsed from aux_string to indicate that auxiliary button D is in the on position ("D" if read HIGH, "X" if read LOW)
+//  E_status = String("");                                 //String parsed from aux_string to indicate that auxiliary button E is in the on position ("E" if read HIGH, "X" if read LOW)
+//  F_status = String("");                                 //String parsed from aux_string to indicate that auxiliary button F is in the on position ("F" if read HIGH, "X" if read LOW)
+//  horn_status = String("");                              //String parsed from aux_string to indicate that auxiliary button H (Horn) is in the on position ("H" if read HIGH, "X" if read LOW)
+
+error_string = String("XXXX");
+error_string_previous = String("XXXX");
+temp = String("X");
+voltage = String("X");
+
+//Casues Vehicle Mega to wait for contact from the consol to enter the main loop so that the emergency stop is not hit if the console is powered up after the vehicle
+Serial.println("M,Done setting up ... waiting on console contact");
+
+top:
+if(!ETin.receiveData())  
+{
+delay(50);
+goto top;
+}
+else
+{
+Serial.println("M,Console Contacted! Waiting 4.5s");
+delay(4500);
+Serial.println("M,Done Waiting!");
+}
+last_steering_sent=millis();  
+lastSendTime = millis(); // For comm sending delays
+Serial.println("M,Starting Main Loop");
+
+}
+
+void readFromSpd()
+{
+//if(ETspd_in.receiveData())
+//{
+//engine_rpm = spd_rxdata.engine_rpm; 
+//}
+}
+
+void readFromTach()
+{
+//    if(ETtach.receiveData(TACH_SLAVE_ADDRESS)) {
+//       tach_pos_i2c = tach_rxdata.pos;
+//       tach_spd_i2c = tach_rxdata.spd;
+//    }
+
+Wire.requestFrom(TACH_SLAVE_ADDRESS, 8);    // request 8 bytes from slave device 0x60
+int readcount = 0;
+while (Wire.available()) { // slave may send less than requested
+i2c_in[readcount] = Wire.read(); // receive a byte as character
+readcount++;
+}
+/*
+float tach_wheespd_i2c = 0.0;
+long tach_pos_i2c = 0.0;
+*/
+//Serial.println("M,Good Tach Contact");
+//Convert raw bytes to a float and a long for speed and position respectively using unions
+u_f.b[0]=i2c_in[0];
+u_f.b[1]=i2c_in[1];
+u_f.b[2]=i2c_in[2];
+u_f.b[3]=i2c_in[3];
+tach_spd_i2c = u_f.fval;
+u_l.b[0]=i2c_in[4];
+u_l.b[1]=i2c_in[5];
+u_l.b[2]=i2c_in[6];
+u_l.b[3]=i2c_in[7];
+tach_pos_i2c = u_l.lval;
+wheel_speed = tach_spd_i2c;  //0.148749652 * 
+console_txdata.rover_speed = tach_spd_i2c;
+//     Serial.println("M.TachSPD:" + String(int(tach_pos_i2c)));
+}
+
+void error_check()                                        //Checks the vehicle's systmes for errors (currently the only errors being checked for are temperature light, under voltage, and letting the console know that the vehicle is armed)
+{
+if(digitalRead(temp_warning) == HIGH)                    //Checks the digital pin that is tapped into the temperature light on the dash (if the temperature light is on, the pin will read HIGH)                       
+{
+console_txdata.temp_error = true; 
+ros_txdata.temp_warn = true;
+temp = String("T");                                    //Puts a "T" in the designated temperature warning place in error_string (indicating that the temperature light is on)
+temp_count = temp_count + 1;                           //Counts iterations that the temperature light has been on
+
+if(temp_count == 1)                                    //Ensures that the timer will start for the temperature light when the light first comes on
+{
+temp_start_time = millis();                           //Assigns the start time on the first iteration that the temperature light has been on
+}
+
+temp_end_time = millis();                              //Assigns the end time each iteration that the temperature light is on for
+temp_time = temp_end_time - temp_start_time;           //Calculates the total time that the temperature light has been on for
+
+if(temp_time >= temp_time_limit)                       //Checks to see if the temperature light has been on for longer than the designated temperature time limit
+{
+Serial.println("M, ESTOP DUE TO ENGINE TEMP");
+estop_code=3;
+e_stop_state = HIGH;                                  //If the temperature light has been on for longer than the temperature time limit, the emergency stop is activated
+}
+}
+else                                                     //If the temperature light is off
+{
+console_txdata.temp_error = false;
+ros_txdata.temp_warn = false;
+temp = String("X");                                    //Puts a "X" in the designated temperature warning place in error_string (indicating that the temperature light is off)
+temp_count = 0;                                        //Resets the counter
+}
+}
+
+void check_voltage()                                              //Function to check the on-vehicle voltage levels
+{
+voltage_input = analogRead(Twelve_V_Voltage_pin);               //Reads analog value from Twelve_V_Voltage_pin
+Twelve_V_Voltage = voltage_input * .01468;                      //Scales voltage_input 
+voltage_input = analogRead(Twenty_Four_V_Voltage_pin);          //Reads analog value from Twelve_V_Voltage_pin
+Twenty_Four_V_Voltage = voltage_input * .03205;                 //Scales voltage_input 
+
+if((Twelve_V_Voltage <= threshold_e_stop_12_v) || (Twenty_Four_V_Voltage <= threshold_e_stop_24_v)) //Checks to make sure voltage levels are above emergency stop threshold levels and activates emergency stop if they are not
+{
+Serial.println("M, ESTOP DUE TO LOW BATTERY");
+Serial.println("M, 24V -> " + String(int(round(Twenty_Four_V_Voltage*1000)))+"E-3");
+Serial.println("M, 12V -> " + String(int(round(Twelve_V_Voltage*1000)))+"E-3");
+console_txdata.voltage_error = true;
+estop_code=2;
+e_stop_state = HIGH;
+}
+
+else if((Twelve_V_Voltage <= threshold_warning_12_v) || (Twenty_Four_V_Voltage <= threshold_warning_24_v)) //Checks to make sure voltage levels are above temperature light warning threshold levels and activates temperature light if they are not
+{
+voltage = String("V");                                        //Puts a "V" in the designated temperature warning place in error_string (indicating that one of the vehicle's systems is under voltage)
+console_txdata.voltage_error = true;
+ros_txdata.voltage_warn = true;
+}
+
+else
+{
+voltage = String("X");                                        //Puts a "X" in the designated temperature warning place in error_string (indicating that the vehicle's voltage levels are not too low)
+console_txdata.voltage_error = false;
+ros_txdata.voltage_warn = false;
+}
+
+}
+
+void aux_switch_parse()                                           //Function to parse the auxiliary switch string from console
+{
+
+//  A_status = consol_input_string.substring(2, 3);                 //Status of rocker switch A on console("A" for on, "X" for off)
+//  B_status = consol_input_string.substring(3, 4);                 //Status of rocker switch B on console("B" for on, "X" for off)
+//  C_status = consol_input_string.substring(4, 5);                 //Status of rocker switch C on console("C" for on, "X" for off)
+//  D_status = consol_input_string.substring(5, 6);                 //Status of rocker switch D on console("D" for on, "X" for off)
+//  E_status = consol_input_string.substring(6, 7);                 //Status of rocker switch E on console("E" for on, "X" for off)
+//  F_status = consol_input_string.substring(7, 8);                 //Status of pushbutton F on console("F" for on, "X" for off)
+//  horn_status = consol_input_string.substring(8, 9);              //Status of pushbutton H on console("H" for on, "X" for off)
+
+A_status = console_rxdata.aux[0];
+B_status = console_rxdata.aux[1];
+C_status = console_rxdata.aux[2];
+D_status = console_rxdata.aux[3];
+E_status = console_rxdata.aux[4];
+F_status = console_rxdata.aux[5];
+horn_status = console_rxdata.aux[6];
+
+ros_txdata.A = A_status;
+ros_txdata.B = B_status;
+ros_txdata.C = C_status;
+ros_txdata.D = D_status;
+ros_txdata.E = E_status;
+ros_txdata.Horn = horn_status;
+ros_txdata.F = F_status;
+
+if(horn_status)                                                 //If the horn button on the console has been pressed, activate the horn relay
+{
+digitalWrite(horn_relay_pin, HIGH);                           
+}
+else                                                            //If the horn button on the console has not been pressed, make sure the horn is off
+{
+digitalWrite(horn_relay_pin, LOW);
+}
+
+}
+
+void gear_change()                      //Function called when a gear change is desired
+{
+desired_gear = console_rxdata.gear;
+
+if (desired_gear != current_gear)                               //Only changes if the desired gear and current gear are differnet
+{
+desired_speed = -500;                                          //Sets up a string to sent to the Speed Controller to apply the brake while the gear is changed so that throttle will be zero and the brake will be applied for you if you are on a hill changing gears
+//   command_type = String("C");
+//   command_mode = String("A");
+//   throttle_or_steer = String("V");
+//   speed_string_to_send= space + command_type + comma + command_mode + comma + throttle_or_steer + comma + desired_speed;
+
+//   Serial3.println(speed_string_to_send);                         //Sends string to Speed Controller to apply brakes
+if (desired_gear == 'H')                                      //If desired gear is High
+{
+gear_position = 1000;                                       //Transmission actuator position associated with High
+e_brake_state = LOW;                                        //Ensures emergency brake is off
+digitalWrite(ebrake_relay_pin, e_brake_state);              
+}
+
+else if(desired_gear == 'L')                                  //If desired gear is Low
+{
+gear_position = 103;                                        //Transmission actuator position associated with Low
+e_brake_state = LOW;                                        //Ensures emergency brake is off
+digitalWrite(ebrake_relay_pin, e_brake_state);
+}
+
+else if(desired_gear == 'N')                                  //If desired gear is Neutral
+{
+gear_position = -449;                                       //Transmission actuator position associated with Neutral
+e_brake_state = LOW;                                        //Ensures emergency brake is off
+digitalWrite(ebrake_relay_pin, e_brake_state);
+}
+
+else if(desired_gear == 'R')                                  //If desired gear is Reverse
+{
+gear_position = -1000;                                      //Transmission actuator position associated with Reverse
+e_brake_state = LOW;                                        //Ensures emergency brake is off
+digitalWrite(ebrake_relay_pin, e_brake_state);
+}
+
+else if(desired_gear == 'P')                                  //If desired gear is Park
+{
+gear_position = -449;                                       //Transmission actuator position associated with Neutral
+e_brake_state = HIGH;                                       //Applies parking brake
+digitalWrite(ebrake_relay_pin, e_brake_state);
+}
+else
+{
+desired_gear = current_gear;
+}
+
+channel = 2; 
+gear_string_to_send = position_prefix + space + channel + space + gear_position;
+Serial2.println(gear_string_to_send);
+//    Serial.println(gear_string_to_send);
+//    current_gear_function();
+}
+
+else                                                          //When the gear is done changing, the brake is released
+{
+//desired_speed = 0;                                            //Brake off and throttle at zero
+//speed_string_to_send= space + space + command_type + comma + command_mode + comma + throttle_or_steer + comma + desired_speed;
+//while(Serial1.available()){Serial1.read();}       //clear serial buffer
+//Serial3.println(speed_string_to_send);                        //Send the speed command on the the Speed Controller
+}
+}
+
+void current_gear_function()                                      //Updates the current gear
+{
+if(digitalRead(high) == HIGH)                                    //If the high gear indicator light on the vehicle is on
+{
+current_gear = 'H';                                            
+}
+
+else if(digitalRead(low) == HIGH)                               //If the low gear indicator light on the vehicle is on
+{
+current_gear = 'L';
+}
+
+else if(digitalRead(neutral) == HIGH)                           //If the neutral gear indicator light on the vehicle is on
+{
+if (e_brake_state == LOW)                                    //If parking brake is off, and vehicle in neutral, the vehicle is simply in neutral
+{
+current_gear = 'N';
+}
+else if(e_brake_state == HIGH)                               //If parking brake is on, and vehicle in neutral, the vehicle is in park
+{
+current_gear = 'P';
+}
+}
+
+else if(digitalRead(reverse) == HIGH)                           //If the reverse gear indicator light on the vehicle is on
+{
+current_gear = 'R';
+}
+console_txdata.rover_gear = current_gear;
+}
+
+
+void control_command()//String consol_input_string)                                               //Called when the string from Vehicle Mega is a control command
+{  
+steering_position = console_rxdata.steering_pos;
+spd_txdata.speedmode = console_rxdata.speedmode;
+
+if(desired_gear == 'P')
+{
+desired_throttle = -800;
+}
+else
+{
+desired_throttle = console_rxdata.throttle_pos;
+}
+
+spd_txdata.throttle_pos = desired_throttle;
+//Serial.println(spd_txdata.throttle_pos);
+if(millis()-last_steering_sent > steering_cmd_rate){
+steering_string_to_send = position_prefix + " 1 " + steering_position;
+Serial2.println(steering_string_to_send);
+}
+
+if(abs(wheel_speed)<=1)                                                //If the console input string is a gear change string and the absolute value of wheel speed is below 1 mph (Trying not to grind gears!)
+{ 
+gear_change();//consol_input_string);                                                           //Call gear change function
+}
+}  
+
+boolean IsNumeric(String str) {
+for(char i = 0; i < str.length(); i++) {
+if ( !(isDigit(str.charAt(i)) || str.charAt(i) == '.' )) {
+return false;
+}
+}
+return true;
+}
+
+void parseSteeringControllerFeedback()
+{
+if (Serial2.available())                                                                      //Read String from transmission and steering motor controller
+{
+string_from_motor_controller = Serial2.readStringUntil('\r');
+}
+if(string_from_motor_controller.startsWith("TR"))                                             //If the string is a response to the steering position query
+{
+string_from_motor_controller = string_from_motor_controller.substring(3);                     //Parse the numerical value from the query response
+if(IsNumeric(string_from_motor_controller) & string_from_motor_controller != "") {
+act_steering_position = string_from_motor_controller.toInt();                                 //Convert this numerical value from a string to intiger
+console_txdata.rover_steering = act_steering_position;
+}
+if(act_steering_position == 0)
+{
+Serial.println(string_from_motor_controller); 
+}
+}
+
+else if(string_from_motor_controller.startsWith("Starting"))                                  //If the motor controller is executing its startup procedure
+{
+mc_state = string_from_motor_controller;                                                    //Set mc_state to "Starting"
+console_txdata.armed_status = false;
+}
+
+else if(string_from_motor_controller.startsWith("Ready"))                                     //When the motor controller is finished executing the startup procedure, the mc_state changes to "Ready"
+{
+mc_state = string_from_motor_controller;
+digitalWrite(beacon_relay_pin, HIGH);                                                       //Lights up beacon to demonstrate vehicle is armed and ready
+console_txdata.armed_status = true;
+//Serial2.println("^TELS \"?TR:#200\"");
+}
+}
+
+void loop()                                                                                     
+{
+int mark = millis();
+tic = millis();
+if(ETin.receiveData())                                                                         //If the rover recieves a valid packet from the console
+{
+//    Serial.print("DATA! "); Serial.println(console_rxdata.packet_id);
+e_stop_time_1 = millis();        //Record emergency stop start time (if contact with console is lost, the start time will stop updating itself)
+}
+
+//  if(Serial.available())                                                                        // If data is available on the USB Serial ... AKA from ROS
+//  {
+//     if(A_status)                                                                   // AND if the "A" aux switch is ON
+//     {
+//       //ros_input_string = Serial.readStringUntil('\r');                                         //Process the serial buffer as a command string
+//       //TODO: ROS COMMAND INTERPRETATION
+//     }
+//     else
+//     {
+//        while(Serial.available() > 0) {                                                         //Flush the serial buffer so that when autonomous mode is switched on, no cached commands are executed
+//          char t = Serial.read();
+//        }
+//     }
+//  }
+
+//calculate the difference in time between our last console contact and now
+//if this time exceeds *dead_man_timeout* then we need to estop the vehicle
+//because we have lost contact with the console
+
+e_stop_time_2 = millis();                                                                     //Record emergency stop end time                   
+e_stop_time = e_stop_time_2 - e_stop_time_1;                                                  //Time between start and stop for dead man switch 
+if(e_stop_time >= dead_man_timout)                                                            //If difference in time is greater than the dead-man timeout, toggle on the emergency stop system
+{
+estop_code=1;
+e_stop_state = HIGH;    //Indicates the emergency stop system is engaged
+Serial.println("M,ESTOP Due to Communication Timeout");
+}
+
+if(e_stop_state == HIGH)                                                                      //If emergency stop state is HIGH, write low to the emergency stop relay to engage the emergency stop system
+{
+ros_txdata.estop = true;
+digitalWrite(e_stop_relay_pin, LOW);
+Serial.println("M,ESTOP! Relay Set!");
+}
+else                                                                                          //Otherwise write the emergency stop relay pin HIGH to keep the emergency stop system off
+{
+ros_txdata.estop = false;
+digitalWrite(e_stop_relay_pin, HIGH);
+}
+
+if(mc_state == "Ready")                                                                       //Ensuring that the motor controller is not executing its startup procedure
+{
+if(counter%5==0)
+{
+Serial2.println(steering_query);                                                          //Prints steering_query to transmission and steering motor controller
+}
+counter++;
+
+control_command();
+aux_switch_parse();
+}
+
+parseSteeringControllerFeedback();
+readFromTach(); 
+readFromSpd();
+current_gear_function();                                                                      //Function call to determine the current gear
+check_voltage();                                                                              //Function call to check voltages
+error_check();                                                                                //Function call to check the vehicle for errors and either alert the console or activate the emergency stop
+if(millis() - lastSendTime > MAX_XBEE_SEND_RATE) {
+lastSendTime = millis();
+ETout.sendData();                                                                             //Send data packet back to consol
+ETspd_out.sendData();    //Send data packet to the speed arduino
+sendFeedbackToROS();
+}
+//  Serial.print("LT: ");
+//  Serial.println(millis()-mark);
+}
+
+void sendFeedbackToROS()
+{
+//Packet format from Rover -> ROS
+// Comma delimited 
+//1: R (char)
+//2: Timestamp (unsigned long): milliseconds since arduino epoch
+//3: Loop time (unsigned long): number of millieconds to complete loop
+//4: Actual Steering Position (int): steering position [-1000 1000] as reported by the motor controller
+//5: Commanded Steering Position (int): current steering setpoint (format same as actual steering pos)
+//6: Wheel speed: (float) Wheel speed in mph [-40,40]
+//7: Desired Speed: (float) setpoint from [-1000 1000]???? maybe?
+//8: Current Gear (char): [P,N,L,H,R]
+//9: Desired Gear (char): [P,N,L,H,R]
+//toc = millis();
+//feedback_to_ROS = "R," + String(millis()%10000) + comma + ((toc-tic)) +  comma + act_steering_position + comma + steering_position + comma + (wheel_speed*1000) + comma + desired_speed + comma + current_gear + comma + desired_gear;
+ros_txdata.wheel_speed = wheel_speed*60.0/444.0; //converts to wheel revs
+ros_txdata.wheel_pos = float(tach_pos_i2c)/444.0;//converst to rpm
+ros_txdata.desired_throttle = desired_throttle;
+ros_txdata.desired_gear = desired_gear;
+ros_txdata.actual_gear = current_gear;
+ros_txdata.desired_steering = steering_position;
+ros_txdata.actual_steering = act_steering_position;
+ros_txdata.time = millis();
+ros_txdata.estop_code = estop_code;
+ros_txdata.engine_rpm = engine_rpm;
+ETros.sendData();
+//Serial.println(feedback_to_ROS);  
+}
+
+\end{lstlisting}
+
+\section*{Vehicle Mega Arduino: comm\_definitions.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+// Structures to define binary communication protocols
+struct CONSOLE_TO_ROVER{
+int packet_id;
+int steering_pos;
+int throttle_pos;
+char gear;
+char speedmode;
+bool aux[7];
+};
+
+struct ROVER_TO_CONSOLE{
+int rover_speed;
+int rover_steering;
+char rover_gear;
+bool voltage_error;
+bool temp_error; 
+bool armed_status;
+};
+
+struct ROVER_TO_SPEED_ARDUINO{
+int throttle_pos;
+char speedmode;  
+};
+
+struct SPEED_ARDUINO_TO_ROVER{
+float engine_rpm;
+};
+
+struct TACH_TO_ROVER {
+float spd;
+long int pos;
+};
+
+struct ROVER_TO_ROS {
+long time;
+float wheel_pos;
+float wheel_speed;
+int desired_throttle;
+char desired_gear;
+char actual_gear;
+int desired_steering;
+int actual_steering;
+boolean temp_warn;
+boolean voltage_warn;
+boolean estop;
+boolean A;
+boolean B;
+boolean C;
+boolean D;
+boolean E;
+boolean Horn;
+boolean F;
+int estop_code;
+float engine_rpm;
+};
+
+\end{lstlisting}
+
+\section*{Vehicle Mega Arduino: config.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+//Configurations and thresholds
+
+const int temp_time_limit = 20000;                                      //Time in milliseconds to allow the temperature light to stay on before activating emergency stop (important safeguard to prevent serious engine damage)
+
+const int threshold_warning_12_v = 11;                                  //12 Volt threshold to give low battery warning on console
+const int threshold_warning_24_v = 21;                                  //24 Volt threshold to give low battery warning on console
+const int threshold_e_stop_12_v = 7;                                    //12 volt threshold to activate emergency stop
+const int threshold_e_stop_24_v = 19;                                   //24 volt threshold to activate emergency stop
+
+const int Serial_timout = 100;                                          //Set the serial timeout for hardware serial ports
+
+const int dead_man_timout = 750;                                        //If the Vehicle Mega loses contact with the console for more than the dead_man_timout (in milliseconds), the emergency stop will be hit 
+
+const int steering_cmd_rate = 25;
+
+const int MAX_XBEE_SEND_RATE = 80;
+
+\end{lstlisting}
+
+\section*{Vehicle Mega Arduino: pin\_definitions.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+//This file defines the vehicle mega pinout
+
+#define TACH_SLAVE_ADDRESS 0x60 //Slave address for the tach arduino for i2c
+#define SPD_SLAVE_ADDRESS 0x61 //Slave address for the arduino speed controller
+
+const int Twenty_Four_V_Voltage_pin = 8;                                //24 Volt system voltage input pin
+const int Twelve_V_Voltage_pin = 9;                                     //12 Volt system voltage input pin
+
+const int temp_warning = 10;                                            //Digital input pin for vehicle's temp warning light  
+const int reverse = 9;                                                  //Digital input pin for vehicle's reverse gear light  
+const int neutral = 8;                                                  //Digital input pin for vehicle's neutral gear light                                          
+const int low = 7;                                                      //Digital input pin for vehicle's low gear light
+const int high = 6;                                                     //Digital input pin for vehicle's high gear light
+
+const int ebrake_relay_pin = 2;                                         //Emergency brake relay pin
+const int horn_relay_pin = 3;                                           //Horn relay pin
+const int e_stop_relay_pin = 4;                                         //Emergency stop relay pin
+const int beacon_relay_pin = 5;                                         //Relay pin for beacon on rollcage
+
+const int wheel_speed_pin = 11;                                         //PWM wheel speed pin from the Axle Tachometer Interpreter
+
+\end{lstlisting}
+
+\section*{Environmental Sensing Unit: enviro.ino}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+  #include "pin_definitions.h"
+  #include "comm_definitions.h"
+  #include <TimerOne.h>
+  #include <idDHTLib.h>
+  #include <EasyTransfer.h>
+  
+  volatile int dustval = 0; //Analog reading of the dust sensor. Set in the software interrupt IRQ
+  volatile long cnt = 0;    //Counts number of software interrupt timer iterations betwwen 555 timer input and taking the ADC reading
+  
+  //DHT22 - Humidity callback declaration
+  void dhtLib_wrapper(); // must be declared before the lib initialization
+  
+  //DHT22 - Humidity Lib instantiate
+  idDHTLib DHTLib(DHT_PIN,digitalPinToInterrupt(DHT_PIN),dhtLib_wrapper);
+  
+  // East Transfer (communicate to ROS)
+  EasyTransfer ET;
+  
+  // DHT Callback Function
+  void dhtLib_wrapper() {
+  DHTLib.dht22Callback(); // Change dht11Callback() for a dht22Callback() if you have a DHT22 sensor
+  }
+  
+  // Hardware ISR triggered on the falling edge of the VLED signal 
+  void callback()
+  {
+  cnt = 0;
+  Timer1.attachInterrupt(SW_IRQ);
+  }
+  
+  // Software ISR triggered by the hardware ISR - for reading the dust sensor
+  void SW_IRQ()
+  {
+  if(cnt > 4) // Wait 5 iterations
+  {
+  digitalWrite(DEBUG_PIN, HIGH); // Set output pin high (purely for debugging purposes)
+  dustval = analogRead(A0); //Read the dust sensor signal in
+  digitalWrite(DEBUG_PIN, LOW); // Set output pin low (purely for debugging purposes)
+  Timer1.detachInterrupt(); // Disable software interrupt until the hardware interrupt is triggered again
+  }
+  cnt++;
+  }
+  
+  void setup() {
+  //Setup the Serial communications
+  Serial.begin(115200); //Debug
+  Serial.println("\nStartup");
+  Serial.print("Begin Intialization ... ");
+  // Initialize the timer for driving the fan PWM and software interrupts
+  Timer1.initialize(40);
+  
+  
+  //Register EasyTransfer 
+  ET.begin(details(packet), &Serial); 
+  
+  //Set pin mode for diagnostic output for determining if we are reading the 
+  // dust sensor at the right time
+  pinMode(DUST_SENSOR_DEBUG,OUTPUT);
+  digitalWrite(DUST_SENSOR_DEBUG,LOW);
+  
+  //Setup the interrupt to catch the VLED line falling to start triggering the analog read process
+  pinMode(DUST_SENSOR_PULSE_IN,INPUT); 
+  
+  //Set the fan speed to 90% of maximum
+  setFanSpd(90);
+  
+  //Wait 2 seconds to allow the DHT sensor to initialize
+  delay(2000);
+  Serial.println("DONE");
+  
+  }
+  
+  void loop() {
+  //Read the humidity sensor
+  readHumiditySensor(); 
+  //Store the dust sensor value (set by interrupt)
+  packet.dust_v = dustval;
+  //Read the gas and temperature sensors
+  readGasSensors();
+  readTempSensor();
+  //Send the data back to ROS
+  ET.sendData();
+  //Attach hardware interrupts, wait 1 sec and then detach to safely access volatile variables
+  attachInterrupt(digitalPinToInterrupt(DUST_SENSOR_PULSE_IN),callback, FALLING); 
+  delay(1000);
+  detachInterrupt(digitalPinToInterrupt(DUST_SENSOR_PULSE_IN));
+  }
+  
+  void readHumiditySensor() {
+  //Code more or less copied from the library example - minus some debug statements
+  DHTLib.acquire();
+  while (DHTLib.acquiring());
+  int result = DHTLib.getStatus();
+  if(result == IDDHTLIB_OK)
+  {
+  packet.dht_humid = DHTLib.getHumidity();
+  packet.dht_temp = DHTLib.getCelsius();
+  }
+  }
+  
+  void readGasSensors() {
+  //Reading in all gas sensor values
+  packet.MQ4 = analogRead(MQ4_PIN);
+  packet.MQ135 = analogRead(MQ135_PIN);
+  packet.MQ9 = analogRead(MQ9_PIN);
+  packet.MQ2 = analogRead(MQ2_PIN);
+  packet.MQ5 = analogRead(MQ5_PIN);
+  packet.MQ6 = analogRead(MQ6_PIN);
+  packet.MQ7 = analogRead(MQ7_PIN);
+  packet.MQ8 = analogRead(MQ8_PIN);
+  }
+  
+  void readTempSensor() {
+  packet.TMP36 = (analogRead(TMP36_PIN)*(5000.0/1024.0)-500)/10; 
+  }
+  
+  void setFanSpd( float percent ) {
+  //We need to supply a 25 kHz PWM signal and the standard analogWrite will only supply one at ~500Hz. The Timer1 library 
+  //used below is able to supply the propper wavefrom. 
+  Timer1.pwm(FAN_CTL_PIN, int(round(percent * 1024.0 / 100.0)));
+  }
+
+\end{lstlisting}
+
+\section*{Environmental Sensing Unit: comm\_definitions.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+struct SENSOR_PACKET {
+long timestamp;
+float dht_temp;
+float TMP36;
+float dht_humid;
+float dust_v;
+float MQ4;
+float MQ135;
+float MQ9;
+float MQ2;
+float MQ5;
+float MQ6;
+float MQ7;
+float MQ8;
+
+} packet;
+
+
+\end{lstlisting}
+
+\section*{Environmental Sensing Unit: pin\_definitions.h}
+\begin{lstlisting}[breaklines=true,basicstyle=\tiny]
+const int DEBUG_PIN = 13;
+const int DUST_SENSOR_AIN = 0;
+const int DUST_SENSOR_PULSE_IN = 21;
+const int DUST_SENSOR_DEBUG = 13;
+
+const int DHT_PIN = 3;
+
+const int MQ4_PIN = 1;
+const int MQ135_PIN = 2;
+const int MQ9_PIN = 3;
+const int MQ2_PIN = 4;
+const int MQ5_PIN = 5;
+const int MQ6_PIN = 6;
+const int MQ7_PIN = 7;
+const int MQ8_PIN = 8;
+
+const int TMP36_PIN = 9;
+
+const int FAN_CTL_PIN = 11;
+
+\end{lstlisting}
+
+
 \endgroup
 
 
