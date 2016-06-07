@@ -53,7 +53,7 @@ Future optimizations could be done to increase the speed of this processing.
 
 \section{GPS Testing}
 %Pat
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centerline{\includegraphics[angle=0, width=.8\linewidth]{GPS_MAP}}
 	\caption[]{Logged GPS tracks of various field testing activities}
 	\label{fig:GPSMAP}
@@ -64,7 +64,7 @@ In order for our vehicle to be effective in it's goal of providing meaningful in
 \section{Localization and Mapping Testing}
 %Pat
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -89,7 +89,7 @@ While there were no quantitative requirements associated with the 3d visualizati
 \section{Environmental Sensor Package Testing}
 Our environmental sensing packages are a critical component of our vehicle.  To test the effectiveness of these packages, we set a small, controlled burn and circled the fire with our vehicle.  With each pass around the fire we increased the radius of our lap.  The point of this was to test our ability to pinpoint the location of a fire using the mapping and localization system in conjunction with the environmental sensing packages.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centerline{\includegraphics[angle=0, width=1\linewidth]{air_particulare_versus_position_graph.png}}
 \caption[]{The results of our controlled burn test.}
 \label{fig:air_particulate_versus_position_graph}
@@ -100,9 +100,9 @@ As shown in figure \ref{fig:air_particulate_versus_position_graph} our environme
 We can also see how the different sensor packages detect the gases differently.  While not an actual requirement, we were curious to see how the different sensor packages functioned.  The point to having redundant sensors was to be able to continue detecting environmental hazards even if one package dies.  We wanted to know if the packages behave comparably to each other.
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centerline{\includegraphics[angle=0, width=1\linewidth]{allSensor_lpg_versus_time_graph}}
-\caption[]{The resulting web from attaching string to each camera and then tying those strings to posts and placing them in the ground when the post left the field of view of the respective camera.}
+\caption[]{LPG versus time of three sensor packages.}
 \label{fig:allSensor_lpg_versus_time_graph}
 \end{figure}
 
@@ -124,5 +124,7 @@ Our requirement was that the cameras would offer 360 degrees of view.  In other 
 \caption[]{The distance between the posts and the angles we derived between them.}
 \label{fig:blindspot_measurement}
 \end{figure}
+
+%todo make lines more visible in image
 
 A diagram of the field of view is shown in Figure \ref{fig:blindspot_measurement}. We could further increase our field of view by adding two more cameras to the vehicle, placing them on the side of the roll cage angled backwards.  We would then take the two cameras already on the roll cage and angle them more forwards.  These six cameras together would then cover the current blind-spots on the vehicle.

@@ -16,7 +16,7 @@ ROS provides a framework for developing localization systems and provides severa
 
 %Tachometer,IMU,GPS,LIDAR
 
-\begin{figure}[H]
+\begin{figure}[h!]
 	\centerline{\includegraphics[angle=0,width=0.5\linewidth,angle=90]{tach}}
 	\caption[]{Hall Effect Tachometer}
 	\label{fig:tach}
@@ -50,7 +50,7 @@ The second source of data comes the Inertial Measurement Unit (IMU), which inclu
 \label{fig:gps}
 \end{figure}
 
-Next, the GPS unit, a Novatel Propak-LB, consists of a GPS antenna (Figure \ref{fig:gpsant}) and a separate GPS receiver (Figure \ref{fig:gpsrec}). The system outputs position and velocity estimates in the form of standard NMEA strings. Preexisting ROS nodes (nmea\_serial\_driver) enable us to read in these NMEA strings over a usb-to-serial adapter and incorporate the GPS data into our state estimate. The GPS has the added benefit of performing it's own estimate of the covariance (a statistical measure of the estimate's certainty). The Kalman Filter utilizes the covariance to weigh the GPS more heavily when the GPS has more satellites in view. Additionally, the GPS unit is capable of taking WAAS (Wide Area Augmentation System) GPS corrections into account. The WAAS system calculates and transmits corrections to increase the prevision of GPS receivers.
+Next, the GPS unit, a Novatel Propak-LB, consists of a GPS antenna (Figure \ref{fig:gpsant}) and a separate GPS receiver (Figure \ref{fig:gpsrec}). The system outputs position and velocity estimates in the form of standard NMEA strings. Preexisting ROS nodes (nmea\_serial\_driver) enable us to read in these NMEA strings over a usb-to-serial adapter and incorporate the GPS data into our state estimate. The GPS unit has the added benefit of performing it's own estimate of the covariance (a statistical measure of the estimate's certainty). The Kalman Filter utilizes the covariance to weigh the GPS more heavily when the GPS has more satellites in view. Additionally, the GPS unit is capable of taking WAAS (Wide Area Augmentation System) GPS corrections into account. The WAAS system calculates and transmits corrections to increase the prevision of GPS receivers.
 
 \begin{figure}[H]
 	\centering
@@ -73,6 +73,8 @@ Next, the GPS unit, a Novatel Propak-LB, consists of a GPS antenna (Figure \ref{
 Finally, the rover incorporates 2 LIDAR sensors; a statically mounted unit on the front grill (Figure \ref{fig:lidar_front}) and a tilting unit on a gimbal mounted on top of the vehicle (Figure \ref{fig:lidar_scanning}) . For localization, we are using the unit mounted on the front of the vehicle, along with a ROS package called hector\_slam to produce an estimate for the robot's state. The SLAM (Simultaneous Localization and Mapping) process compares the current laser scan to a map or past data to estimate the movement of the vehicle. The SLAM process also provides us with a 2D map of the environment which can be saved and used for navigation at a later time.
 
 \section{Coordinate Frames}
+
+%todo add a diagram of frames. Kitts thinks it would be useful
 
 When developing a complex robotic system, keeping track of the reference frames for all of the different components of the robot is critical for determining the configuration of the robot in space. ROS has convenient functionality for not only defining coordinate frames, but also for calculating the transformations between them. 
 
