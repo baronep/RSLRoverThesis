@@ -74,9 +74,13 @@ Finally, the rover incorporates 2 LIDAR sensors; a statically mounted unit on th
 
 \section{Coordinate Frames}
 
-%todo add a diagram of frames. Kitts thinks it would be useful
+\begin{figure}[h!]
+	\centerline{\includegraphics[angle=0,width=1.0\linewidth,angle=0]{frames}}
+	\caption[]{ROS Coordinate Frame Illustration}
+	\label{fig:frames}
+\end{figure}
 
-When developing a complex robotic system, keeping track of the reference frames for all of the different components of the robot is critical for determining the configuration of the robot in space. ROS has convenient functionality for not only defining coordinate frames, but also for calculating the transformations between them. 
+When developing a complex robotic system, keeping track of the reference frames for all of the different components of the robot is critical for determining the configuration of the robot in space. ROS has convenient functionality for not only defining coordinate frames, but also for calculating the transformations between them. The coordinate frame locations are illustrated in Figure \ref{fig:frames}.
 
 Our first frame of interest is the base\_link frame. By convention this is the highest level frame on the robot. For our purposes we chose to define the base\_link frame to be located at the centroid of the four rear tires with the X axis forward, Y axis left and Z axis up. The direction conventions are ROS standards, but the translational location of this frame was left to us. We chose this particular location based on the kinematics of the vehicle as the center of rotation of the vehicle should be around the centroid of the four rear wheels. 
 
@@ -86,6 +90,7 @@ The localization of the vehicle is performed in two stages, first taking into ac
 
 The second step takes into account discontinuous sensor data (i.e., GPS, SLAM) to produce a more accurate, but sometimes 'jumpy' position estimate. The advantage of using this frame is that when planning long-term navigation, this frame is not subject to the same drift that the odom frame is subject to. The second step in the localization process defines a transformation between the \textbackslash base\_link and the \textbackslash map frames, often using the \textbackslash odom frame as a starting point.
 
+	Several other frames exist for generating the pointcloud data. The \textbackslash front\_laser frame is located in the center of the front bumper. The \textbackslash gimbal\_base frame is located on the top of the roll-cage, at the center of rotation of the gimbal and parallel to the \textbackslash base\_link frame. Finally the \textbackslash gimbal\_laser frame is located on top of the \textbackslash gimbal\_base frame but rotates in pitch with the motion of the LIDAR. 
 \section{Kalman Filter}
 
 We are using an implementation of an extended Kalman filter for state estimation through the ROS robot\_localization package. This package takes input from an arbitarary number of sensors and produces an estimate of the robot's 15 dimensional state, [x,y,z,roll,pitch,yaw,vx,vy,vz,vroll,vpitch,vyaw,ax,ay,az]\cite{Moore2016}. 

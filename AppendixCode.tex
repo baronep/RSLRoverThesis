@@ -1,7 +1,9 @@
 \appendixpagenumbering
-\chapter{Code} 
+	\chapter{Code} 
 
-
+\begingroup
+\tiny
+\renewcommand{\baselinestretch}{1} 
 \section{Vehicle Visualization URDF Model}
 \begin{verbatim}
 
@@ -997,7 +999,8 @@ class MQ:
 
          cur = con.cursor()
 
-         query = 'SELECT sub.Name,Intercept,C,M,sen.R2,sen.Cair FROM Calibration AS cal INNER JOIN Substances AS sub ON cal.SubstanceID=sub.id INNER JOIN Sensors AS sen ON cal.SensorID=sen.id WHERE sen.name="' + self.name + '";'
+         query = 'SELECT sub.Name,Intercept,C,M,sen.R2,sen.Cair FROM Calibration AS cal INNER JOIN Substances AS sub ON
+          cal.SubstanceID=sub.id INNER JOIN Sensors AS sen ON cal.SensorID=sen.id WHERE sen.name="' + self.name + '";'
 
          result = cur.execute(query)
          colname = [ d[0] for d in result.description ]
@@ -1575,7 +1578,7 @@ if __name__ == '__main__':
 	    <!--param name="base_global_planner" value="straight_global_planner/StraightROS" /-->
 	    <param name="controller_frequency" value="5.0" />
 
-	    <remap from="map" to="/map" /> <!-- This file will be wrapped with namespace so we have to remove namespace from all appearances of map (there is only one map) -->
+	    <remap from="map" to="/map" />
 	    <remap from="move_base_simple/goal" to="/move_base_simple/goal"/> <!-- We have only a single robot now, that is controlled via goals -->
 	    <remap from="odom" to="odometry/filtered_discont" />
  	</node>
@@ -1797,7 +1800,10 @@ function ROSCCConfig($routeProvider, localStorageServiceProvider) {
 angular.module('roscc', ['ngRoute', 'ui.bootstrap', 'LocalStorageModule']).config(ROSCCConfig);
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i];
+ descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; 
+ Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) 
+ defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2016,7 +2022,11 @@ var ControlController = function () {
 angular.module('roscc').controller('ControlController', ControlController);
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i];
+ descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) 
+ descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, 
+ protoProps, staticProps) { if (protoProps)
+  defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2088,7 +2098,11 @@ var DomainsService = function () {
 angular.module('roscc').service('Domains', DomainsService);
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; 
+descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) 
+descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor);
+ } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) 
+ defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2229,7 +2243,11 @@ function serviceDirective() {
 angular.module('roscc').directive('ccService', serviceDirective);
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; 
+descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) 
+descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor);
+ } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps)
+  defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2278,7 +2296,11 @@ var SettingsController = function () {
 angular.module('roscc').controller('SettingsController', SettingsController);
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i];
+ descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor)
+  descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor);
+  } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps)
+   defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2591,7 +2613,8 @@ angular.module('roscc').directive('dashTopic', dashboardDirective);
  *  - URDF model
  *  - PointCloud
  *
- * The TF client is what makes everything come together.  It does all of the translations to make sure that the URDF model and the PointCloud are rendered in the same scene.
+ * The TF client is what makes everything come together.  It does all of the translations to make sure that the URDF model and the PointCloud 
+ * are rendered in the same scene.
  * We also use a SceneNode to have a little more control over the initialization.
  * The default viewer object makes some assumptions that we did not want to abide by.
  */
@@ -2693,7 +2716,7 @@ angular.module('roscc').directive('lidarViz', angularLidarViz);
 \section{User Interface Speed Chart}
 \begin{verbatim}
 'use strict';
-angular.module("roscc").requires.push('highcharts-ng');
+angular.module("").requires.push('highcharts-ng');
 
 var ctrl = angular.module('roscc').controller("speedChartController", function ($scope, $timeout, $parse){
     console.log("Scope: ", $scope);
@@ -3027,10 +3050,18 @@ console.log("Loaded controller: ", ctrl);
         <div class="container-fluid">
             <div class="col-lg-2">
                 <div id="cameras">
-                    <img class="img-responsive img-thumbnail" ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}/stream?topic={{ vm.setting.raspberry_pi.camera.front}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
-                    <img class="img-responsive img-thumbnail" ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}/stream?topic={{ vm.setting.raspberry_pi.camera.right}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
-                    <img class="img-responsive img-thumbnail" ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}/stream?topic={{ vm.setting.raspberry_pi.camera.left}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
-                    <img class="img-responsive img-thumbnail" ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}/stream?topic={{ vm.setting.raspberry_pi.camera.back}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
+                    <img class="img-responsive img-thumbnail" 
+                    ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}
+                    /stream?topic={{ vm.setting.raspberry_pi.camera.front}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
+                    <img class="img-responsive img-thumbnail" 
+                    ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}
+                    /stream?topic={{ vm.setting.raspberry_pi.camera.right}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
+                    <img class="img-responsive img-thumbnail" 
+                    ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}
+                    /stream?topic={{ vm.setting.raspberry_pi.camera.left}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
+                    <img class="img-responsive img-thumbnail" 
+                    ng-src="http://{{ vm.setting.raspberry_pi.address }}:{{ vm.setting.raspberry_pi.imagePreview.port }}
+                    /stream?topic={{ vm.setting.raspberry_pi.camera.back}}&quality={{ vm.setting.imagePreview.quality }}&width=180&height=135">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -3077,7 +3108,8 @@ console.log("Loaded controller: ", ctrl);
 \begin{verbatim}
 <div class="panel panel-default" ng-class="{'panel-success': vm.toggle}">
     <div class="panel-heading clearfix">
-        <button id="vehicle_state_sub" class="btn btn-default btn-sm pull-right" ng-click="vm.toggleSubscription(!vm.toggle)" ng-model="vm.toggle" uib-btn-checkbox>{{ vm.toggle ? 'Unsubscribe' : 'Subscribe' }}</button>
+        <button id="vehicle_state_sub" class="btn btn-default btn-sm pull-right" 
+        ng-click="vm.toggleSubscription(!vm.toggle)" ng-model="vm.toggle" uib-btn-checkbox>{{ vm.toggle ? 'Unsubscribe' : 'Subscribe' }}</button>
         <h3 class="panel-title">
             {{ vm.topic.abbr }}
             <small style="font-size: 12px;">({{ vm.topic.type }})</small>
@@ -3102,7 +3134,8 @@ console.log("Loaded controller: ", ctrl);
                     <div class="form-group">
                         <div class="row">
                             <div ng-controller="wheelAngleChart">
-                                <highchart id="actual_steering_chart" config="wheelAngleConfig" topicName="vm.message.actual_steering" class="chart"></highchart>
+                                <highchart id="actual_steering_chart" config="wheelAngleConfig" 
+                                topicName="vm.message.actual_steering" class="chart"></highchart>
                             </div>
                         </div>
                         <div class="row">
@@ -3170,7 +3203,8 @@ console.log("Loaded controller: ", ctrl);
                     <div class="form-group">
                         <label>Voltage Warn</label>
                         <div class="input-group">
-                            <input type="bool" class="form-control" ng-class="{'bg-danger':vm.message.voltage_warn}" ng-model="vm.message.voltage_warn" ng-readonly="vm.isSubscribing">
+                            <input type="bool" class="form-control" ng-class="{'bg-danger':vm.message.voltage_warn}" 
+                            ng-model="vm.message.voltage_warn" ng-readonly="vm.isSubscribing">
                         </div>
                     </div>
                 </form>
@@ -3179,7 +3213,7 @@ console.log("Loaded controller: ", ctrl);
     </div>
 </div>
 \end{verbatim}
-
+\endgroup
 
 
 
