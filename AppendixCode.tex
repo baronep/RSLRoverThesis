@@ -1,6 +1,188 @@
 \appendixpagenumbering
 \chapter{Code} 
 
+
+\section{Vehicle Visualization URDF Model}
+\begin{verbatim}
+
+<robot name="rsl_roverzoe">
+<link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+          <mesh filename="package://rsl_rover/urdf/RoughBody_corrected.stl"/>
+      </geometry>
+
+    
+    </visual>
+ 
+    <collision><!-- Test values for now -->
+         <geometry>
+           <box size="300 200 200" />
+         </geometry>
+    </collision>
+  
+</link>
+
+<!-- Front Right Wheel -->
+<joint name="body_to_fr_tire" type="fixed" >
+	<parent link="base_link" />
+	<child link="fr_tire" />
+	<origin xyz="1.9431 -0.584 0" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="fr_tire">
+   <visual>
+	<geometry>
+	<mesh filename="package://rsl_rover/urdf/Tire_corrected.stl"/>
+	</geometry>
+     </visual>
+</link>
+
+<!-- Front Left Wheel -->
+<joint name="body_to_fl_tire" type="fixed" >
+	<parent link="base_link" />
+	<child link="fl_tire" />
+	<origin xyz="1.9431 0.584 0" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="fl_tire">
+   <visual>
+	<geometry>
+	<mesh filename="package://rsl_rover/urdf/Tire_corrected.stl"/>
+	</geometry>
+     </visual>
+</link>
+
+<!-- Center Right Wheel -->
+<joint name="body_to_cr_tire" type="fixed" >
+	<parent link="base_link" />
+	<child link="cr_tire" />
+	<origin xyz="0.3429 -0.584 0" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="cr_tire">
+   <visual>
+	<geometry>
+	<mesh filename="package://rsl_rover/urdf/Tire_corrected.stl"/>
+	</geometry>
+     </visual>
+</link>
+
+<!-- Center Left Wheel -->
+<joint name="body_to_cl_tire" type="fixed" >
+	<parent link="base_link" />
+	<child link="cl_tire" />
+	<origin xyz="0.3429 0.584 0" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="cl_tire">
+   <visual>
+	<geometry>
+	<mesh filename="package://rsl_rover/urdf/Tire_corrected.stl"/>
+	</geometry>
+     </visual>
+
+<!-- Back Right Wheel -->
+</link><joint name="body_to_br_tire" type="fixed" >
+	<parent link="base_link" />
+	<child link="br_tire" />
+	<origin xyz="-0.3429 -0.584 0" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="br_tire">
+   <visual>
+	<geometry>
+	<mesh filename="package://rsl_rover/urdf/Tire_corrected.stl"/>
+	</geometry>
+     </visual>
+</link>
+
+<!-- Back Left Wheel -->
+<joint name="body_to_bl_tire" type="fixed" >
+	<parent link="base_link" />
+	<child link="bl_tire" />
+	<origin xyz="-0.3429 0.584 0" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="bl_tire">
+   <visual>
+	<geometry>
+	<mesh filename="package://rsl_rover/urdf/Tire_corrected.stl"/>
+	</geometry>
+     </visual>
+</link>
+
+
+
+<!-- Front_Laser -->
+<joint name="body_to_front_laser" type="fixed" >
+	<parent link="base_link" />
+	<child link="front_laser" />
+	<origin xyz="2.4 0 0.24" rpy="3.1416 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="front_laser">
+   <visual>
+	<geometry>
+	<box size=".5 .5 .01" />
+	</geometry>
+     </visual>
+</link>
+
+
+<!-- Gimbal_Base -->
+<joint name="body_to_gimbal_base" type="fixed" >
+	<parent link="base_link" />
+	<child link="gimbal_base" />
+	<!--<origin xyz=".978 0 1.892" rpy="0 0 0" />-->
+	<origin xyz="1.1 0 1.892" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="gimbal_base">
+   <visual>
+	<geometry>
+	<box size=".5 .5 .01" />
+	</geometry>
+     </visual>
+</link>
+
+<!-- Imu Link -->
+<joint name="body_to_imu_link" type="fixed" >
+	<parent link="base_link" />
+	<child link="imu_link" />
+	<origin xyz="0 0 0.5" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+</joint>
+<link name="imu_link">
+   <visual>
+	<geometry>
+	<box size=".05 .05 .05" />
+	</geometry>
+     </visual>
+</link>
+
+<!-- Base Footprint Link (base link shifted down to under the wheels) -->
+<joint name="body_to_base_footprint" type="fixed" >
+	<parent link="base_link" />
+	<child link="base_footprint" />
+	<origin xyz="0 0 -0.3429" rpy="0 0 0" />
+	<axis xyz="0 0 0" />
+</joint>
+	<link name="base_footprint">
+</link>
+
+<joint name="body_to_front_camera" type="fixed" >
+	<parent link="base_link" />
+	<child link="front_camera" />
+	<origin xyz="1.0 0 1.0" rpy="3.14 0 0" />
+	<axis xyz="0 0 0" />
+</joint>
+	<link name="front_camera">
+</link>
+</robot>
+\end{verbatim}
+
 \section{Cameras Launch File}
 \begin{verbatim}
 <launch>
@@ -57,3 +239,1539 @@
 
 </launch>
 \end{verbatim}
+
+\section{Camera Calibration: Front}
+\begin{verbatim}
+image_width: 640
+image_height: 480
+camera_name: camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [652.560454, 0.000000, 319.752367, 0.000000, 650.694801, 248.296020, 0.000000, 0.000000, 1.000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.040380, -0.112498, -0.005992, 0.003583, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [640.549927, 0.000000, 321.096783, 0.000000, 0.000000, 644.552368, 246.303601, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
+\end{verbatim}
+
+
+\section{Camera Calibration: Left}
+\begin{verbatim}
+image_width: 640
+image_height: 480
+camera_name: camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [680.338468, 0.000000, 308.172392, 0.000000, 680.430062, 268.088277, 0.000000, 0.000000, 1.000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.071290, 0.126918, 0.012577, -0.003966, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [677.564697, 0.000000, 305.707383, 0.000000, 0.000000, 674.015991, 271.888351, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
+\end{verbatim}
+
+
+\section{Camera Calibration: Rear}
+\begin{verbatim}
+image_width: 640
+image_height: 480
+camera_name: camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [652.885564, 0.000000, 294.983103, 0.000000, 655.716920, 239.362656, 0.000000, 0.000000, 1.000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.070639, 0.052269, 0.001334, -0.000681, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [642.366028, 0.000000, 293.619005, 0.000000, 0.000000, 648.596558, 239.218096, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
+\end{verbatim}
+
+
+\section{Camera Calibration: Right}
+\begin{verbatim}
+image_width: 640
+image_height: 480
+camera_name: camera
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [652.817375, 0.000000, 311.656932, 0.000000, 654.014227, 249.445159, 0.000000, 0.000000, 1.000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.076846, 0.091739, -0.001813, -0.003684, 0.000000]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [642.887573, 0.000000, 309.222547, 0.000000, 0.000000, 647.120850, 248.549064, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]
+\end{verbatim}
+
+
+\section{LIDAR Scan to Point Cloud}
+\begin{verbatim}
+#include "ros/ros.h"
+#include "ros/message.h"
+
+#include "tf/transform_listener.h"
+#include "sensor_msgs/PointCloud2.h"
+#include "sensor_msgs/PointField.h"
+#include "tf/message_filter.h"
+#include "message_filters/subscriber.h"
+#include "laser_geometry/laser_geometry.h"
+#include "ros/console.h"
+
+#include <vector>
+#include <string>
+class LaserScanToPointCloud{
+
+public:
+
+  ros::NodeHandle n_;
+  laser_geometry::LaserProjection projector_;
+  tf::TransformListener listener_;
+  message_filters::Subscriber<sensor_msgs::LaserScan> laser_sub_;
+  tf::MessageFilter<sensor_msgs::LaserScan> laser_notifier_;
+  ros::Publisher scan_pub_;
+
+  LaserScanToPointCloud(ros::NodeHandle n) : 
+    n_(n),
+    laser_sub_(n_, "scanlms221", 10),
+    laser_notifier_(laser_sub_,listener_, "base_link", 10)
+  {
+    laser_notifier_.registerCallback(
+      boost::bind(&LaserScanToPointCloud::scanCallback, this, _1));
+    laser_notifier_.setTolerance(ros::Duration(0.01));
+    scan_pub_ = n_.advertise<sensor_msgs::PointCloud2>("/ass_cloud",1);
+  }
+
+  void scanCallback (const sensor_msgs::LaserScan::ConstPtr& scan_in)
+  {
+    sensor_msgs::PointCloud2 cloud;
+    try
+    {
+        projector_.transformLaserScanToPointCloud(
+          "base_link",*scan_in, cloud,listener_);
+    }
+    catch (tf::TransformException& e)
+    {
+        std::cout << e.what();
+        return;
+    }
+    // our scan doesn't come with intensities
+    // use the y value as the color value of the point
+    int fields_length = cloud.fields.size();
+    int y_offset = 0;
+    int count = 0;
+    for (int i =0; i < fields_length; i++) {
+    	if (cloud.fields[i].name == "y") {
+		y_offset = cloud.fields[i].offset;
+		count = cloud.fields[i].count;
+		break;
+	}
+    }
+    sensor_msgs::PointField p;
+    p.name = "rgb";
+    p.offset= y_offset;
+    p.datatype= 6;
+    p.count = count;
+    cloud.fields.push_back(p);
+    
+    // Do something with cloud.
+    scan_pub_.publish(cloud);
+
+  }
+};
+
+int main(int argc, char** argv)
+{
+  
+  ros::init(argc, argv, "my_scan_to_cloud");
+  ros::NodeHandle n;
+  LaserScanToPointCloud lstopc(n);
+  
+  ros::spin();
+  
+  return 0;
+}
+
+\end{verbatim}
+
+
+\section{Vehicle State Information}
+\begin{verbatim}
+#!/usr/bin/env python
+import rospy
+import numpy
+import binascii
+import roslib
+import time
+import struct
+from serial import Serial
+from array import array
+from collections import namedtuple
+from nav_msgs.msg import Odometry
+from rsl_rover_msgs.msg import vehicle_state
+from math import pi,tan
+
+class RoverInterface: 
+   #_rx_len = 0
+   # _rx_size = 26
+    fmt = 'iffhcchh??????????hf'
+    RoverDataKeys = [
+        'time',
+        'wheel_pos',
+        'wheel_speed',
+        'desired_throttle',
+        'desired_gear',
+        'actual_gear',
+        'desired_steering',
+        'actual_steering',
+        'temp_warn',
+        'voltage_warn',
+        'estop',
+        'A', 'B', 'C', 'D', 'E', 'Horn','F',
+        'estop_code']
+
+    def __init__(self,ser_in):
+        self._rx_size = struct.calcsize(self.fmt)
+        self.ser = ser_in
+        self._rx_len = 0
+        self.rx_buffer = bytearray(self._rx_size+1)
+        self.rx_array_inx = 0
+        self.RoverState = dict()
+
+    def receiveData(self):
+        ser = self.ser
+        #global rx_len, rx_buffer,rx_array_inx, RoverDataKeys, RoverData
+        #Translated from the c++ arduino Easy Transfer Library
+        if self._rx_len == 0:
+            if ser.inWaiting() >= 3:
+                while ser.read() != '\x06':
+                    if ser.inWaiting() < 3:
+                        return False
+
+                if ser.read() == '\x85':
+                    self._rx_len = ord(ser.read())
+                    if self._rx_len != self._rx_size:
+                        self._rx_len = 0
+                        return False
+        
+        if self._rx_len != 0:
+            while ser.inWaiting() and self.rx_array_inx <= self._rx_len:
+                try:
+                    self.rx_buffer[self.rx_array_inx] = ser.read()
+                    self.rx_array_inx += 1
+                except Exception, err:
+                    rospy.logwarn('Error while reading after start bits',err)
+
+        if(self._rx_len == (self.rx_array_inx-1)):
+            calc_CS = self._rx_len
+            for i in range(0,self._rx_len):
+                calc_CS ^= self.rx_buffer[i]
+
+            if calc_CS == self.rx_buffer[self.rx_array_inx-1]:
+                try:
+                    self.decodeStruct(self.rx_buffer[0:-1])
+                except Exception, err:
+                    rospy.logwarn(err)
+                    rospy.logwarn('Failed to Decode Packet')
+                    rospy.logwarn(binascii.b2a_hex(self.rx_buffer[0:-1]))
+                self._rx_len = 0
+                self.rx_array_inx = 0
+                return True
+            else:
+                self._rx_len = 0
+                self.rx_array_inx = 0
+                return False
+
+    def decodeStruct(self,data):
+        #print ''.join('{:02x}'.format(x) for x in self.rx_buffer[0:-1])
+        values = struct.unpack(self.fmt,data)
+        self.RoverState = dict(zip(self.RoverDataKeys,values))
+
+    def getRoverState(self):
+        return self.RoverState
+
+if __name__ == '__main__':
+    ser = Serial(
+           port='/dev/rover',
+           baudrate=115200,
+           timeout=0.1,
+           dsrdtr=False,
+            )
+    rover = RoverInterface(ser)
+    pub = rospy.Publisher('VehicleTach',Odometry,queue_size=2)
+    pub_state = rospy.Publisher('VehicleState',vehicle_state,queue_size=2)
+    rospy.init_node('RoverInterface')
+    rate = rospy.Rate(100)
+
+    while not rospy.is_shutdown():
+        rover.receiveData()
+        RS = rover.getRoverState()
+        try:
+            #Build up odometry message
+            odom_msg = Odometry()
+            odom_msg.header.stamp = rospy.Time.now()
+            odom_msg.header.frame_id = "odom"
+            odom_msg.child_frame_id = "base_link"
+            
+            wheel_speed_rpm = RS['wheel_speed']
+            wheel_pos_r = RS['wheel_pos']
+            steering = RS['actual_steering']
+                #Wheel diamater is 25" or 0.635m
+                #Min to sec divide by 30
+                #Multiply by pi to get circumference
+            wheel_speed = 0.635 * pi / 60 * wheel_speed_rpm #Convert from rpm to m/s
+            wheel_pos = 0.635 * pi * wheel_pos_r
+            odom_msg.twist.twist.linear.x = wheel_speed
+            odom_msg.twist.twist.linear.y = 0
+            #odom_msg.twist.twist.angular.z = wheel_speed*-tan(pi/6*steering/1000.0)/1.97
+            odom_msg.twist.covariance = numpy.diag([1e-2,1e-2,1e-2,1e-2,1e-2,1e-2]).flatten().tolist()
+
+            pub.publish(odom_msg)
+        except Exception, err:
+            rospy.logwarn('Could Not Publish tach_odom');
+            rospy.logwarn(err)
+
+        try:
+            #Build up vehicle state message
+            vs_msg = vehicle_state()
+            vs_msg.header.stamp = rospy.Time.now()
+            vs_msg.wheel_pos = wheel_pos # Convert from Revs to M
+            vs_msg.wheel_speed = wheel_speed #Convert from RPM to M/S
+            vs_msg.desired_throttle = RS['desired_throttle']
+            vs_msg.desired_gear = RS['desired_gear']
+            vs_msg.actual_gear = RS['actual_gear']
+            vs_msg.desired_steering = RS['desired_steering']
+            vs_msg.actual_steering = RS['actual_steering']
+            vs_msg.temp_warn = RS['temp_warn']
+            vs_msg.voltage_warn = RS['voltage_warn']
+            vs_msg.estop = RS['estop']
+            vs_msg.aux = [RS[x] for x in ['A','B','C','D','E','Horn','F']]
+            vs_msg.estop_code = RS['estop_code']
+            #vs_msg.engine_rpm = RS['engine_rpm']
+            pub_state.publish(vs_msg)
+
+        except Exception, err:
+            rospy.logwarn('Could Not Publish rover_state');
+            rospy.logwarn(err)
+
+        rate.sleep()
+\end{verbatim}
+
+
+\section{GPS Configuration}
+\begin{verbatim}
+#!/usr/bin/python
+import serial
+import time
+import struct
+
+ser = serial.Serial(
+        #port='/dev/ttyUSB0',
+        #port='/home/rover-dev/dev/ttyLMS',
+        port='/dev/novatel',
+        baudrate=115200)
+
+print(ser.isOpen())
+
+#ser.write('\x02\x00\x01\x00\x31\x15\x12')
+#cmd = ['COM COM1,115200,N,8,1,N,OFF,ON']
+cmd = ['UNLOGALL\r\n', \
+#'LOG com1 versiona once\r\n', \
+'SBASCONTROL ENABLE ANY 0 NONE\r\n', \
+#'SBASCONTROL DISABLE\r\n', \
+'LOG com1 GPGGA ontime 0.1\r\n', \
+'LOG com1 GPVTG ontime 1\r\n', \
+'LOG com1 GPGSV ontime 1\r\n', \
+'LOG com1 GPGSA ontime 1\r\n', \
+'LOG com1 GPGST ontime 1\r\n', \
+'SAVECONFIG\r\n']
+
+for c in cmd:
+    print c
+    ser.write(c)
+    ser.flush()
+    time.sleep(0.5)
+    output = ''
+    while ser.inWaiting() > 0:
+        output +=  ser.read() 
+    print output
+
+while 1:
+    output = []
+    if ser.inWaiting() > 0:
+        print ser.readline()
+#        print output.encode('hex')
+
+ser.close()
+\end{verbatim}
+
+
+\section{GPS Driver Launch}
+\begin{verbatim}
+<launch>
+  <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="gps_driver">
+    <param name="port" value="/dev/novatel" />
+    <param name="baud" value="115200" />
+  </node>
+</launch>
+\end{verbatim}
+
+\section{Gimbal Driver}
+\begin{verbatim}
+#!/usr/bin/env python
+import sys
+import socket
+import rospy
+import roslib
+import time
+import tf
+import re
+from math import pi
+from rsl_rover_msgs.msg import vehicle_state
+
+TCP_IP = '10.0.0.141'
+TCP_PORT = 2000
+BUFFER_SIZE = 1024
+moving = 0
+MOVEPAUSE = 0.01
+COMMPAUSE = 0.01
+COUNTSTORAD = 45837
+OFFSET_RAD = pi/2
+GOALMAXRAD_FWD = pi/5
+GOALMINRAD_FWD = -pi/5
+GOALRAD_FWD_STATIC = -pi/8
+CALIBRATION_COUNTS = 1150
+
+GOALMAXRAD_REV = pi/5-pi;
+GOALMINRAD_REV = -pi/5-pi;
+GOALRAD_REV_STATIC = -pi+pi/8
+
+goal = 0#GOALMAXRAD_FWD
+
+lastCMD_T = 0
+reversing = False
+sweeping = False
+
+def movetorad(s,setpoint):
+    goal = (setpoint+OFFSET_RAD)*COUNTSTORAD        
+    sendCommandWOResp(s,'GOAL='+str(goal+CALIBRATION_COUNTS))
+
+def moveto(s,pos):
+    sendCommandWOResp(s,'GOAL='+str(pos+CALIBRATION_COUNTS))
+    moving = 1
+
+def sendPitchTF(br,pitch_rad):
+    #br.sendTransform((0,0,0),
+    #        tf.transformations.quaternion_from_euler(0,-(pitch_rad-OFFSET_RAD),0),
+    #        rospy.Time.now(),
+    #        'gimbal_laser',
+    #        'gimbal_base')
+
+    br.sendTransform((0,0,0),
+            tf.transformations.quaternion_from_euler(0,-pitch_rad,0),
+            rospy.Time.now(),
+            'gimbal_laser',
+            'gimbal_base')
+
+def getpos(s):
+    data = sendCommandWResp(s,'TP')
+    data = float(bufferToInt(data))/float(COUNTSTORAD) - OFFSET_RAD
+    return data
+    
+def getvel(s):
+    data = sendCommandWResp(s,'TV')
+    data = float(bufferToInt(data))/float(COUNTSTORAD)
+    return data
+
+def sendCommandWOResp(s,cmd):
+    s.send(cmd+'\r')
+    time.sleep(COMMPAUSE)
+    data = s.recv(BUFFER_SIZE) #clear the buffer
+
+def sendCommandWResp(s,cmd):
+    s.send(cmd + '\r')
+    time.sleep(COMMPAUSE)
+    data = s.recv(BUFFER_SIZE)
+    return data
+
+def bufferToInt(data):
+    data = re.findall(r'-?\d+',data.rstrip())
+    data = int(data[0].rstrip())
+    return data 
+
+def init():
+    rospy.init_node('gimbal_driver')
+    br = tf.TransformBroadcaster()
+    try:
+        s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+        s.connect((TCP_IP,TCP_PORT))
+    except socket.error as msg:
+        rospy.logwarn('PROBLEM CONNECTING',msg)
+        sys.exit(1)
+    time.sleep(0.1)
+    sendCommandWOResp(s,'')
+    rospy.loginfo('INIT COMPLETED')
+    return (s,br)
+
+def vehicle_state_callback(data):
+    global reversing, sweeping
+    reversing = data.desired_gear == 'R' 
+    sweeping = data.aux[1]
+    pass
+
+if __name__ == '__main__':
+    try:
+        ret = init()
+        s = ret[0]
+        br = ret[1]
+#        sendCommandWOResp(s,'GOAL=10000')
+        rate = rospy.Rate(100)
+
+        rover_sub = rospy.Subscriber('VehicleState',vehicle_state, vehicle_state_callback)
+
+        while not rospy.is_shutdown():
+            vel = getvel(s)
+            pos = getpos(s)
+            sendPitchTF(br,pos)
+            if vel < 1000.0/COUNTSTORAD:
+                moving = False
+            else:
+                moving = True
+
+            if reversing:
+                GOALMINRAD = GOALMINRAD_REV
+                GOALMAXRAD = GOALMAXRAD_REV
+                GOALRAD = GOALRAD_REV_STATIC
+            else:
+                GOALMINRAD = GOALMINRAD_FWD
+                GOALMAXRAD = GOALMAXRAD_FWD
+                GOALRAD = GOALRAD_FWD_STATIC
+
+            if sweeping:
+                if not moving and (time.time() - lastCMD_T > 0.2):
+                    lastCMD_T = time.time()
+                    if pos > (GOALMINRAD+GOALMAXRAD)/2: #GOALMAXRAD:
+                        goal = GOALMINRAD
+                        movetorad(s,goal)
+                    elif pos <=(GOALMINRAD+GOALMAXRAD)/2:#  GOALMINRAD:
+                        goal = GOALMAXRAD
+                        movetorad(s,goal)
+            else:
+                movetorad(s,GOALRAD)
+
+            rate.sleep()
+    except rospy.ROSInterruptException:
+        rospy.logwarn('ROSInterruptException Thrown')
+        pass
+
+    sendCommandWOResp(s,'GOAL=0')
+\end{verbatim}
+
+
+\section{Environmental Sensor State Information}
+\begin{verbatim}
+#!/usr/bin/env python
+import re
+import traceback
+import sys
+import rospy
+import numpy
+import binascii
+import roslib
+import time
+import struct
+from serial import Serial
+from array import array
+from collections import namedtuple
+from rsl_rover_msgs.msg import env_data
+from math import pi,tan
+from MQSensor import MQ
+import os
+class RoverInterface: 
+   #_rx_len = 0
+   # _rx_size = 26
+    fmt = 'iffffffffffff'
+    RoverDataKeys = ['time','Temp1','Temp2','Humidity','Particulate']
+    MQNames = ['MQ-4','MQ-135','MQ-9','MQ-2','MQ-5','MQ-6','MQ-7','MQ-8']
+    RoverDataKeys = RoverDataKeys + MQNames
+
+    def __init__(self,ser_in):
+        self._rx_size = struct.calcsize(self.fmt)
+        self.ser = ser_in
+        self._rx_len = 0
+        self.rx_buffer = bytearray(self._rx_size+1)
+        self.rx_array_inx = 0
+        self.RoverState = dict()
+
+    def setupMQ(self):
+        dbpath = os.path.join(os.path.dirname(MQ.__file__),'mqdb.sqlite')
+        self.MQSEN = dict()
+        for name in self.MQNames:
+            self.MQSEN[name] = MQ.MQ(dbpath,name)
+
+    def receiveData(self):
+        ser = self.ser
+        #global rx_len, rx_buffer,rx_array_inx, RoverDataKeys, RoverData
+        #Translated from the c++ arduino Easy Transfer Library
+        if self._rx_len == 0:
+            if ser.inWaiting() >= 3:
+                while ser.read() != '\x06':
+                    if ser.inWaiting() < 3:
+                        return False
+
+                if ser.read() == '\x85':
+                    self._rx_len = ord(ser.read())
+                    if self._rx_len != self._rx_size:
+                        self._rx_len = 0
+                        return False
+        
+        if self._rx_len != 0:
+            while ser.inWaiting() and self.rx_array_inx <= self._rx_len:
+                try:
+                    self.rx_buffer[self.rx_array_inx] = ser.read()
+                    self.rx_array_inx += 1
+                except Exception, err:
+                    rospy.logwarn('Error while reading after start bits',err)
+
+        if(self._rx_len == (self.rx_array_inx-1)):
+            calc_CS = self._rx_len
+            for i in range(0,self._rx_len):
+                calc_CS ^= self.rx_buffer[i]
+
+            if calc_CS == self.rx_buffer[self.rx_array_inx-1]:
+                try:
+                    self.decodeStruct(self.rx_buffer[0:-1])
+                except Exception, err:
+                    rospy.logwarn(err)
+                    rospy.logwarn('Failed to Decode Packet')
+                    rospy.logwarn(binascii.b2a_hex(self.rx_buffer[0:-1]))
+                self._rx_len = 0
+                self.rx_array_inx = 0
+                return True
+            else:
+                self._rx_len = 0
+                self.rx_array_inx = 0
+                return False
+
+    def decodeStruct(self,data):
+        #print ''.join('{:02x}'.format(x) for x in self.rx_buffer[0:-1])
+        values = struct.unpack(self.fmt,data)
+        self.RoverState = dict(zip(self.RoverDataKeys,values))
+
+    def getRoverState(self):
+        return self.RoverState
+
+if __name__ == '__main__':
+
+    rospy.init_node('EnviroDataNode')
+    serport = rospy.get_param('~port')
+    rospy.loginfo(serport)
+
+    ser = Serial(
+           port=serport,
+           baudrate=115200,
+           timeout=0.1,
+            )
+
+    rover = RoverInterface(ser)
+    rover.setupMQ()
+    pub = rospy.Publisher('EnvData',env_data,queue_size=2)
+    rate = rospy.Rate(5)
+    setupsamples = 0
+    setup_sample_list = []
+
+    while not rospy.is_shutdown():
+        rover.receiveData()
+        ES = rover.getRoverState()
+        
+        if setupsamples < 20:
+            if len(ES) > 0:
+                setup_sample_list.append(ES)
+                setupsamples += 1
+
+            if(setupsamples == 19):
+                init_val = {}
+                for name in ES.keys():
+                    if name.startswith('MQ-'):
+                       init_val[name] = sum(d[name] for d in setup_sample_list) / len(setup_sample_list)
+                for name in init_val.keys():
+                    rover.MQSEN[name].initialCalibration(init_val[name])
+                print 'Done Calibrating'
+        else:
+            try:
+                #Build up vehicle state message
+                msg = env_data()
+                msg.header.stamp = rospy.Time.now()
+                msg.MQ4.raw= ES['MQ-4']
+                msg.MQ135.raw = ES['MQ-135']
+                msg.MQ2.raw = ES['MQ-2']
+                msg.MQ5.raw = ES['MQ-5']
+                msg.MQ8.raw = ES['MQ-8']
+                msg.MQ9.raw = ES['MQ-9']
+                msg.MQ7.raw = ES['MQ-7']
+                msg.MQ6.raw = ES['MQ-6']
+
+                try:
+                    for sen_name in rover.MQSEN.keys():
+                        sen_name_mod = re.sub('[-]','',sen_name)
+
+                        mq = msg.__getattribute__(sen_name_mod)
+                        mq.__setattr__('sen_name',sen_name)
+
+                        Y = rover.MQSEN[sen_name].processValue(ES[sen_name])
+                        for sub in Y:
+                            mq.__setattr__(sub,Y[sub])
+
+                        msg.__setattr__(sen_name_mod,mq)
+
+                except Exception, e:
+                    traceback.print_exc()
+                    rospy.logwarn('Error Generating Calibrated Values')
+                    
+
+                msg.Temperature1 = ES['Temp1']
+                msg.Temperature2 = ES['Temp2']
+                msg.Humidity = ES['Humidity']
+                msg.Particulate = ES['Particulate']
+                pub.publish(msg)
+
+            except Exception, err:
+                rospy.logwarn('Could Not Publish Env Data');
+                rospy.logwarn(err)
+
+        rate.sleep()
+\end{verbatim}
+
+
+\section{Sensor Calibration}
+\begin{verbatim}
+import sqlite3 as lite
+import math
+import sys
+
+class MQ:
+
+    con = None
+
+    def __init__(self,calibration_path,name):
+       self.calpath = calibration_path
+       self.name = name;
+
+       try:
+         con = lite.connect(self.calpath)
+
+         cur = con.cursor()
+
+         query = 'SELECT sub.Name,Intercept,C,M,sen.R2,sen.Cair FROM Calibration AS cal INNER JOIN Substances AS sub ON cal.SubstanceID=sub.id INNER JOIN Sensors AS sen ON cal.SensorID=sen.id WHERE sen.name="' + self.name + '";'
+
+         result = cur.execute(query)
+         colname = [ d[0] for d in result.description ]
+         self.calibrations = [ dict(zip(colname, r)) for r in result.fetchall() ]
+         con.close()
+       except lite.Error, e:
+           print "Error %s:" % e.args[0]
+           sys.exit(0)
+
+       finally:
+            if con:
+                con.close()
+
+    def initialCalibration(self,raw_val):
+        self.R2 = self.calibrations[0]['R2'] 
+        Cair = self.calibrations[0]['Cair']
+        Vm = raw_val * (5.0 / 1023.0)
+        self.R0 = self.R2*(5.0 - Vm) / (Cair * Vm)
+        return
+
+    def processValue(self,raw_val):
+        Vm = raw_val * (5.0 / 1023.0)
+        try:
+            Rs = self.R2*(5.0-Vm)/Vm        
+        except ZeroDivisionError, e:
+            print( 'Zero Division Error Caught' )
+            Rs = 0
+        Y = dict()
+        for x in self.calibrations: 
+            C = float(x['C'])
+            M = float(x['M'])
+            name = str(x['Name'])
+            try:
+                Y[name] = math.pow(C*(Rs/self.R0),M)
+            except ValueError, e:
+                print 'Math Error Caught'
+                Y[name] = 0
+        return Y
+
+if __name__ == '__main__':
+    MQ1 = MQ('mqdb.sqlite','MQ-4')
+    MQ1.initialCalibration(128)
+    print MQ1.processValue(255)
+\end{verbatim}
+
+
+\section{Laser Startup}
+\begin{verbatim}
+<launch>
+	<!-- Start the robot model which includes visual geometery and
+	     static transformations which define the robot's
+	     different frames -->	
+        <env name="ROSCONSOLE_FORMAT" value="[${thread}] [${node}/${function}:${line}]: ${message}"/>
+
+	<param name="use_sim_time" value="false" />
+	<include file="$(find rsl_rover)/launch/robot_state.launch" />
+
+	<!-- Connect to the Vehicle Mega -->
+	<include file="$(find rsl_rover)/launch/rover_interface.launch" /> 
+
+	<!-- Startup all of the sensors: Lidar, GPS, IMU, Cameras -->
+	<include file="$(find rsl_rover)/launch/RSL_LMS221.launch" /> 
+	<include file="$(find rsl_rover)/launch/lms221_filter.launch" />
+	<include file="$(find rsl_rover)/launch/RSL_LMS111.launch" />
+	<include file="$(find rsl_rover)/launch/novatel.launch" />
+	<include file="$(find rsl_rover)/launch/um7.launch" />
+	<!--<include file="$(find rsl_rover)/launch/cameras.launch" /> -->
+
+
+	<!-- Startup all of the mapping & localization nodes -->
+	<include file="$(find rsl_rover)/launch/hector.launch" />
+	<!--<include file="$(find rsl_rover)/launch/octomap.launch" />-->
+        <include file="$(find rsl_rover)/launch/loc.launch" />
+
+	<!-- Startup RVIZ visualization, marked as required so
+	      all nodes will exit if rviz is closed -->
+	<include file="$(find rsl_rover)/launch/rover_rviz.launch" />
+
+	<!-- Startup Web Services -->
+	<!--	<include file="$(find rsl_rover)/launch/serv.launch" /> -->
+</launch>
+\end{verbatim}
+
+
+\section{LIDAR LMS111 Launch}
+\begin{verbatim}
+<launch>
+  <arg name="host" default="10.0.0.140" />
+  <node pkg="lms1xx" name="lms1xx" type="LMS1xx_node" output="screen">
+    <param name="host" value="$(arg host)" />
+    <param name="frame_id" value="front_laser" />
+  </node>
+  <include file="$(find rsl_rover)/launch/scan_filter.launch" />
+</launch>
+\end{verbatim}
+
+
+\section{LIDAR LMS221 Launch}
+\begin{verbatim}
+<launch>
+	<node pkg="rsl_rover" name="gimbal_driver" type="gimbal_driver.py" output="screen">
+  </node>
+  <node pkg="sicktoolbox_wrapper" name="lms221" type="sicklms">
+	<param name="port" value="/dev/lms221" />
+	<param name="baud" value="500000" />
+	<param name="frame_id" value="gimbal_laser" />
+	<remap from="scan" to="scanlms221" /> 
+  </node>
+</launch>
+\end{verbatim}
+
+\section{LIDAR LMS221 Filter Launch}
+\begin{verbatim}
+<launch>
+	<node pkg="rsl_rover" type="periodic_snapshotter2" name="rover_periodic_snapshotter2" />
+
+	<!-- Filter the point cloud with a Voxel Fliter Nodelet -->
+	  <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+	  <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
+	  <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen">
+		<remap from="~input" to="assembled_cloud" />
+		<remap from="~output" to="filtered_cloud" />
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/voxel_config.yaml" />
+	  </node>
+</launch>
+\end{verbatim}
+
+
+\section{All Laser Launch}
+\begin{verbatim}
+<launch>
+	<include file="RSL_LMS221.launch" />
+	<include file="RSL_LMS111.launch" />
+	<node pkg="laser_assembler" name="laser_scan_assembler" type="laser_scan_assembler" >
+		<param name="max_scans" type="int" value="400" />
+		<param name="fixed_frame" type="string" value="base_link" />
+	</node>
+</launch>
+\end{verbatim}
+
+\section{Hector Mapping Launch}
+\begin{verbatim}
+<launch>
+  <arg name="tf_map_scanmatch_transform_frame_name" default="scanmatcher_frame"/>
+  <arg name="base_frame" default="base_link"/>
+  <arg name="odom_frame" default="odom"/>
+  <arg name="pub_map_odom_transform" default="false"/>
+  <arg name="scan_subscriber_queue_size" default="5"/>
+  <arg name="scan_topic" default="scan"/>
+  <arg name="map_size" default="4096"/>
+
+  <!--  <node pkg="topic_tools" type="relay" name="scan_relay_1" args="scanlms221 scan_total" />
+  <node pkg="topic_tools" type="relay" name="scan_relay_2" args="scan scan_total" /> -->
+  
+  <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
+    <param name="laser_max_dist" value="140.0" />
+    
+    <!-- Frame names -->
+    <param name="map_frame" value="map" />
+    <param name="base_frame" value="$(arg base_frame)" />
+    <param name="odom_frame" value="$(arg odom_frame)" />
+    
+    <!-- Tf use -->
+    <param name="use_tf_scan_transformation" value="true"/>
+    <param name="use_tf_pose_start_estimate" value="false"/>
+    <param name="pub_map_odom_transform" value="$(arg pub_map_odom_transform)"/>
+    
+    <!-- Map size / start point -->
+    <param name="map_resolution" value="0.20"/>
+    <param name="map_size" value="$(arg map_size)"/>
+    <param name="map_start_x" value="0.5"/>
+    <param name="map_start_y" value="0.5" />
+    <param name="map_multi_res_levels" value="3" />
+    
+    <!-- Map update parameters -->
+    <param name="update_factor_free" value="0.4"/>
+    <param name="update_factor_occupied" value="0.9" />    
+    <param name="map_update_distance_thresh" value="0.1"/>
+    <param name="map_update_angle_thresh" value="0.02" />
+    <param name="laser_z_min_value" value = "-1.0" />
+    <param name="laser_z_max_value" value = "1.5" />
+    
+    <!-- Advertising config --> 
+    <param name="advertise_map_service" value="true"/>
+    
+    <param name="scan_subscriber_queue_size" value="$(arg scan_subscriber_queue_size)"/>
+    <param name="scan_topic" value="$(arg scan_topic)"/>
+    
+    <!-- Debug parameters -->
+    <!--
+      <param name="output_timing" value="false"/>
+      <param name="pub_drawings" value="true"/>
+      <param name="pub_debug_output" value="true"/>
+    -->
+    <param name="tf_map_scanmatch_transform_frame_name" value="$(arg tf_map_scanmatch_transform_frame_name)" />
+  </node>
+    
+</launch>
+  
+\end{verbatim}
+
+
+\section{Localization Launch}
+\begin{verbatim}
+
+<!-- Launch file for ekf_localization_node -->
+
+<!-- Layer 1 Localization: Odometry Frame -->
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="tach_odom123" args="0 0 0 0 0 0 1 odom tach_odom 20" />
+    <node pkg="rsl_rover" type="imu_override_covariance.py" name="IOC" />
+    <!--    <node pkg="rsl_rover" type="virt_yaw_sensor.py" name="VirtYaw" output="screen"/> -->
+
+    <node pkg="imu_complementary_filter" type="complementary_filter_node" name="complementary_filter_node" >
+	   <remap from="imu/data_raw" to="imu/data_cov" />
+	   <remap from="imu/mag" to="imu/mag" />
+	   <remap from="imu/data" to="imu/data_filtered" />
+	   <param name="do_bias_estimation" value="true"/>
+	   <param name="do_adaptive_gain" value="true"/>
+	   <param name="use_mag" value="false"/>
+	   <param name="gain_acc" value="0.01"/>
+	   <param name="gain_mag" value="0.01"/>
+    </node>
+
+    <node pkg="robot_localization" type="ekf_localization_node" name="odom_localization" clear_params="true" output="screen">
+
+      <param name="frequency" value="30"/>
+      <param name="sensor_timeout" value="0.1"/>
+      <param name="two_d_mode" value="true"/>
+      <param name="map_frame" value="map"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="base_link_frame" value="base_link"/>
+      <param name="world_frame" value="odom"/>
+      <param name="transform_time_offset" value="0.0"/>
+
+      <!-- The filter accepts an arbitrary number of inputs from each input message type (Odometry, PoseStamped,
+           TwistStamped, Imu). To add a new one, simply append the next number in the sequence to its base name,
+           e.g., odom0, odom1, twist0, twist1, imu0, imu1, imu2, etc. The value should be the topic name. These
+           parameters obviously have no default values, and must be specified. -->
+      <param name="odom0" value="/VehicleTach"/>
+      <!--      <param name="odom1" value="/VirtYaw"/> -->
+      <param name="imu0" value="/imu/data_filtered"/>
+
+      <!-- Each sensor reading updates some or all of the filter's state. These options give you greater control over
+           which values from each measurement /imu/data_filteredare fed to the filter. For example, if you have an odometry message as input,
+           but only want to use its Z position value, then set the entire vector to false, except for the third entry.
+           The order of the values is x, y, z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Note that not some
+           message types lack certain variables. For example, a TwistWithCovarianceStamped message has no pose information, so
+           the first six values would be meaningless in that case. Each vector defaults to all false if unspecified, effectively
+           making this parameter required for each sensor. -->
+
+      <rosparam param="odom0_config">[false, false, false,
+                                      false, false, false,
+                                      true,  true, false,
+                                      false, false, true,
+                                      false, false, false]</rosparam> -->
+<!--      <rosparam param="odom1_config">[false, false, false,
+                                      false, false, false,
+                                      false,  false, false,
+                                      false, false, true,
+                  false, false, false]</rosparam> -->
+
+      <rosparam param="imu0_config">[false, false, false,
+                                     true,  true,  true,
+                                     false, false, false,
+                                     true,  true,  true,
+                                     false,  false,  false]</rosparam>
+
+      <!-- The best practice for including new sensors in robot_localization's state estimation nodes is to pass in velocity
+           measurements and let the nodes integrate them. However, this isn't always feasible, and so the state estimation
+           nodes support fusion of absolute measurements. If you have more than one sensor providing absolute measurements,
+           however, you may run into problems if your covariances are not large enough, as the sensors will inevitably
+           diverge from one another, causing the filter to jump back and forth rapidly. To combat this situation, you can
+           either increase the covariances for the variables in question, or you can simply set the sensor's differential
+           parameter to true. When differential mode is enabled, all absolute pose data is converted to velocity data by
+           differentiating the absolute pose measurements. These velocities are then integrated as usual. NOTE: this only
+           applies to sensors that provide absolute measurements, so setting differential to true for twit measurements has
+           no effect.
+
+           Users should take care when setting this to true for orientation variables: if you have only one source of
+           absolute orientation data, you should not set the differential parameter to true. This is due to the fact that
+           integration of velocities leads to slowly increasing error in the absolute (pose) variable. For position variables,
+           this is acceptable. For orientation variables, it can lead to trouble. Users should make sure that all orientation
+           variables have at least one source of absolute measurement. -->
+      <param name="odom0_differential" value="false"/>
+      <!--      <param name="odom1_differential" value="false"/> -->
+      <param name="imu0_differential" value="false"/>
+
+      <!-- When the node starts, if this parameter is true, then the first measurement is treated as a "zero point" for all
+           future measurements. While you can achieve the same effect with the differential paremeter, the key difference is
+           that the relative parameter doesn't cause the measurement to be converted to a velocity before integrating it. If
+           you simply want your measurements to start at 0 for a given sensor, set this to true. -->
+      <param name="odom0_relative" value="false"/>
+      <!--      <param name="odom1_relative" value="false"/> -->
+      <param name="imu0_relative" value="false"/>
+
+      <!-- If we're including accelerations in our state estimate, then we'll probably want to remove any acceleration that
+           is due to gravity for each IMU. If you don't want to, then set this to false. Defaults to false if unspecified. -->
+      <param name="imu0_remove_gravitational_acceleration" value="true"/>
+
+      <!-- If you're having trouble, try setting this to true, and then echo the /diagnostics_agg topic to see
+           if the node is unhappy with any settings or data. -->
+      <param name="print_diagnostics" value="true"/>
+
+      <!-- ======== ADVANCED PARAMETERS ======== -->
+
+      <!-- Most users will be able to remove these parameters from the launch file without any consequences. We recommend
+           that users do not set values for these parameters without having a thorough understanding of
+           the parameters do. -->
+
+      <!-- By default, the subscription queue size for each message type is 1. If you wish to increase that so as not
+           miss any messages (even if your frequency is set to a relatively small value), increase these. -->
+      <param name="odom0_queue_size" value="2"/>
+      <!--<param name="odom1_queue_size" value="2"/> -->
+      <param name="imu0_queue_size" value="2"/>
+
+      <!-- If your data is subject to outliers, use these threshold settings, expressed as Mahalanobis distances, to control
+           how far away from the current vehicle state a sensor measurement is permitted to be. Each defaults to
+           numeric_limits<double>::max() if unspecified. -->
+      <!--      <param name="odom1_pose_rejection_threshold" value="5"/>
+      <param name="odom1_twist_rejection_threshold" value="1"/> -->
+      <!--<param name="imu0_pose_rejection_threshold" value="0.3"/>
+      <param name="imu0_twist_rejection_threshold" value="0.1"/>
+      <param name="imu0_linear_acceleration_rejection_threshold" value="0.1"/> -->
+
+      <!-- Debug settings. Not for the faint of heart. Outputs a ludicrous amount of information to the file
+           specified by debug_out_file. I hope you like matrices! Defaults to false if unspecified. -->
+      <param name="debug"           value="false"/>
+      <!-- Defaults to "robot_localization_debug.txt" if unspecified. -->
+      <param name="debug_out_file"  value="debug_ekf_localization.txt"/>
+
+      <!-- The process noise covariance matrix can be difficult to tune, and can vary for each application, so it
+           is exposed as a configuration parameter. The values are ordered as x, y, z, roll, pitch, yaw, vx, vy, vz,
+           vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if unspecified. -->
+      <rosparam param="process_noise_covariance">[0.05, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0.05, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0.06, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0.03, 0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0.03, 0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0.06, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0.025, 0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0.025, 0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0.04, 0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0.01, 0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.01, 0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.02, 0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.01, 0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.01, 0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.015]</rosparam>
+
+      <!-- This represents the initial value for the state estimate error covariance matrix. Setting a diagonal value (a
+           variance) to a large value will result in early measurements for that variable being accepted quickly. Users should
+           take care not to use large values for variables that will not be measured directly. The values are ordered as x, y,
+           z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if unspecified. -->
+           <rosparam param="initial_estimate_covariance">[1e-9, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    1e-9, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    1e-9, 0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    1e-9, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    1e-9, 0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    1e-9, 0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    1e-9, 0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,  0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e-9,  0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1e-9, 0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9, 0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]</rosparam>
+
+
+  <!--  Placeholder for output topic remapping-->
+  <remap from="odometry/filtered" to="odometry/filtered_cont"/>
+      
+    </node>
+    
+
+    <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform_node">
+      <param name="magnetic_declination_radians" value="0.236"/>
+      <param name="yaw_offset" value="0"/>
+      <!--      <param name="yaw_offset" value="1.5707963"/>-->
+      <param name="publish_filtered_gps" value="true" />
+      <param name="broadcast_utm_transform" value="true" />
+
+      <remap from="/imu/data" to="/imu/data_filtered" />
+      <remap from="/gps/fix" to="/fix" />
+      <remap from="/odometry/filtered" to="/odometry/filtered_discont" />
+    </node>
+
+
+<!-- Layer 2 Localization: Map Frame -->
+    <node pkg="robot_localization" type="ekf_localization_node" name="map_localization" clear_params="true" output="screen">
+
+      <param name="frequency" value="30"/>
+      <param name="sensor_timeout" value="0.1"/>
+      <param name="two_d_mode" value="true"/>
+
+      <param name="map_frame" value="map"/>
+      <param name="odom_frame" value="odom"/>
+      <param name="base_link_frame" value="base_link"/>
+      <param name="world_frame" value="map"/>
+
+      <param name="transform_time_offset" value="0.0"/>
+
+      <param name="odom0" value="/odometry/filtered_cont"/>
+      <param name="pose0" value="/poseupdate"/>
+
+      <rosparam param="odom0_config">[false, false, false,
+                                      false, false, false,
+                                      true,  true, false,
+                                      false, false, true,
+                                      true, true, false]</rosparam> -->
+
+      <rosparam param="pose0_config">[true, true, false,
+                                      false, false, true,
+                                      false,  false, false,
+                                      false, false, false,
+                                      false, false, false]</rosparam> -->
+
+      <param name="odom0_differential" value="false"/>
+      <param name="odom0_relative" value="false"/>
+      <param name="pose0_differential" value="false"/>
+      <param name="pose0_relative" value="false"/>
+
+      <!-- If you're having trouble, try setting this to true, and then echo the /diagnostics_agg topic to see
+           if the node is unhappy with any settings or data. -->
+      <param name="print_diagnostics" value="true"/>
+
+      <!-- ======== ADVANCED PARAMETERS ======== -->
+
+      <!-- Most users will be able to remove these parameters from the launch file without any consequences. We recommend
+           that users do not set values for these parameters without having a thorough understanding of
+           the parameters do. -->
+
+      <!-- By default, the subscription queue size for each message type is 1. If you wish to increase that so as not
+           miss any messages (even if your frequency is set to a relatively small value), increase these. -->
+      <param name="odom0_queue_size" value="1"/>
+      <param name="pose0_queue_size" value="1"/>
+
+      <!-- If your data is subject to outliers, use these threshold settings, expressed as Mahalanobis distances, to control
+           how far away from the current vehicle state a sensor measurement is permitted to be. Each defaults to
+           numeric_limits<double>::max() if unspecified. -->
+<!--      <param name="odom0_pose_rejection_threshold" value="5"/>
+      <param name="odom0_twist_rejection_threshold" value="1"/> -->
+
+      <!-- Debug settings. Not for the faint of heart. Outputs a ludicrous amount of information to the file
+           specified by debug_out_file. I hope you like matrices! Defaults to false if unspecified. -->
+      <param name="debug"           value="false"/>
+      <!-- Defaults to "robot_localization_debug.txt" if unspecified. -->
+      <param name="debug_out_file"  value="debug_ekf_localization.txt"/>
+
+      <!-- The process noise covariance matrix can be difficult to tune, and can vary for each application, so it
+           is exposed as a configuration parameter. The values are ordered as x, y, z, roll, pitch, yaw, vx, vy, vz,
+           vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if unspecified. -->
+      <rosparam param="process_noise_covariance">[0.05, 0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0.05, 0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0.06, 0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0.03, 0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0.03, 0,    0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0.06, 0,     0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0.025, 0,     0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0.025, 0,    0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0.04, 0,    0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0.01, 0,    0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0.01, 0,    0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0.02, 0,    0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0.01, 0,    0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0.01, 0,
+                                                  0,    0,    0,    0,    0,    0,    0,     0,     0,    0,    0,    0,    0,    0,    0.015]</rosparam>
+
+      <!-- This represents the initial value for the state estimate error covariance matrix. Setting a diagonal value (a
+           variance) to a large value will result in early measurements for that variable being accepted quickly. Users should
+           take care not to use large values for variables that will not be measured directly. The values are ordered as x, y,
+           z, roll, pitch, yaw, vx, vy, vz, vroll, vpitch, vyaw, ax, ay, az. Defaults to the matrix below if unspecified. -->
+           <rosparam param="initial_estimate_covariance">[1e-9, 0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    1e-9, 0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    1e-9, 0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    1e-9, 0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    1e-9, 0,    0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    1e-9, 0,    0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    1e-9, 0,    0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    1e-9, 0,    0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    1e-9, 0,     0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    1e-9,  0,     0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     1e-9,  0,     0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     1e-9,  0,    0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     1e-9, 0,    0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    1e-9, 0,
+                                                          0,    0,    0,    0,    0,    0,    0,    0,    0,    0,     0,     0,     0,    0,    1e-9]</rosparam>
+
+
+  <!--  Placeholder for output topic remapping-->
+  <remap from="odometry/filtered" to="odometry/filtered_discont"/>
+      
+
+    </node>
+    
+</launch>
+
+\end{verbatim}
+
+
+\section{Map Testing Launch}
+\begin{verbatim}
+<launch> 
+	<!-- Plays back data from bagfile and uses simualtion clock -->
+	<arg name="bagfile" default="$(find rsl_rover)/bag/jan25-rover-maneuvering.bag" />
+	<param name="use_sim_time" value="true" />
+	<node pkg="rosbag" type="play" name="rosbag" args="--clock $(arg bagfile)" required="true">
+	</node>
+
+	<!-- Static transforms in place of odometry. Assumes stationary robot -->
+	<node pkg="tf" type="static_transform_publisher" name="stationary_robot_transform" args="0 0 0 0 0 0 /base_link /map 100"/>
+	<node pkg="tf" type="static_transform_publisher" name="stationary_robot_transform_1" args="0 0 0 0 0 0 /base_link /odom 100"/>
+
+	<!-- Assemble the laser scans into a point cloud, published periodically -->
+	<node pkg="laser_assembler" type="laser_scan_assembler" name="rover_laser_assembler" >
+		<param name="fixed_frame" type="string" value="base_link" />
+	</node>
+	<node pkg="rsl_rover" type="periodic_snapshotter" name="rover_periodic_snapshotter" output="screen">
+		<param name="pub_duration" value="1.0" />
+	</node>
+
+	<!-- Filter the point cloud with a Voxel Fliter Nodelet -->
+	  <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+	  <!-- Run a VoxelGrid filter to clean NaNs and downsample the data -->
+	  <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen">
+		<remap from="~input" to="assembled_cloud" />
+		<remap from="~output" to="filtered_cloud" />
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/voxel_config.yaml" />
+	  </node>
+
+	<!-- Alternative Filter Method -->
+	<!--
+	<node pkg="laser_filters" type="scan_to_cloud_filter_chain" name="scan2cloud" >
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/laser_config.yaml" />
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/cloud_config.yaml" />
+		<param name="high_fidelity" value="false" />
+		<param name="target_frame" type="string" value="base_link" />
+	</node>
+-->
+
+	<node pkg="octomap_server" type="octomap_server_node" name="rover_octomap_server" output="screen" >
+		<remap from="cloud_in" to="filtered_cloud" />
+		<param name="resolution"  value="0.3" />
+		<param name="filter_ground" value="false" />
+		<param name="latch" value="false" />
+		<param name="base_frame_id" value="base_footprint" />
+		<param name="ground_filter/distance" value="0.04" />
+		<param name="ground_filter/angle" value="0.15" />
+		<param name="ground_filter/plane_distance" value="0.07" />
+	</node>
+
+	<include file="$(find rsl_rover)/launch/robot_state.launch" />
+	<include file="$(find rsl_rover)/launch/rover_rviz.launch" />
+</launch>
+\end{verbatim}
+
+
+
+\section{Navigation Stack Move Base Launch}
+\begin{verbatim}
+<launch>
+	<!-- Optionally run something like AMCL -->
+
+	<!-- run Navigation Stack Move Base -->
+  	<node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+	    <rosparam file="$(find rsl_rover)/cfg/costmap_common_params.yaml" command="load" ns="global_costmap" />
+	    <rosparam file="$(find rsl_rover)/cfg/costmap_common_params.yaml" command="load" ns="local_costmap" />
+	    <rosparam file="$(find rsl_rover)/cfg/local_costmap_params.yaml" command="load" />
+	    <rosparam file="$(find rsl_rover)/cfg/global_costmap_params.yaml" command="load" />
+	    <rosparam file="$(find rsl_rover)/cfg/teb_local_planner_params.yaml" command="load" />
+	    <rosparam file="$(find rsl_rover)/cfg/costmap_converter_params.yaml" command="load" /> <!-- Enable to activate costmap_conversion plugins -->
+	    <param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
+	    <!--param name="base_global_planner" value="straight_global_planner/StraightROS" /-->
+	    <param name="controller_frequency" value="5.0" />
+
+	    <remap from="map" to="/map" /> <!-- This file will be wrapped with namespace so we have to remove namespace from all appearances of map (there is only one map) -->
+	    <remap from="move_base_simple/goal" to="/move_base_simple/goal"/> <!-- We have only a single robot now, that is controlled via goals -->
+	    <remap from="odom" to="odometry/filtered_discont" />
+ 	</node>
+
+	<node pkg="rsl_rover" name="cmd_to_ack" type="cmd_vel_to_ackermann_drive.py">
+		<param name="wheelbase" value="2.5" />
+		<param name="frame_id" value="odom" />
+	</node>
+</launch>
+
+\end{verbatim}
+
+
+
+
+\section{OctoMap Launch}
+\begin{verbatim}
+<launch> 
+	<!-- Assemble the laser scans into a point cloud, published periodically -->
+	<!-- <node pkg="laser_assembler" type="laser_scan_assembler" name="rover_laser_assembler" >
+		<param name="fixed_frame" type="string" value="base_link" />
+		<remap from="scan" to="scanlms221" />
+	</node> -->
+
+	<!--	<node pkg="rsl_rover" type="periodic_snapshotter" name="rover_periodic_snapshotter">
+		<param name="fixed_frame" type="string" value="/odom" />
+		<param name="ignore_laser_skew" type="bool" value="false" />	
+		<param name="pub_duration" value="1.0" />
+	</node>
+-->
+<!--
+	<node pkg="rsl_rover" type="periodic_snapshotter2" name="rover_periodic_snapshotter2" />
+
+
+	  <node pkg="nodelet" type="nodelet" name="pcl_manager" args="manager" output="screen" />
+	  <node pkg="nodelet" type="nodelet" name="voxel_grid" args="load pcl/VoxelGrid pcl_manager" output="screen">
+		<remap from="~input" to="assembled_cloud" />
+		<remap from="~output" to="filtered_cloud" />
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/voxel_config.yaml" />
+	  </node>
+	  -->
+	<!-- Alternative Filter Method -->
+	<!--
+	<node pkg="laser_filters" type="scan_to_cloud_filter_chain" name="scan2cloud" >
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/laser_config.yaml" />
+		<rosparam command="load" file="$(find rsl_rover)/filter_config/cloud_config.yaml" />
+		<param name="high_fidelity" value="false" />
+		<param name="target_frame" type="string" value="base_link" />
+	</node>
+-->
+
+	<node pkg="octomap_server" type="octomap_server_node" name="rover_octomap_server" output="screen" >
+		<remap from="cloud_in" to="filtered_cloud" />
+		<param name="resolution"  value="0.2" />
+		<param name="filter_ground" value="false" />
+		<param name="latch" value="false" />
+		<param name="base_frame_id" value="base_footprint" />
+		<param name="ground_filter/distance" value="0.04" />
+		<param name="ground_filter/angle" value="0.15" />
+		<param name="ground_filter/plane_distance" value="0.07" />
+	</node>
+
+
+</launch>
+\end{verbatim}
+
+
+\section{Vehicle State in Map Launch}
+\begin{verbatim}
+<launch>
+	<param name="robot_description" command="cat $(find rsl_rover)/urdf/rsl_roverzoe.urdf" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+</launch>
+\end{verbatim}
+
+
+\section{Vehicle Interface Launch}
+\begin{verbatim}
+<launch>
+	<node pkg="rsl_rover" name="rover_interface" type="rover_decode.py" required="true" output="screen">
+  </node>
+</launch>
+\end{verbatim}
+
+
+\section{Vehicle RVIZ Launch}
+\begin{verbatim}
+<launch>
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find rsl_rover)/rviz_cfg/rover_driving.rviz" required="true"/>
+</launch>
+\end{verbatim}
+
+
+\section{Vehicle Startup Launch}
+\begin{verbatim}
+<launch>
+  <node pkg="myahrs_driver" type="myahrs_driver" name="myahrs_driver">
+    <param name="port" value="/dev/ttyACM0" />
+    <param name="baud_rate" value="115200" />
+  </node>
+  <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="gps_driver">
+    <param name="port" value="/dev/ttyS0" />
+    <param name="baud_rate" value="9600" />
+  </node>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myahrs_driver)/rviz_cfg/imu_test.rviz" />
+</launch>
+
+\end{verbatim}
+
+
+
+\section{Laser Scan Filter Launch}
+\begin{verbatim}
+<launch>
+  <node pkg="laser_filters" type="scan_to_scan_filter_chain"  name="laser_filter">
+    <rosparam command="load" file="$(find rsl_rover)/cfg/my_laser_config.yaml" />
+    <remap from="scan" to="scan" />
+  </node>
+</launch>
+\end{verbatim}
+
+\section{UM7 Orientation Sensor Launch}
+\begin{verbatim}
+<launch>
+  <node pkg="um7" type="um7_driver" name="um7_driver">
+    <param name="port" value="/dev/um7" />
+    <param name="covariance" value=".1 0 0 0 .1 0 0 0 .1" />
+    <param name="zero_gyros" value="true" />
+  </node>
+</launch>
+\end{verbatim}
+
+
+
+\section{Laser Configuration}
+\begin{verbatim}
+
+scan_filter_chain:
+- name: shadows
+  type: laser_filters/ScanShadowsFilter
+  params:
+    min_angle: 5
+    max_angle: 175
+    neighbors: 10
+    window: 1
+- name: dark_shadows
+  type: laser_filters/LaserScanIntensityFilter
+  params: 
+    lower_threshold: 100
+    upper_threshold: 10000
+    disp_histogram: 0
+
+\end{verbatim}
+
+
+\section{Web Server Launch}
+\begin{verbatim}
+<launch>
+  <!--<param name="use_sim_time" value="false" />-->
+  <!--
+  <node name="camera_web_server" pkg="web_video_server"  type="web_video_server" output="screen">
+    <param name="port" value="8080" />
+    <param name="address" value="0.0.0.0" />
+    <param name="server_threads" value="1" />
+    <param name="ros_threads" value="2" />
+  </node>
+-->
+
+  <arg name="port" default="9090" />
+  <arg name="address" default="" />
+  <arg name="ssl" default="false" />
+  <arg name="certfile" default=""/>
+  <arg name="keyfile" default="" />
+  <arg name="authenticate" default="false" />
+
+  <group if="$(arg ssl)">
+    <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket" output="screen">
+      <param name="certfile" value="$(arg certfile)" />
+      <param name="keyfile" value="$(arg keyfile)" />
+      <param name="authenticate" value="$(arg authenticate)" />
+      <param name="port" value="$(arg port)"/>
+      <param name="address" value="$(arg address)"/>
+    </node>
+  </group>
+  <group unless="$(arg ssl)">
+    <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket" output="screen">
+      <param name="authenticate" value="$(arg authenticate)" />
+      <param name="port" value="$(arg port)"/>
+      <param name="address" value="$(arg address)"/>
+    </node>
+  </group>
+
+  <node name="rosapi" pkg="rosapi" type="rosapi_node" />
+
+</launch>
+\end{verbatim}
+
+
+
